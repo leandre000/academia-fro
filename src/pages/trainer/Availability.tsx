@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useAuthStore } from '../../store/authStore';
 import { mockTrainerAvailability } from '../../data/mockData';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -21,7 +20,6 @@ type AvailabilityForm = z.infer<typeof availabilitySchema>;
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 export default function TrainerAvailability() {
-  const { user } = useAuthStore();
   const [saved, setSaved] = useState(false);
   
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<AvailabilityForm>({

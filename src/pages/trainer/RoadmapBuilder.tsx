@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthStore } from '../../store/authStore';
-import { getStudentsByTrainerId, mockRoadmaps } from '../../data/mockData';
+import { getStudentsByTrainerId } from '../../data/mockData';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -33,7 +33,7 @@ export default function TrainerRoadmapBuilder() {
   const [showPreview, setShowPreview] = useState(false);
   const [newGoal, setNewGoal] = useState('');
 
-  const { register, handleSubmit, control, watch, formState: { errors } } = useForm<RoadmapForm>({
+  const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<RoadmapForm>({
     resolver: zodResolver(roadmapSchema),
     defaultValues: {
       studentId: '',
@@ -53,10 +53,7 @@ export default function TrainerRoadmapBuilder() {
     },
   });
 
-  const { fields: goalFields, append: appendGoal, remove: removeGoal } = useFieldArray({
-    control,
-    name: 'learningGoals',
-  });
+  const [learningGoals, setLearningGoals] = useState<string[]>([]);
 
   const { fields: phaseFields, append: appendPhase, remove: removePhase } = useFieldArray({
     control,
@@ -65,9 +62,16 @@ export default function TrainerRoadmapBuilder() {
 
   const addGoal = () => {
     if (newGoal.trim()) {
-      appendGoal(newGoal.trim());
+      setLearningGoals([...learningGoals, newGoal.trim()]);
+      setValue('learningGoals', [...learningGoals, newGoal.trim()]);
       setNewGoal('');
     }
+  };
+
+  const removeGoal = (index: number) => {
+    const updated = learningGoals.filter((_, i) => i !== index);
+    setLearningGoals(updated);
+    setValue('learningGoals', updated);
   };
 
   const formData = watch();
@@ -124,11 +128,11 @@ export default function TrainerRoadmapBuilder() {
             </div>
           </div>
 
-          {formData.learningGoals && formData.learningGoals.length > 0 && (
+          {learningGoals.length > 0 && (
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-3">Learning Goals</h3>
               <ul className="space-y-2">
-                {formData.learningGoals.map((goal, idx) => (
+                {learningGoals.map((goal, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="text-white mt-1">•</span>
                     <span>{goal}</span>
@@ -268,9 +272,9 @@ export default function TrainerRoadmapBuilder() {
               </button>
             </div>
             <div className="space-y-2">
-              {goalFields.map((field, idx) => (
-                <div key={field.id} className="flex items-center gap-2 bg-bg-tertiary border border-border rounded p-3">
-                  <span className="flex-1">{watch(`learningGoals.${idx}`)}</span>
+              {learningGoals.map((goal, idx) => (
+                <div key={idx} className="flex items-center gap-2 bg-bg-tertiary border border-border rounded p-3">
+                  <span className="flex-1">{goal}</span>
                   <button
                     type="button"
                     onClick={() => removeGoal(idx)}
@@ -331,7 +335,7 @@ export default function TrainerRoadmapBuilder() {
   );
 }
 
-function PhaseBuilder({ phaseIdx, register, control, errors, removePhase }: any) {
+function PhaseBuilder({ phaseIdx, register, control, removePhase }: any) {
   const { fields: taskFields, append: appendTask, remove: removeTask } = useFieldArray({
     control,
     name: `phases.${phaseIdx}.tasks`,

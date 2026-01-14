@@ -147,7 +147,7 @@ export const mockRoadmaps: Roadmap[] = [
             title: 'React Basics',
             description: 'Components, props, state, and hooks',
             order: 3,
-            status: 'in_progress',
+            status: 'pending',
             estimatedHours: 15,
           },
         ],

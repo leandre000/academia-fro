@@ -1,11 +1,10 @@
-import { mockWings, mockWallets } from '../../data/mockData';
+import { mockWings } from '../../data/mockData';
 import { useAuthStore } from '../../store/authStore';
 import { ArrowUpIcon, ArrowDownIcon } from '@radix-ui/react-icons';
 
 export default function WingAdminWallet() {
   const { user } = useAuthStore();
   const wing = user?.wingId ? mockWings.find((w) => w.id === user.wingId) : mockWings[0];
-  const wallet = wing ? mockWallets[wing.id] : null;
 
   const mockTransactions = [
     {

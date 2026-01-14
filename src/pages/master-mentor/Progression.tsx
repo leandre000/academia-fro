@@ -3,7 +3,7 @@ import { mockRoadmaps, mockUsers, mockStudentProgress } from '../../data/mockDat
 import { CheckIcon, LockClosedIcon } from '@radix-ui/react-icons';
 
 export default function MasterMentorProgression() {
-  const [selectedStudent, setSelectedStudent] = useState<string | null>(null);
+  const [selectedStudent] = useState<string | null>(null);
 
   const roadmaps = mockRoadmaps.filter((r) => r.status === 'approved');
   const student = mockUsers.student1;

@@ -1,7 +1,6 @@
 import { useAuthStore } from '../../store/authStore';
 import { getRoadmapByStudentId } from '../../data/mockData';
 import { CheckIcon, LockClosedIcon } from '@radix-ui/react-icons';
-import * as CircleIcon from '@radix-ui/react-icons/dist/Circle';
 
 export default function StudentRoadmap() {
   const { user } = useAuthStore();
@@ -73,7 +72,7 @@ export default function StudentRoadmap() {
 
       {/* Phases */}
       <div className="space-y-6">
-        {roadmap.phases.map((phase, phaseIdx) => (
+        {roadmap.phases.map((phase) => (
           <div
             key={phase.id}
             className={`bg-bg-secondary border rounded-lg p-6 ${

@@ -1,10 +1,8 @@
-import { useAuthStore } from '../../store/authStore';
 import { mockRoadmaps } from '../../data/mockData';
 import { Link } from 'react-router-dom';
 import { FileTextIcon, PersonIcon } from '@radix-ui/react-icons';
 
 export default function MasterMentorDashboard() {
-  const { user } = useAuthStore();
   
   const pendingReviews = mockRoadmaps.filter((r) => r.status === 'pending_review');
   const changesRequested = mockRoadmaps.filter((r) => r.status === 'changes_requested');

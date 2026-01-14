@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
-import { getUserByEmail, mockUsers } from '../data/mockData';
+import { mockUsers } from '../data/mockData';
 import type { UserRole } from '../types';
-import { PersonIcon, LockClosedIcon } from '@radix-ui/react-icons';
+import { PersonIcon } from '@radix-ui/react-icons';
 
 const roleDisplayNames: Record<UserRole, string> = {
   student: 'Student Portal',
