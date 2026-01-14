@@ -1,9 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { getRoadmapByStudentId, getSessionsByStudentId, mockStudentProgress } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import * as CalendarIcon from '@radix-ui/react-icons/dist/CalendarIcon';
-import * as CheckIcon from '@radix-ui/react-icons/dist/CheckIcon';
-import * as LockClosedIcon from '@radix-ui/react-icons/dist/LockClosedIcon';
+import { CalendarIcon, CheckIcon, LockClosedIcon } from '@radix-ui/react-icons';
 
 export default function StudentDashboard() {
   const { user } = useAuthStore();
@@ -25,7 +23,7 @@ export default function StudentDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Progress</span>
-            <CheckIcon.default className="w-5 h-5 text-white" />
+            <CheckIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{progress?.completionPercentage || 0}%</p>
           <p className="text-sm text-text-muted mt-1">
@@ -36,7 +34,7 @@ export default function StudentDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Current Phase</span>
-            <LockClosedIcon.default className="w-5 h-5 text-white" />
+            <LockClosedIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">Phase {progress?.currentPhase || 1}</p>
           <p className="text-sm text-text-muted mt-1">
@@ -47,7 +45,7 @@ export default function StudentDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Upcoming Sessions</span>
-            <CalendarIcon.default className="w-5 h-5 text-white" />
+            <CalendarIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{upcomingSessions.length}</p>
           <p className="text-sm text-text-muted mt-1">This week</p>

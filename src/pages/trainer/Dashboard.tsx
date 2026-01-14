@@ -1,8 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { getSessionsByTrainerId, getStudentsByTrainerId, mockTrainerAvailability, mockWallets } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import * as CalendarIcon from '@radix-ui/react-icons/dist/CalendarIcon';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
+import { CalendarIcon, PersonIcon } from '@radix-ui/react-icons';
 
 export default function TrainerDashboard() {
   const { user } = useAuthStore();
@@ -30,7 +29,7 @@ export default function TrainerDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Assigned Students</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{students.length}</p>
           <Link to="/trainer/students" className="text-sm text-white hover:underline mt-2 inline-block">
@@ -41,7 +40,7 @@ export default function TrainerDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Weekly Capacity</span>
-            <CalendarIcon.default className="w-5 h-5 text-white" />
+            <CalendarIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{availability.weeklyCapacity}h</p>
           <Link to="/trainer/availability" className="text-sm text-white hover:underline mt-2 inline-block">
@@ -52,7 +51,7 @@ export default function TrainerDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Today's Sessions</span>
-            <CalendarIcon.default className="w-5 h-5 text-white" />
+            <CalendarIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{todaySessions.length}</p>
           <p className="text-sm text-text-muted mt-1">Scheduled</p>
@@ -61,7 +60,7 @@ export default function TrainerDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Wallet Balance</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">${wallet?.balance.toLocaleString() || 0}</p>
           <Link to="/trainer/wallet" className="text-sm text-white hover:underline mt-2 inline-block">

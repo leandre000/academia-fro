@@ -1,6 +1,5 @@
 import { mockRoadmaps, mockWings } from '../../data/mockData';
-import * as ArrowUpIcon from '@radix-ui/react-icons/dist/ArrowUpIcon';
-import * as ArrowDownIcon from '@radix-ui/react-icons/dist/ArrowDownIcon';
+import { ArrowUpIcon, ArrowDownIcon } from '@radix-ui/react-icons';
 
 export default function UmbrellaAdminPayments() {
   const totalRevenue = mockWings.reduce((sum, w) => sum + w.walletBalance, 0);
@@ -76,11 +75,11 @@ export default function UmbrellaAdminPayments() {
                 <div className="flex items-center gap-4">
                   {flow.type === 'revenue' ? (
                     <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
-                      <ArrowUpIcon.default className="w-5 h-5 text-white" />
+                      <ArrowUpIcon className="w-5 h-5 text-white" />
                     </div>
                   ) : (
                     <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
-                      <ArrowDownIcon.default className="w-5 h-5 text-white" />
+                      <ArrowDownIcon className="w-5 h-5 text-white" />
                     </div>
                   )}
                   <div>

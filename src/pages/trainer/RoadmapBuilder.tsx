@@ -4,9 +4,7 @@ import { getStudentsByTrainerId, mockRoadmaps } from '../../data/mockData';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import * as PlusIcon from '@radix-ui/react-icons/dist/PlusIcon';
-import * as TrashIcon from '@radix-ui/react-icons/dist/TrashIcon';
-import * as EyeOpenIcon from '@radix-ui/react-icons/dist/EyeOpenIcon';
+import { PlusIcon, TrashIcon, EyeOpenIcon } from '@radix-ui/react-icons';
 
 const roadmapSchema = z.object({
   studentId: z.string().min(1, 'Select a student'),
@@ -105,7 +103,7 @@ export default function TrainerRoadmapBuilder() {
               : 'bg-bg-secondary border border-border text-white hover:bg-bg-tertiary'
           }`}
         >
-          <EyeOpenIcon.default className="w-4 h-4 inline mr-2" />
+          <EyeOpenIcon className="w-4 h-4 inline mr-2" />
           Preview
         </button>
       </div>
@@ -266,7 +264,7 @@ export default function TrainerRoadmapBuilder() {
                 onClick={addGoal}
                 className="bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition-colors"
               >
-                <PlusIcon.default className="w-4 h-4" />
+                <PlusIcon className="w-4 h-4" />
               </button>
             </div>
             <div className="space-y-2">
@@ -278,7 +276,7 @@ export default function TrainerRoadmapBuilder() {
                     onClick={() => removeGoal(idx)}
                     className="text-red-400 hover:text-red-300"
                   >
-                    <TrashIcon.default className="w-4 h-4" />
+                    <TrashIcon className="w-4 h-4" />
                   </button>
                 </div>
               ))}
@@ -302,7 +300,7 @@ export default function TrainerRoadmapBuilder() {
                 })}
                 className="bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition-colors flex items-center gap-2"
               >
-                <PlusIcon.default className="w-4 h-4" />
+                <PlusIcon className="w-4 h-4" />
                 Add Phase
               </button>
             </div>
@@ -349,7 +347,7 @@ function PhaseBuilder({ phaseIdx, register, control, errors, removePhase }: any)
             onClick={removePhase}
             className="text-red-400 hover:text-red-300"
           >
-            <TrashIcon.default className="w-5 h-5" />
+            <TrashIcon className="w-5 h-5" />
           </button>
         )}
       </div>
@@ -391,7 +389,7 @@ function PhaseBuilder({ phaseIdx, register, control, errors, removePhase }: any)
               onClick={() => appendTask({ title: '', description: '', estimatedHours: 0 })}
               className="bg-bg-tertiary border border-border text-white px-3 py-1 rounded text-sm hover:bg-bg-primary transition-colors flex items-center gap-1"
             >
-              <PlusIcon.default className="w-3 h-3" />
+              <PlusIcon className="w-3 h-3" />
               Add Task
             </button>
           </div>
@@ -407,7 +405,7 @@ function PhaseBuilder({ phaseIdx, register, control, errors, removePhase }: any)
                       onClick={() => removeTask(taskIdx)}
                       className="text-red-400 hover:text-red-300"
                     >
-                      <TrashIcon.default className="w-4 h-4" />
+                      <TrashIcon className="w-4 h-4" />
                     </button>
                   )}
                 </div>

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { mockRoadmaps, mockUsers, mockStudentProgress } from '../../data/mockData';
-import * as CheckIcon from '@radix-ui/react-icons/dist/CheckIcon';
-import * as LockClosedIcon from '@radix-ui/react-icons/dist/LockClosedIcon';
+import { CheckIcon, LockClosedIcon } from '@radix-ui/react-icons';
 
 export default function MasterMentorProgression() {
   const [selectedStudent, setSelectedStudent] = useState<string | null>(null);
@@ -84,12 +83,12 @@ export default function MasterMentorProgression() {
                 <div className="flex items-center gap-2">
                   {phase.isLocked ? (
                     <span className="bg-bg-tertiary border border-border rounded px-3 py-1 text-sm flex items-center gap-2">
-                      <LockClosedIcon.default className="w-4 h-4" />
+                      <LockClosedIcon className="w-4 h-4" />
                       Locked
                     </span>
                   ) : phase.isApproved ? (
                     <span className="bg-white text-black rounded px-3 py-1 text-sm font-medium flex items-center gap-2">
-                      <CheckIcon.default className="w-4 h-4" />
+                      <CheckIcon className="w-4 h-4" />
                       Approved
                     </span>
                   ) : (
@@ -124,9 +123,9 @@ export default function MasterMentorProgression() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         {task.status === 'completed' ? (
-                          <CheckIcon.default className="w-4 h-4 text-white" />
+                          <CheckIcon className="w-4 h-4 text-white" />
                         ) : (
-                          <LockClosedIcon.default className="w-4 h-4 text-text-muted" />
+                          <LockClosedIcon className="w-4 h-4 text-text-muted" />
                         )}
                         <span className="text-sm">{task.title}</span>
                       </div>
@@ -155,7 +154,7 @@ export default function MasterMentorProgression() {
                     onClick={() => handlePhaseApproval(phase.id, true)}
                     className="bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition-colors flex items-center gap-2"
                   >
-                    <CheckIcon.default className="w-4 h-4" />
+                    <CheckIcon className="w-4 h-4" />
                     Unlock Phase
                   </button>
                 ) : !phase.isApproved && !phase.isLocked ? (
@@ -164,7 +163,7 @@ export default function MasterMentorProgression() {
                       onClick={() => handlePhaseApproval(phase.id, true)}
                       className="bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition-colors flex items-center gap-2"
                     >
-                      <CheckIcon.default className="w-4 h-4" />
+                      <CheckIcon className="w-4 h-4" />
                       Approve Phase
                     </button>
                     <button

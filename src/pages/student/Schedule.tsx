@@ -1,7 +1,6 @@
 import { useAuthStore } from '../../store/authStore';
 import { getSessionsByStudentId } from '../../data/mockData';
-import * as CalendarIcon from '@radix-ui/react-icons/dist/CalendarIcon';
-import * as CheckIcon from '@radix-ui/react-icons/dist/CheckIcon';
+import { CalendarIcon, CheckIcon } from '@radix-ui/react-icons';
 
 export default function StudentSchedule() {
   const { user } = useAuthStore();
@@ -29,7 +28,7 @@ export default function StudentSchedule() {
       {/* Upcoming Sessions */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-          <CalendarIcon.default className="w-5 h-5" />
+          <CalendarIcon className="w-5 h-5" />
           Upcoming Sessions
         </h2>
         {scheduledSessions.length > 0 ? (
@@ -86,7 +85,7 @@ export default function StudentSchedule() {
       {completedSessions.length > 0 && (
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <CheckIcon.default className="w-5 h-5" />
+            <CheckIcon className="w-5 h-5" />
             Completed Sessions
           </h2>
           <div className="space-y-4">

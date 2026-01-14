@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { mockRoadmaps, mockUsers } from '../../data/mockData';
-import * as CheckIcon from '@radix-ui/react-icons/dist/CheckIcon';
-import * as CrossCircledIcon from '@radix-ui/react-icons/dist/CrossCircledIcon';
-import * as Pencil1Icon from '@radix-ui/react-icons/dist/Pencil1Icon';
+import { CheckIcon, CrossCircledIcon, Pencil1Icon } from '@radix-ui/react-icons';
 
 export default function MasterMentorReviews() {
   const [selectedRoadmap, setSelectedRoadmap] = useState<string | null>(null);
@@ -166,21 +164,21 @@ export default function MasterMentorReviews() {
                   onClick={() => handleAction('approve')}
                   className="flex-1 bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
                 >
-                  <CheckIcon.default className="w-4 h-4" />
+                  <CheckIcon className="w-4 h-4" />
                   Approve
                 </button>
                 <button
                   onClick={() => handleAction('changes')}
                   className="flex-1 bg-bg-tertiary border border-border text-white px-4 py-2 rounded font-medium hover:bg-bg-primary transition-colors flex items-center justify-center gap-2"
                 >
-                  <Pencil1Icon.default className="w-4 h-4" />
+                  <Pencil1Icon className="w-4 h-4" />
                   Request Changes
                 </button>
                 <button
                   onClick={() => handleAction('reject')}
                   className="flex-1 bg-red-900/20 border border-red-500/50 text-red-400 px-4 py-2 rounded font-medium hover:bg-red-900/30 transition-colors flex items-center justify-center gap-2"
                 >
-                  <CrossCircledIcon.default className="w-4 h-4" />
+                  <CrossCircledIcon className="w-4 h-4" />
                   Reject
                 </button>
               </div>

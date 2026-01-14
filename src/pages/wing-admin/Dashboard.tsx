@@ -1,8 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { mockWings, mockUsers, mockRoadmaps, mockSessions } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
-import * as CalendarIcon from '@radix-ui/react-icons/dist/CalendarIcon';
+import { PersonIcon, CalendarIcon } from '@radix-ui/react-icons';
 
 export default function WingAdminDashboard() {
   const { user } = useAuthStore();
@@ -25,7 +24,7 @@ export default function WingAdminDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Trainers</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{trainers.length}</p>
           <p className="text-sm text-text-muted mt-1">
@@ -39,7 +38,7 @@ export default function WingAdminDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Students</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{students.length}</p>
           <p className="text-sm text-text-muted mt-1">Active</p>
@@ -51,7 +50,7 @@ export default function WingAdminDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Active Roadmaps</span>
-            <CalendarIcon.default className="w-5 h-5 text-white" />
+            <CalendarIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{activeRoadmaps}</p>
           <p className="text-sm text-text-muted mt-1">Approved</p>
@@ -60,7 +59,7 @@ export default function WingAdminDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Scheduled Sessions</span>
-            <CalendarIcon.default className="w-5 h-5 text-white" />
+            <CalendarIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{activeSessions}</p>
           <p className="text-sm text-text-muted mt-1">This week</p>

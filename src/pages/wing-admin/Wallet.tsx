@@ -1,7 +1,6 @@
 import { mockWings, mockWallets } from '../../data/mockData';
 import { useAuthStore } from '../../store/authStore';
-import * as ArrowUpIcon from '@radix-ui/react-icons/dist/ArrowUpIcon';
-import * as ArrowDownIcon from '@radix-ui/react-icons/dist/ArrowDownIcon';
+import { ArrowUpIcon, ArrowDownIcon } from '@radix-ui/react-icons';
 
 export default function WingAdminWallet() {
   const { user } = useAuthStore();
@@ -72,11 +71,11 @@ export default function WingAdminWallet() {
                   <div className="flex items-center gap-4">
                     {transaction.type === 'credit' ? (
                       <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
-                        <ArrowUpIcon.default className="w-5 h-5 text-white" />
+                        <ArrowUpIcon className="w-5 h-5 text-white" />
                       </div>
                     ) : (
                       <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
-                        <ArrowDownIcon.default className="w-5 h-5 text-white" />
+                        <ArrowDownIcon className="w-5 h-5 text-white" />
                       </div>
                     )}
                     <div>

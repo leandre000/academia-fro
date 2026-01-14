@@ -1,6 +1,5 @@
 import { mockUsers, mockStudentProgress, mockRoadmaps, mockSessions } from '../../data/mockData';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
-import * as CheckIcon from '@radix-ui/react-icons/dist/CheckIcon';
+import { PersonIcon, CheckIcon } from '@radix-ui/react-icons';
 
 export default function WingAdminActivity() {
   const students = Object.values(mockUsers).filter((u) => u.role === 'student');
@@ -60,7 +59,7 @@ export default function WingAdminActivity() {
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-bg-primary border border-border rounded-full flex items-center justify-center">
-                        <PersonIcon.default className="w-6 h-6" />
+                        <PersonIcon className="w-6 h-6" />
                       </div>
                       <div>
                         <h3 className="font-semibold">{student.name}</h3>
@@ -96,7 +95,7 @@ export default function WingAdminActivity() {
 
                   <div className="mt-4 pt-4 border-t border-border">
                     <div className="flex items-center gap-2 text-sm">
-                      <CheckIcon.default className="w-4 h-4 text-white" />
+                      <CheckIcon className="w-4 h-4 text-white" />
                       <span className="text-text-secondary">
                         {progress?.completedTasks || 0} of {progress?.totalTasks || 0} tasks completed
                       </span>

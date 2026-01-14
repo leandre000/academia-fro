@@ -1,7 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { mockUsers, mockRoadmaps, mockStudentProgress } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
+import { PersonIcon } from '@radix-ui/react-icons';
 
 export default function CompanyDashboard() {
   const { user } = useAuthStore();
@@ -26,7 +26,7 @@ export default function CompanyDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Our Students</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{companyStudents.length}</p>
           <Link to="/company/students" className="text-sm text-white hover:underline mt-2 inline-block">
@@ -37,7 +37,7 @@ export default function CompanyDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Active Programs</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{activeRoadmaps}</p>
           <Link to="/company/programs" className="text-sm text-white hover:underline mt-2 inline-block">
@@ -48,7 +48,7 @@ export default function CompanyDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Average Progress</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{avgProgress}%</p>
           <p className="text-sm text-text-muted mt-1">Across all students</p>

@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { getUserByEmail, mockUsers } from '../data/mockData';
 import type { UserRole } from '../types';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
-import * as LockClosedIcon from '@radix-ui/react-icons/dist/LockClosedIcon';
+import { PersonIcon, LockClosedIcon } from '@radix-ui/react-icons';
 
 const roleDisplayNames: Record<UserRole, string> = {
   student: 'Student Portal',
@@ -106,7 +105,7 @@ export default function Login() {
             <div>
               <label className="block text-sm font-medium mb-2">Email</label>
               <div className="relative">
-                <PersonIcon.default className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-muted" />
+                <PersonIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-muted" />
                 <input
                   type="email"
                   value={email}

@@ -1,7 +1,6 @@
 import { useAuthStore } from '../../store/authStore';
 import { getSessionsByStudentId } from '../../data/mockData';
-import * as CheckIcon from '@radix-ui/react-icons/dist/CheckIcon';
-import * as CrossCircledIcon from '@radix-ui/react-icons/dist/CrossCircledIcon';
+import { CheckIcon, CrossCircledIcon } from '@radix-ui/react-icons';
 
 export default function StudentAttendance() {
   const { user } = useAuthStore();
@@ -65,12 +64,12 @@ export default function StudentAttendance() {
                         <h3 className="font-medium">{session.title}</h3>
                         {isConfirmed ? (
                           <span className="bg-white text-black rounded px-2 py-1 text-xs font-medium flex items-center gap-1">
-                            <CheckIcon.default className="w-3 h-3" />
+                            <CheckIcon className="w-3 h-3" />
                             Confirmed
                           </span>
                         ) : isPast ? (
                           <span className="bg-red-900/20 border border-red-500/50 rounded px-2 py-1 text-xs text-red-400 flex items-center gap-1">
-                            <CrossCircledIcon.default className="w-3 h-3" />
+                            <CrossCircledIcon className="w-3 h-3" />
                             Missed
                           </span>
                         ) : (

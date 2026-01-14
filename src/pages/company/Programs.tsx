@@ -1,6 +1,6 @@
 import { useAuthStore } from '../../store/authStore';
 import { mockRoadmaps, mockUsers } from '../../data/mockData';
-import * as FileTextIcon from '@radix-ui/react-icons/dist/FileTextIcon';
+import { FileTextIcon } from '@radix-ui/react-icons';
 
 export default function CompanyPrograms() {
   const { user } = useAuthStore();
@@ -95,7 +95,7 @@ export default function CompanyPrograms() {
         </div>
       ) : (
         <div className="bg-bg-secondary border border-border rounded-lg p-12 text-center">
-          <FileTextIcon.default className="w-16 h-16 mx-auto mb-4 text-text-muted" />
+          <FileTextIcon className="w-16 h-16 mx-auto mb-4 text-text-muted" />
           <h2 className="text-xl font-semibold mb-2">No Active Programs</h2>
           <p className="text-text-secondary">
             Programs and roadmaps for company students will appear here

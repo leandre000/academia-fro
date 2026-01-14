@@ -1,8 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { getStudentsByTrainerId, getRoadmapByStudentId, getSessionsByTrainerId, mockStudentProgress } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
-import * as ArrowRightIcon from '@radix-ui/react-icons/dist/ArrowRightIcon';
+import { PersonIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 
 export default function TrainerStudents() {
   const { user } = useAuthStore();
@@ -31,7 +30,7 @@ export default function TrainerStudents() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-bg-tertiary border border-border rounded-full flex items-center justify-center">
-                      <PersonIcon.default className="w-6 h-6" />
+                      <PersonIcon className="w-6 h-6" />
                     </div>
                     <div>
                       <h2 className="text-xl font-semibold">{student.name}</h2>
@@ -43,7 +42,7 @@ export default function TrainerStudents() {
                     className="text-sm text-white hover:underline flex items-center gap-1"
                   >
                     Manage Roadmap
-                    <ArrowRightIcon.default className="w-4 h-4" />
+                    <ArrowRightIcon className="w-4 h-4" />
                   </Link>
                 </div>
 
@@ -91,7 +90,7 @@ export default function TrainerStudents() {
         </div>
       ) : (
         <div className="bg-bg-secondary border border-border rounded-lg p-12 text-center">
-          <PersonIcon.default className="w-16 h-16 mx-auto mb-4 text-text-muted" />
+          <PersonIcon className="w-16 h-16 mx-auto mb-4 text-text-muted" />
           <h2 className="text-xl font-semibold mb-2">No Students Assigned</h2>
           <p className="text-text-secondary">
             Students will appear here once they are assigned to you

@@ -1,9 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import type { UserRole } from '../types';
-import * as HomeIcon from '@radix-ui/react-icons/dist/HomeIcon';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
-import * as ExitIcon from '@radix-ui/react-icons/dist/ExitIcon';
+import { HomeIcon, PersonIcon, ExitIcon } from '@radix-ui/react-icons';
 
 interface NavItem {
   path: string;
@@ -13,41 +11,41 @@ interface NavItem {
 
 const roleNavItems: Record<UserRole, NavItem[]> = {
   student: [
-    { path: '/student', label: 'Dashboard', icon: HomeIcon.default },
-    { path: '/student/roadmap', label: 'Roadmap', icon: PersonIcon.default },
-    { path: '/student/schedule', label: 'Schedule', icon: PersonIcon.default },
-    { path: '/student/attendance', label: 'Attendance', icon: PersonIcon.default },
+    { path: '/student', label: 'Dashboard', icon: HomeIcon },
+    { path: '/student/roadmap', label: 'Roadmap', icon: PersonIcon },
+    { path: '/student/schedule', label: 'Schedule', icon: PersonIcon },
+    { path: '/student/attendance', label: 'Attendance', icon: PersonIcon },
   ],
   trainer: [
-    { path: '/trainer', label: 'Dashboard', icon: HomeIcon.default },
-    { path: '/trainer/availability', label: 'Availability', icon: PersonIcon.default },
-    { path: '/trainer/students', label: 'Students', icon: PersonIcon.default },
-    { path: '/trainer/roadmap-builder', label: 'Roadmap Builder', icon: PersonIcon.default },
-    { path: '/trainer/wallet', label: 'Wallet', icon: PersonIcon.default },
+    { path: '/trainer', label: 'Dashboard', icon: HomeIcon },
+    { path: '/trainer/availability', label: 'Availability', icon: PersonIcon },
+    { path: '/trainer/students', label: 'Students', icon: PersonIcon },
+    { path: '/trainer/roadmap-builder', label: 'Roadmap Builder', icon: PersonIcon },
+    { path: '/trainer/wallet', label: 'Wallet', icon: PersonIcon },
   ],
   master_mentor: [
-    { path: '/master-mentor', label: 'Dashboard', icon: HomeIcon.default },
-    { path: '/master-mentor/reviews', label: 'Roadmap Reviews', icon: PersonIcon.default },
-    { path: '/master-mentor/progression', label: 'Progression Control', icon: PersonIcon.default },
-    { path: '/master-mentor/logs', label: 'Checkup Logs', icon: PersonIcon.default },
+    { path: '/master-mentor', label: 'Dashboard', icon: HomeIcon },
+    { path: '/master-mentor/reviews', label: 'Roadmap Reviews', icon: PersonIcon },
+    { path: '/master-mentor/progression', label: 'Progression Control', icon: PersonIcon },
+    { path: '/master-mentor/logs', label: 'Checkup Logs', icon: PersonIcon },
   ],
   wing_admin: [
-    { path: '/wing-admin', label: 'Dashboard', icon: HomeIcon.default },
-    { path: '/wing-admin/capacity', label: 'Trainer Capacity', icon: PersonIcon.default },
-    { path: '/wing-admin/activity', label: 'Student Activity', icon: PersonIcon.default },
-    { path: '/wing-admin/wallet', label: 'Wing Wallet', icon: PersonIcon.default },
+    { path: '/wing-admin', label: 'Dashboard', icon: HomeIcon },
+    { path: '/wing-admin/capacity', label: 'Trainer Capacity', icon: PersonIcon },
+    { path: '/wing-admin/activity', label: 'Student Activity', icon: PersonIcon },
+    { path: '/wing-admin/wallet', label: 'Wing Wallet', icon: PersonIcon },
   ],
   umbrella_admin: [
-    { path: '/umbrella-admin', label: 'Dashboard', icon: HomeIcon.default },
-    { path: '/umbrella-admin/analytics', label: 'Analytics', icon: PersonIcon.default },
-    { path: '/umbrella-admin/wings', label: 'Wing Performance', icon: PersonIcon.default },
-    { path: '/umbrella-admin/rules', label: 'System Rules', icon: PersonIcon.default },
-    { path: '/umbrella-admin/payments', label: 'Payment Flow', icon: PersonIcon.default },
+    { path: '/umbrella-admin', label: 'Dashboard', icon: HomeIcon },
+    { path: '/umbrella-admin/analytics', label: 'Analytics', icon: PersonIcon },
+    { path: '/umbrella-admin/wings', label: 'Wing Performance', icon: PersonIcon },
+    { path: '/umbrella-admin/rules', label: 'System Rules', icon: PersonIcon },
+    { path: '/umbrella-admin/payments', label: 'Payment Flow', icon: PersonIcon },
   ],
   company: [
-    { path: '/company', label: 'Dashboard', icon: HomeIcon.default },
-    { path: '/company/students', label: 'Our Students', icon: PersonIcon.default },
-    { path: '/company/programs', label: 'Programs', icon: PersonIcon.default },
+    { path: '/company', label: 'Dashboard', icon: HomeIcon },
+    { path: '/company/students', label: 'Our Students', icon: PersonIcon },
+    { path: '/company/programs', label: 'Programs', icon: PersonIcon },
   ],
 };
 
@@ -93,7 +91,7 @@ export default function Sidebar() {
           onClick={logout}
           className="w-full flex items-center gap-3 px-4 py-2 rounded text-text-secondary hover:bg-bg-tertiary hover:text-text-primary transition-colors"
         >
-          <ExitIcon.default className="w-5 h-5" />
+          <ExitIcon className="w-5 h-5" />
           <span>Logout</span>
         </button>
       </div>

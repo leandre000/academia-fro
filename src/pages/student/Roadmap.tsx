@@ -1,7 +1,6 @@
 import { useAuthStore } from '../../store/authStore';
 import { getRoadmapByStudentId } from '../../data/mockData';
-import * as CheckIcon from '@radix-ui/react-icons/dist/CheckIcon';
-import * as LockClosedIcon from '@radix-ui/react-icons/dist/LockClosedIcon';
+import { CheckIcon, LockClosedIcon } from '@radix-ui/react-icons';
 import * as CircleIcon from '@radix-ui/react-icons/dist/Circle';
 
 export default function StudentRoadmap() {
@@ -23,13 +22,13 @@ export default function StudentRoadmap() {
 
   const getTaskStatusIcon = (status: string, isLocked: boolean) => {
     if (isLocked) {
-      return <LockClosedIcon.default className="w-5 h-5 text-text-muted" />;
+      return <LockClosedIcon className="w-5 h-5 text-text-muted" />;
     }
     if (status === 'completed') {
-      return <CheckIcon.default className="w-5 h-5 text-white" />;
+      return <CheckIcon className="w-5 h-5 text-white" />;
     }
     if (status === 'blocked') {
-      return <LockClosedIcon.default className="w-5 h-5 text-text-muted" />;
+      return <LockClosedIcon className="w-5 h-5 text-text-muted" />;
     }
     return <div className="w-5 h-5 rounded-full border-2 border-text-muted" />;
   };
@@ -65,7 +64,7 @@ export default function StudentRoadmap() {
         <ul className="space-y-2">
           {roadmap.learningGoals.map((goal, idx) => (
             <li key={idx} className="flex items-start gap-3">
-              <CheckIcon.default className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
+              <CheckIcon className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
               <span>{goal}</span>
             </li>
           ))}

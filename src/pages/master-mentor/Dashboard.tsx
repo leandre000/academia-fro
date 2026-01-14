@@ -1,8 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { mockRoadmaps } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import * as FileTextIcon from '@radix-ui/react-icons/dist/FileTextIcon';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
+import { FileTextIcon, PersonIcon } from '@radix-ui/react-icons';
 
 export default function MasterMentorDashboard() {
   const { user } = useAuthStore();
@@ -24,7 +23,7 @@ export default function MasterMentorDashboard() {
         <div className="bg-bg-secondary border border-white rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Pending Reviews</span>
-            <FileTextIcon.default className="w-5 h-5 text-white" />
+            <FileTextIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{pendingReviews.length}</p>
           <Link to="/master-mentor/reviews" className="text-sm text-white hover:underline mt-2 inline-block">
@@ -35,7 +34,7 @@ export default function MasterMentorDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Changes Requested</span>
-            <FileTextIcon.default className="w-5 h-5 text-white" />
+            <FileTextIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{changesRequested.length}</p>
           <p className="text-sm text-text-muted mt-1">Awaiting updates</p>
@@ -44,7 +43,7 @@ export default function MasterMentorDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Approved</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{approved}</p>
           <p className="text-sm text-text-muted mt-1">This month</p>
@@ -53,7 +52,7 @@ export default function MasterMentorDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Rejected</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{rejected}</p>
           <p className="text-sm text-text-muted mt-1">This month</p>

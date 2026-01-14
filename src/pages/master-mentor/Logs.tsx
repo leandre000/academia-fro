@@ -1,5 +1,5 @@
 import { mockRoadmaps, mockUsers } from '../../data/mockData';
-import * as FileTextIcon from '@radix-ui/react-icons/dist/FileTextIcon';
+import { FileTextIcon } from '@radix-ui/react-icons';
 
 export default function MasterMentorLogs() {
   const checkupLogs = [
@@ -41,7 +41,7 @@ export default function MasterMentorLogs() {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <FileTextIcon.default className="w-5 h-5 text-white" />
+                    <FileTextIcon className="w-5 h-5 text-white" />
                     <h3 className="font-semibold">Checkup Log #{log.id}</h3>
                     <span className={`text-xs rounded px-2 py-1 ${
                       log.status === 'positive'
@@ -88,7 +88,7 @@ export default function MasterMentorLogs() {
 
       {checkupLogs.length === 0 && (
         <div className="bg-bg-secondary border border-border rounded-lg p-12 text-center">
-          <FileTextIcon.default className="w-16 h-16 mx-auto mb-4 text-text-muted" />
+          <FileTextIcon className="w-16 h-16 mx-auto mb-4 text-text-muted" />
           <h2 className="text-xl font-semibold mb-2">No Checkup Logs</h2>
           <p className="text-text-secondary">Checkup logs will appear here as you review roadmaps</p>
         </div>

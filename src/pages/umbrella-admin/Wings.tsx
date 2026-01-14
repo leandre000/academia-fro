@@ -1,5 +1,5 @@
 import { mockWings, mockUsers, mockRoadmaps, mockSessions } from '../../data/mockData';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
+import { PersonIcon } from '@radix-ui/react-icons';
 
 export default function UmbrellaAdminWings() {
   return (

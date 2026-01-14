@@ -1,5 +1,5 @@
 import { mockWings, mockUsers } from '../../data/mockData';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
+import { PersonIcon } from '@radix-ui/react-icons';
 
 export default function WingAdminCapacity() {
   const wing = mockWings[0];
@@ -49,7 +49,7 @@ export default function WingAdminCapacity() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-bg-primary border border-border rounded-full flex items-center justify-center">
-                      <PersonIcon.default className="w-6 h-6" />
+                      <PersonIcon className="w-6 h-6" />
                     </div>
                     <div>
                       <h3 className="font-semibold">{trainer.name}</h3>

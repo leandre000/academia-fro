@@ -1,7 +1,6 @@
 import { useAuthStore } from '../../store/authStore';
 import { mockUsers, mockRoadmaps, mockStudentProgress } from '../../data/mockData';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
-import * as CheckIcon from '@radix-ui/react-icons/dist/CheckIcon';
+import { PersonIcon, CheckIcon } from '@radix-ui/react-icons';
 
 export default function CompanyStudents() {
   const { user } = useAuthStore();
@@ -30,7 +29,7 @@ export default function CompanyStudents() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-bg-tertiary border border-border rounded-full flex items-center justify-center">
-                      <PersonIcon.default className="w-6 h-6" />
+                      <PersonIcon className="w-6 h-6" />
                     </div>
                     <div>
                       <h2 className="text-xl font-semibold">{student.name}</h2>
@@ -87,7 +86,7 @@ export default function CompanyStudents() {
 
                 <div className="mt-4 pt-4 border-t border-border">
                   <div className="flex items-center gap-2 text-sm">
-                    <CheckIcon.default className="w-4 h-4 text-white" />
+                    <CheckIcon className="w-4 h-4 text-white" />
                     <span className="text-text-secondary">
                       {progress?.completedTasks || 0} tasks completed out of {progress?.totalTasks || 0} total
                     </span>
@@ -99,7 +98,7 @@ export default function CompanyStudents() {
         </div>
       ) : (
         <div className="bg-bg-secondary border border-border rounded-lg p-12 text-center">
-          <PersonIcon.default className="w-16 h-16 mx-auto mb-4 text-text-muted" />
+          <PersonIcon className="w-16 h-16 mx-auto mb-4 text-text-muted" />
           <h2 className="text-xl font-semibold mb-2">No Students Found</h2>
           <p className="text-text-secondary">
             Students sponsored by your company will appear here

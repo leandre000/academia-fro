@@ -4,7 +4,7 @@ import { mockTrainerAvailability } from '../../data/mockData';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import * as CalendarIcon from '@radix-ui/react-icons/dist/CalendarIcon';
+import { CalendarIcon } from '@radix-ui/react-icons';
 
 const availabilitySchema = z.object({
   weeklyCapacity: z.number().min(1).max(40),
@@ -61,7 +61,7 @@ export default function TrainerAvailability() {
         {/* Weekly Capacity */}
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <CalendarIcon.default className="w-5 h-5" />
+            <CalendarIcon className="w-5 h-5" />
             Weekly Capacity
           </h2>
           <div>

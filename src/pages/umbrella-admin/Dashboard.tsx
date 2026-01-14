@@ -1,7 +1,6 @@
 import { mockWings, mockUsers, mockRoadmaps, mockSessions } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import * as PersonIcon from '@radix-ui/react-icons/dist/PersonIcon';
-import * as CalendarIcon from '@radix-ui/react-icons/dist/CalendarIcon';
+import { PersonIcon, CalendarIcon } from '@radix-ui/react-icons';
 
 export default function UmbrellaAdminDashboard() {
   const totalWings = mockWings.length;
@@ -23,7 +22,7 @@ export default function UmbrellaAdminDashboard() {
         <div className="bg-bg-secondary border border-white rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Total Wings</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{totalWings}</p>
           <Link to="/umbrella-admin/wings" className="text-sm text-white hover:underline mt-2 inline-block">
@@ -34,7 +33,7 @@ export default function UmbrellaAdminDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Total Trainers</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{totalTrainers}</p>
           <p className="text-sm text-text-muted mt-1">Active</p>
@@ -43,7 +42,7 @@ export default function UmbrellaAdminDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Total Students</span>
-            <PersonIcon.default className="w-5 h-5 text-white" />
+            <PersonIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">{totalStudents}</p>
           <p className="text-sm text-text-muted mt-1">Enrolled</p>
@@ -52,7 +51,7 @@ export default function UmbrellaAdminDashboard() {
         <div className="bg-bg-secondary border border-border rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-text-muted text-sm">Total Revenue</span>
-            <CalendarIcon.default className="w-5 h-5 text-white" />
+            <CalendarIcon className="w-5 h-5 text-white" />
           </div>
           <p className="text-3xl font-bold">${totalRevenue.toLocaleString()}</p>
           <Link to="/umbrella-admin/payments" className="text-sm text-white hover:underline mt-2 inline-block">
