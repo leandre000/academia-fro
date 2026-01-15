@@ -87,19 +87,20 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className="hidden lg:flex w-64 bg-surface-primary border-r border-border h-screen flex-col">
+      {/* Desktop Sidebar - Dark Grey */}
+      <div className="hidden lg:flex w-64 bg-sidebar border-r border-sidebar-light h-screen flex-col">
         {/* Logo Section */}
-        <div className="p-4 sm:p-6 border-b border-border">
+        <div className="p-4 sm:p-6 border-b border-sidebar-light">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center shadow-soft">
-              <span className="text-white font-semibold text-lg">A</span>
+              <span className="text-white font-bold text-lg">A</span>
             </div>
-            <h1 className="text-base sm:text-lg font-semibold text-text-primary">
+            <h1 className="text-base sm:text-lg font-semibold text-white">
               Academia FRO
             </h1>
           </div>
-          <div className="bg-surface-tertiary rounded-xl p-3 border border-border">
-            <p className="text-sm font-medium text-text-primary">{user.name}</p>
+          <div className="bg-sidebar-light rounded-lg p-3 border border-sidebar">
+            <p className="text-sm font-medium text-white">{user.name}</p>
             <p className="text-xs text-text-tertiary mt-0.5 capitalize">{user.role.replace('_', ' ')}</p>
           </div>
         </div>
@@ -113,7 +114,11 @@ export default function Sidebar() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={isActive ? 'nav-link-active' : 'nav-link'}
+                className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  isActive
+                    ? 'bg-brand-600 text-white shadow-soft'
+                    : 'text-text-tertiary hover:bg-sidebar-light hover:text-white'
+                }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
                 <span className="truncate">{item.label}</span>
@@ -123,10 +128,10 @@ export default function Sidebar() {
         </nav>
 
         {/* Logout */}
-        <div className="p-3 border-t border-border">
+        <div className="p-3 border-t border-sidebar-light">
           <button
             onClick={() => setShowLogoutModal(true)}
-            className="w-full nav-link text-error hover:bg-error-light hover:text-error-dark"
+            className="w-full flex items-center gap-3 px-3 sm:px-4 py-2.5 rounded-lg text-sm font-medium text-text-tertiary hover:bg-sidebar-light hover:text-white transition-all duration-200"
           >
             <ExitIcon className="w-5 h-5 flex-shrink-0" />
             <span>Logout</span>
@@ -134,21 +139,20 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Mobile Sidebar - Hidden by default, can be toggled */}
-      <div className="lg:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm" style={{ display: 'none' }} id="mobile-sidebar-overlay">
-        <div className="w-64 bg-surface-primary h-full border-r border-border flex flex-col">
-          {/* Same content as desktop sidebar */}
-          <div className="p-4 border-b border-border">
+      {/* Mobile Sidebar */}
+      <div className="lg:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden" id="mobile-sidebar-overlay">
+        <div className="w-64 bg-sidebar h-full border-r border-sidebar-light flex flex-col">
+          <div className="p-4 border-b border-sidebar-light">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center shadow-soft">
-                <span className="text-white font-semibold text-lg">A</span>
+                <span className="text-white font-bold text-lg">A</span>
               </div>
-              <h1 className="text-base font-semibold text-text-primary">
+              <h1 className="text-base font-semibold text-white">
                 Academia FRO
               </h1>
             </div>
-            <div className="bg-surface-tertiary rounded-xl p-3 border border-border">
-              <p className="text-sm font-medium text-text-primary">{user.name}</p>
+            <div className="bg-sidebar-light rounded-lg p-3 border border-sidebar">
+              <p className="text-sm font-medium text-white">{user.name}</p>
               <p className="text-xs text-text-tertiary mt-0.5 capitalize">{user.role.replace('_', ' ')}</p>
             </div>
           </div>
@@ -160,7 +164,11 @@ export default function Sidebar() {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={isActive ? 'nav-link-active' : 'nav-link'}
+                  className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? 'bg-brand-600 text-white shadow-soft'
+                      : 'text-text-tertiary hover:bg-sidebar-light hover:text-white'
+                  }`}
                 >
                   <Icon className="w-5 h-5 flex-shrink-0" />
                   <span>{item.label}</span>
@@ -168,10 +176,10 @@ export default function Sidebar() {
               );
             })}
           </nav>
-          <div className="p-3 border-t border-border">
+          <div className="p-3 border-t border-sidebar-light">
             <button
               onClick={() => setShowLogoutModal(true)}
-              className="w-full nav-link text-error hover:bg-error-light hover:text-error-dark"
+              className="w-full flex items-center gap-3 px-3 sm:px-4 py-2.5 rounded-lg text-sm font-medium text-text-tertiary hover:bg-sidebar-light hover:text-white transition-all duration-200"
             >
               <ExitIcon className="w-5 h-5 flex-shrink-0" />
               <span>Logout</span>

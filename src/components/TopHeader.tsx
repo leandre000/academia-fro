@@ -8,7 +8,7 @@ export default function TopHeader() {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <header className="h-14 sm:h-16 bg-surface-primary border-b border-border flex items-center justify-between px-3 sm:px-4 lg:px-6 sticky top-0 z-10 shadow-soft">
+    <header className="h-14 sm:h-16 bg-header border-b border-header-border flex items-center justify-between px-3 sm:px-4 lg:px-6 sticky top-0 z-10 shadow-soft">
       {/* Search Bar */}
       <div className="flex-1 max-w-md mr-2 sm:mr-4">
         <div className="relative">
@@ -17,10 +17,10 @@ export default function TopHeader() {
           </svg>
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Type to search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="input pl-8 sm:pl-10 text-sm sm:text-base"
+            className="input pl-8 sm:pl-10 text-sm sm:text-base bg-white border-header-border"
           />
         </div>
       </div>
