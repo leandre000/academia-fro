@@ -45,7 +45,7 @@ export default function Settings() {
     <div className="p-6 animate-fade-in max-w-4xl">
       <div className="mb-8 slide-up">
         <h1 className="text-3xl font-bold mb-2 text-text-primary">Settings</h1>
-        <p className="text-text-muted">Manage your account settings and preferences</p>
+        <p className="text-text-secondary">Manage your account settings and preferences</p>
       </div>
 
       {/* Basic Information */}
@@ -55,57 +55,57 @@ export default function Settings() {
         <div className="mb-6">
           <label className="block text-sm font-medium mb-2 text-text-secondary">Profile Photo</label>
           <div className="flex items-center gap-4">
-            <div className="w-20 h-20 bg-gradient-to-br from-blue-medium to-blue-light rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+            <div className="w-20 h-20 bg-brand-600 rounded-full flex items-center justify-center text-white font-semibold text-2xl shadow-soft">
               {user?.name.charAt(0).toUpperCase() || 'U'}
             </div>
             <div>
-              <p className="text-sm text-text-muted mb-1">Profile Photo</p>
-              <p className="text-xs text-text-muted">This will be shown as your profile.</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">Profile Photo</p>
+              <p className="text-xs text-text-tertiary">This will be shown as your profile.</p>
             </div>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2 text-text-secondary">Names</label>
+            <label className="label">Names</label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="input-field"
+              className="input"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2 text-text-secondary">Email</label>
+            <label className="label">Email</label>
             <input
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="input-field"
+              className="input"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2 text-text-secondary">Old Password</label>
+            <label className="label">Old Password</label>
             <input
               type="password"
               value={formData.oldPassword}
               onChange={(e) => setFormData({ ...formData, oldPassword: e.target.value })}
-              className="input-field"
+              className="input"
               placeholder="Enter current password"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2 text-text-secondary">New Password</label>
+            <label className="label">New Password</label>
             <input
               type="password"
               value={formData.newPassword}
               onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
-              className="input-field"
+              className="input"
               placeholder="Enter new password"
             />
           </div>
@@ -114,7 +114,7 @@ export default function Settings() {
             <button
               type="submit"
               disabled={isSaving}
-              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSaving ? 'Saving...' : 'Save Changes'}
             </button>
@@ -127,11 +127,11 @@ export default function Settings() {
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg font-semibold mb-1 text-text-primary">Logout</h3>
-            <p className="text-sm text-text-muted">Sign out of your account</p>
+            <p className="text-sm text-text-secondary">Sign out of your account</p>
           </div>
           <button
             onClick={logout}
-            className="btn-secondary flex items-center gap-2 text-red-400 hover:text-red-300 hover:border-red-500/50"
+            className="btn btn-destructive flex items-center gap-2"
           >
             <ExitIcon className="w-5 h-5" />
             Logout
