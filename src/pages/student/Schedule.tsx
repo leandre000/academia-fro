@@ -1,6 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { getSessionsByStudentId } from '../../data/mockData';
 import { CalendarIcon, CheckIcon } from '@radix-ui/react-icons';
+import Button from '../../components/Button';
 
 export default function StudentSchedule() {
   const { user } = useAuthStore();
@@ -20,16 +21,16 @@ export default function StudentSchedule() {
 
   return (
     <div className="p-6 animate-fade-in">
-      <div className="mb-8 slide-up">
-        <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
           Weekly Schedule
         </h1>
-        <p className="text-text-muted text-lg">View and manage your learning sessions</p>
+        <p className="text-text-secondary">View and manage your learning sessions</p>
       </div>
 
       {/* Upcoming Sessions */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+        <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-text-primary">
           <CalendarIcon className="w-5 h-5" />
           Upcoming Sessions
         </h2>
@@ -40,12 +41,12 @@ export default function StudentSchedule() {
               return (
                 <div
                   key={session.id}
-                  className="card slide-up"
+                  className="card p-6 animate-fade-in-up"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold mb-2">{session.title}</h3>
+                      <h3 className="text-lg font-semibold mb-2 text-text-primary">{session.title}</h3>
                       <div className="space-y-1 text-sm text-text-secondary">
                         <p>{date}</p>
                         <p>{time}</p>
@@ -56,20 +57,20 @@ export default function StudentSchedule() {
                           href={session.meetingLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block mt-4 text-sm text-white hover:underline"
+                          className="inline-block mt-4 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors"
                         >
                           Meeting Link →
                         </a>
                       )}
                     </div>
                     <div className="flex flex-col gap-2">
-                      <button className="btn-primary">
+                      <Button variant="primary" size="sm">
                         Join Session
-                      </button>
+                      </Button>
                       {!session.attendanceConfirmed && (
-                        <button className="btn-secondary">
+                        <Button variant="secondary" size="sm">
                           Confirm Attendance
-                        </button>
+                        </Button>
                       )}
                     </div>
                   </div>
@@ -78,9 +79,9 @@ export default function StudentSchedule() {
             })}
           </div>
         ) : (
-          <div className="card text-center py-12 slide-up">
-            <CalendarIcon className="w-16 h-16 mx-auto mb-4 text-text-muted" />
-            <p className="text-text-muted text-lg">No upcoming sessions scheduled</p>
+          <div className="card text-center py-12">
+            <CalendarIcon className="w-16 h-16 mx-auto mb-4 text-text-tertiary" />
+            <p className="text-text-secondary text-lg">No upcoming sessions scheduled</p>
           </div>
         )}
       </div>
@@ -88,7 +89,7 @@ export default function StudentSchedule() {
       {/* Completed Sessions */}
       {completedSessions.length > 0 && (
         <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-text-primary">
             <CheckIcon className="w-5 h-5" />
             Completed Sessions
           </h2>
@@ -98,12 +99,12 @@ export default function StudentSchedule() {
               return (
                 <div
                   key={session.id}
-                  className="card opacity-75 slide-up"
+                  className="card p-6 opacity-75 animate-fade-in-up"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">{session.title}</h3>
+                      <h3 className="text-lg font-semibold mb-2 text-text-primary">{session.title}</h3>
                       <div className="space-y-1 text-sm text-text-secondary">
                         <p>{date}</p>
                         <p>{time}</p>
@@ -124,19 +125,19 @@ export default function StudentSchedule() {
       {/* Cancelled Sessions */}
       {cancelledSessions.length > 0 && (
         <div>
-          <h2 className="text-xl font-semibold mb-4">Cancelled Sessions</h2>
+          <h2 className="text-xl font-semibold mb-6 text-text-primary">Cancelled Sessions</h2>
           <div className="space-y-4">
             {cancelledSessions.map((session, idx) => {
               const { date, time } = formatDate(session.scheduledAt);
               return (
                 <div
                   key={session.id}
-                  className="card opacity-50 slide-up"
+                  className="card p-6 opacity-50 animate-fade-in-up"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">{session.title}</h3>
+                      <h3 className="text-lg font-semibold mb-2 text-text-primary">{session.title}</h3>
                       <div className="space-y-1 text-sm text-text-secondary">
                         <p>{date}</p>
                         <p>{time}</p>
@@ -155,4 +156,3 @@ export default function StudentSchedule() {
     </div>
   );
 }
-

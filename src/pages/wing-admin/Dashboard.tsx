@@ -15,24 +15,24 @@ export default function WingAdminDashboard() {
 
   return (
     <div className="p-6 animate-fade-in">
-      <div className="mb-8 slide-up">
-        <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
           Wing Administration
         </h1>
-        <p className="text-text-muted text-lg font-medium">{wing?.name}</p>
+        <p className="text-text-secondary">{wing?.name}</p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="card slide-up" style={{ animationDelay: '0.1s' }}>
+        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-semibold">Trainers</span>
-            <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/10 rounded-xl flex items-center justify-center">
-              <PersonIcon className="w-6 h-6 text-accent" />
+            <span className="text-sm font-medium text-text-secondary">Trainers</span>
+            <div className="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center">
+              <PersonIcon className="w-5 h-5 text-brand-600" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2 text-text-primary">{trainers.length}</p>
-          <p className="text-sm text-text-muted font-medium mb-3">
+          <p className="text-4xl font-semibold mb-2 text-text-primary">{trainers.length}</p>
+          <p className="text-sm text-text-secondary mb-3">
             {wing?.currentTrainers || 0} / {wing?.trainerCapacity || 0} capacity
           </p>
           <Link to="/wing-admin/capacity">
@@ -42,15 +42,15 @@ export default function WingAdminDashboard() {
           </Link>
         </div>
 
-        <div className="card slide-up" style={{ animationDelay: '0.2s' }}>
+        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-semibold">Students</span>
-            <div className="w-12 h-12 bg-gradient-to-br from-success/20 to-success/10 rounded-xl flex items-center justify-center">
-              <PersonIcon className="w-6 h-6 text-success" />
+            <span className="text-sm font-medium text-text-secondary">Students</span>
+            <div className="w-10 h-10 bg-success-light rounded-xl flex items-center justify-center">
+              <PersonIcon className="w-5 h-5 text-success-dark" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2 text-text-primary">{students.length}</p>
-          <p className="text-sm text-text-muted font-medium mb-3">Active</p>
+          <p className="text-4xl font-semibold mb-2 text-text-primary">{students.length}</p>
+          <p className="text-sm text-text-secondary mb-3">Active</p>
           <Link to="/wing-admin/activity">
             <Button variant="ghost" size="sm" showArrow>
               View Activity
@@ -58,49 +58,49 @@ export default function WingAdminDashboard() {
           </Link>
         </div>
 
-        <div className="card slide-up" style={{ animationDelay: '0.3s' }}>
+        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-semibold">Active Roadmaps</span>
-            <div className="w-12 h-12 bg-gradient-to-br from-secondary-accent/20 to-secondary-accent/10 rounded-xl flex items-center justify-center">
-              <RocketIcon className="w-6 h-6 text-secondary-accent" />
+            <span className="text-sm font-medium text-text-secondary">Active Roadmaps</span>
+            <div className="w-10 h-10 bg-accent-50 rounded-xl flex items-center justify-center">
+              <RocketIcon className="w-5 h-5 text-accent-600" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2 text-text-primary">{activeRoadmaps}</p>
-          <p className="text-sm text-text-muted font-medium">Approved</p>
+          <p className="text-4xl font-semibold mb-2 text-text-primary">{activeRoadmaps}</p>
+          <p className="text-sm text-text-secondary">Approved</p>
         </div>
 
-        <div className="card slide-up" style={{ animationDelay: '0.4s' }}>
+        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-semibold">Scheduled Sessions</span>
-            <div className="w-12 h-12 bg-gradient-to-br from-tertiary-accent/20 to-tertiary-accent/10 rounded-xl flex items-center justify-center">
-              <CalendarIcon className="w-6 h-6 text-tertiary-accent" />
+            <span className="text-sm font-medium text-text-secondary">Scheduled Sessions</span>
+            <div className="w-10 h-10 bg-warning-light rounded-xl flex items-center justify-center">
+              <CalendarIcon className="w-5 h-5 text-warning-dark" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2 text-text-primary">{activeSessions}</p>
-          <p className="text-sm text-text-muted font-medium">This week</p>
+          <p className="text-4xl font-semibold mb-2 text-text-primary">{activeSessions}</p>
+          <p className="text-sm text-text-secondary">This week</p>
         </div>
       </div>
 
       {/* Wing Info */}
-      <div className="card mb-8 slide-up" style={{ animationDelay: '0.5s' }}>
-        <h2 className="text-2xl font-semibold mb-6 text-text-primary">Wing Information</h2>
+      <div className="card p-6 mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+        <h2 className="text-xl font-semibold mb-6 text-text-primary">Wing Information</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <p className="text-sm text-text-muted mb-2 font-semibold">Description</p>
-            <p className="text-text-secondary">{wing?.description}</p>
+            <p className="text-sm font-medium text-text-secondary mb-2">Description</p>
+            <p className="text-text-primary">{wing?.description}</p>
           </div>
           <div>
-            <p className="text-sm text-text-muted mb-2 font-semibold">Capacity Utilization</p>
+            <p className="text-sm font-medium text-text-secondary mb-2">Capacity Utilization</p>
             <div className="flex items-center gap-3">
-              <div className="flex-1 bg-bg-tertiary rounded-full h-3 overflow-hidden">
+              <div className="flex-1 bg-surface-tertiary rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-gradient-accent h-full rounded-full transition-all duration-500"
+                  className="bg-brand-600 h-full rounded-full transition-all duration-500"
                   style={{
                     width: `${((wing?.currentTrainers || 0) / (wing?.trainerCapacity || 1)) * 100}%`,
                   }}
                 />
               </div>
-              <span className="text-lg font-bold text-accent">
+              <span className="text-lg font-semibold text-brand-600">
                 {Math.round(((wing?.currentTrainers || 0) / (wing?.trainerCapacity || 1)) * 100)}%
               </span>
             </div>
@@ -112,14 +112,14 @@ export default function WingAdminDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Link
           to="/wing-admin/capacity"
-          className="card-interactive slide-up"
+          className="card-interactive p-6 animate-fade-in-up"
           style={{ animationDelay: '0.6s' }}
         >
-          <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/10 rounded-xl flex items-center justify-center mb-4">
-            <PersonIcon className="w-6 h-6 text-accent" />
+          <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
+            <PersonIcon className="w-6 h-6 text-brand-600" />
           </div>
           <h3 className="text-xl font-semibold mb-3 text-text-primary">Trainer Capacity</h3>
-          <p className="text-text-muted text-sm mb-4">
+          <p className="text-text-secondary text-sm mb-4">
             Manage trainer assignments and capacity
           </p>
           <Button variant="ghost" size="sm" showArrow>
@@ -128,14 +128,14 @@ export default function WingAdminDashboard() {
         </Link>
         <Link
           to="/wing-admin/activity"
-          className="card-interactive slide-up"
+          className="card-interactive p-6 animate-fade-in-up"
           style={{ animationDelay: '0.7s' }}
         >
-          <div className="w-12 h-12 bg-gradient-to-br from-secondary-accent/20 to-secondary-accent/10 rounded-xl flex items-center justify-center mb-4">
-            <BarChartIcon className="w-6 h-6 text-secondary-accent" />
+          <div className="w-12 h-12 bg-accent-50 rounded-xl flex items-center justify-center mb-4">
+            <BarChartIcon className="w-6 h-6 text-accent-600" />
           </div>
           <h3 className="text-xl font-semibold mb-3 text-text-primary">Student Activity</h3>
-          <p className="text-text-muted text-sm mb-4">
+          <p className="text-text-secondary text-sm mb-4">
             Monitor student progress and engagement
           </p>
           <Button variant="ghost" size="sm" showArrow>
@@ -144,14 +144,14 @@ export default function WingAdminDashboard() {
         </Link>
         <Link
           to="/wing-admin/wallet"
-          className="card-interactive slide-up"
+          className="card-interactive p-6 animate-fade-in-up"
           style={{ animationDelay: '0.8s' }}
         >
-          <div className="w-12 h-12 bg-gradient-to-br from-tertiary-accent/20 to-tertiary-accent/10 rounded-xl flex items-center justify-center mb-4">
-            <span className="text-2xl font-bold text-tertiary-accent">$</span>
+          <div className="w-12 h-12 bg-warning-light rounded-xl flex items-center justify-center mb-4">
+            <span className="text-2xl font-bold text-warning-dark">$</span>
           </div>
           <h3 className="text-xl font-semibold mb-3 text-text-primary">Wing Wallet</h3>
-          <p className="text-text-muted text-sm mb-4">
+          <p className="text-text-secondary text-sm mb-4">
             View financial overview and transactions
           </p>
           <Button variant="ghost" size="sm" showArrow>

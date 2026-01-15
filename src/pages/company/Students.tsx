@@ -92,20 +92,20 @@ export default function CompanyStudents() {
 
   return (
     <div className="p-6 animate-fade-in">
-      <div className="mb-8 slide-up">
+      <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+            <h1 className="text-3xl font-semibold mb-2 text-text-primary">
               Our Students
             </h1>
-            <p className="text-text-muted text-lg">Manage and track company-sponsored students</p>
+            <p className="text-text-secondary">Manage and track company-sponsored students</p>
           </div>
           <Button
             variant="primary"
             onClick={() => setIsAddModalOpen(true)}
             showArrow
           >
-            <PlusIcon className="w-5 h-5" />
+            <PlusIcon className="w-4 h-4" />
             Add Student
           </Button>
         </div>
@@ -120,29 +120,29 @@ export default function CompanyStudents() {
             return (
               <div
                 key={student.id}
-                className="card slide-up"
+                className="card p-6 animate-fade-in-up"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-white font-bold text-xl">{student.name.charAt(0).toUpperCase()}</span>
+                    <div className="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center shadow-soft">
+                      <span className="text-white font-semibold text-xl">{student.name.charAt(0).toUpperCase()}</span>
                     </div>
                     <div>
-                      <h2 className="text-2xl font-semibold text-text-primary">{student.name}</h2>
-                      <p className="text-text-muted">{student.email}</p>
+                      <h2 className="text-xl font-semibold text-text-primary">{student.name}</h2>
+                      <p className="text-text-secondary">{student.email}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => openEditModal(student)}
-                      className="icon-button-primary"
+                      className="p-2 rounded-lg hover:bg-surface-tertiary text-text-tertiary hover:text-brand-600 transition-colors"
                     >
                       <Pencil1Icon className="w-5 h-5" />
                     </button>
                     <button
                       onClick={() => openDeleteModal(student)}
-                      className="icon-button hover:bg-error/10 hover:text-error"
+                      className="p-2 rounded-lg hover:bg-error-light text-text-tertiary hover:text-error-dark transition-colors"
                     >
                       <TrashIcon className="w-5 h-5" />
                     </button>
@@ -151,28 +151,28 @@ export default function CompanyStudents() {
 
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-text-muted">Progress</span>
-                    <span className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                    <span className="text-sm font-medium text-text-secondary">Progress</span>
+                    <span className="text-3xl font-semibold text-brand-600">
                       {progress?.completionPercentage || 0}%
                     </span>
                   </div>
-                  <div className="w-full bg-bg-tertiary rounded-full h-3 overflow-hidden">
+                  <div className="w-full bg-surface-tertiary rounded-full h-2 overflow-hidden">
                     <div
-                      className="bg-gradient-accent h-full rounded-full transition-all duration-500"
+                      className="bg-brand-600 h-full rounded-full transition-all duration-500"
                       style={{ width: `${progress?.completionPercentage || 0}%` }}
                     />
                   </div>
                 </div>
 
                 {roadmap && (
-                  <div className="mb-6 bg-gradient-soft border border-border rounded-xl p-5">
-                    <h3 className="font-semibold mb-2 text-lg text-text-primary">{roadmap.title}</h3>
-                    <p className="text-sm text-text-muted mb-4">{roadmap.description}</p>
+                  <div className="mb-6 bg-surface-tertiary border border-border rounded-xl p-5">
+                    <h3 className="font-semibold mb-2 text-text-primary">{roadmap.title}</h3>
+                    <p className="text-sm text-text-secondary mb-4">{roadmap.description}</p>
                     <div className="flex gap-2 flex-wrap">
                       {roadmap.learningGoals.slice(0, 3).map((goal, idx) => (
                         <span
                           key={idx}
-                          className="badge-primary px-3 py-1.5 text-xs font-medium"
+                          className="badge-brand"
                         >
                           {goal}
                         </span>
@@ -182,23 +182,23 @@ export default function CompanyStudents() {
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gradient-soft border border-border rounded-xl p-5">
-                    <p className="text-sm text-text-muted mb-2 font-semibold">Current Phase</p>
-                    <p className="text-3xl font-bold text-text-primary">Phase {progress?.currentPhase || 1}</p>
-                    <p className="text-xs text-text-muted mt-1 font-medium">
+                  <div className="bg-surface-tertiary border border-border rounded-xl p-5">
+                    <p className="text-sm font-medium text-text-secondary mb-2">Current Phase</p>
+                    <p className="text-3xl font-semibold text-text-primary">Phase {progress?.currentPhase || 1}</p>
+                    <p className="text-xs text-text-tertiary mt-1">
                       {roadmap?.phases.find((p) => p.order === progress?.currentPhase)?.title || 'Foundation'}
                     </p>
                   </div>
-                  <div className="bg-gradient-soft border border-border rounded-xl p-5">
-                    <p className="text-sm text-text-muted mb-2 font-semibold">Tasks Completed</p>
-                    <p className="text-3xl font-bold text-text-primary">
+                  <div className="bg-surface-tertiary border border-border rounded-xl p-5">
+                    <p className="text-sm font-medium text-text-secondary mb-2">Tasks Completed</p>
+                    <p className="text-3xl font-semibold text-text-primary">
                       {progress?.completedTasks || 0} / {progress?.totalTasks || 0}
                     </p>
-                    <p className="text-xs text-text-muted mt-1 font-medium">Total tasks</p>
+                    <p className="text-xs text-text-tertiary mt-1">Total tasks</p>
                   </div>
-                  <div className="bg-gradient-soft border border-border rounded-xl p-5">
-                    <p className="text-sm text-text-muted mb-2 font-semibold">Last Activity</p>
-                    <p className="text-lg font-bold text-text-primary">
+                  <div className="bg-surface-tertiary border border-border rounded-xl p-5">
+                    <p className="text-sm font-medium text-text-secondary mb-2">Last Activity</p>
+                    <p className="text-lg font-semibold text-text-primary">
                       {progress?.lastActivity
                         ? new Date(progress.lastActivity).toLocaleDateString()
                         : 'N/A'}
@@ -210,10 +210,10 @@ export default function CompanyStudents() {
           })}
         </div>
       ) : (
-        <div className="card text-center py-16 slide-up">
-          <PersonIcon className="w-20 h-20 mx-auto mb-6 text-text-muted" />
+        <div className="card text-center py-16">
+          <PersonIcon className="w-20 h-20 mx-auto mb-6 text-text-tertiary" />
           <h2 className="text-2xl font-semibold mb-3 text-text-primary">No Students Found</h2>
-          <p className="text-text-muted mb-6">
+          <p className="text-text-secondary mb-6">
             Students sponsored by your company will appear here
           </p>
           <Button
@@ -221,7 +221,7 @@ export default function CompanyStudents() {
             onClick={() => setIsAddModalOpen(true)}
             showArrow
           >
-            <PlusIcon className="w-5 h-5" />
+            <PlusIcon className="w-4 h-4" />
             Add Your First Student
           </Button>
         </div>
@@ -239,24 +239,24 @@ export default function CompanyStudents() {
       >
         <form onSubmit={(e) => { e.preventDefault(); handleAddStudent(); }} className="space-y-5">
           <div>
-            <label className="input-label">Full Name</label>
+            <label className="label">Full Name</label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="Enter student's full name"
-              className="input-field"
+              className="input"
               required
             />
           </div>
           <div>
-            <label className="input-label">Email</label>
+            <label className="label">Email</label>
             <input
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="Enter student's email"
-              className="input-field"
+              className="input"
               required
             />
           </div>
@@ -275,9 +275,10 @@ export default function CompanyStudents() {
               type="submit"
               variant="primary"
               disabled={isSubmitting}
+              loading={isSubmitting}
               showArrow
             >
-              {isSubmitting ? 'Adding...' : 'Add Student'}
+              Add Student
             </Button>
           </div>
         </form>
@@ -296,24 +297,24 @@ export default function CompanyStudents() {
       >
         <form onSubmit={(e) => { e.preventDefault(); handleEditStudent(); }} className="space-y-5">
           <div>
-            <label className="input-label">Full Name</label>
+            <label className="label">Full Name</label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="Enter student's full name"
-              className="input-field"
+              className="input"
               required
             />
           </div>
           <div>
-            <label className="input-label">Email</label>
+            <label className="label">Email</label>
             <input
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="Enter student's email"
-              className="input-field"
+              className="input"
               required
             />
           </div>
@@ -333,9 +334,10 @@ export default function CompanyStudents() {
               type="submit"
               variant="primary"
               disabled={isSubmitting}
+              loading={isSubmitting}
               showArrow
             >
-              {isSubmitting ? 'Updating...' : 'Update Student'}
+              Update Student
             </Button>
           </div>
         </form>
@@ -358,4 +360,3 @@ export default function CompanyStudents() {
     </div>
   );
 }
-

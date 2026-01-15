@@ -11,15 +11,15 @@ export default function TrainerStudents() {
   return (
     <div className="p-6 animate-fade-in">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2 text-text-primary">
+        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
           Assigned Students
         </h1>
-        <p className="text-text-muted">Manage and track your students' progress</p>
+        <p className="text-text-secondary">Manage and track your students' progress</p>
       </div>
 
       {students.length > 0 ? (
         <div className="space-y-6">
-          {students.map((student) => {
+          {students.map((student, idx) => {
             const roadmap = getRoadmapByStudentId(student.id);
             const progress = mockStudentProgress.find((p) => p.studentId === student.id);
             const sessions = getSessionsByTrainerId(user?.id || '').filter((s) => s.studentId === student.id);
@@ -28,16 +28,17 @@ export default function TrainerStudents() {
             return (
               <div
                 key={student.id}
-                className="card slide-up"
+                className="card p-6 animate-fade-in-up"
+                style={{ animationDelay: `${idx * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-white font-bold text-xl">{student.name.charAt(0).toUpperCase()}</span>
+                    <div className="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center shadow-soft">
+                      <span className="text-white font-semibold text-xl">{student.name.charAt(0).toUpperCase()}</span>
                     </div>
                     <div>
                       <h2 className="text-xl font-semibold text-text-primary">{student.name}</h2>
-                      <p className="text-text-muted">{student.email}</p>
+                      <p className="text-text-secondary">{student.email}</p>
                     </div>
                   </div>
                   <Link to="/trainer/roadmap-builder">
@@ -48,14 +49,14 @@ export default function TrainerStudents() {
                 </div>
 
                 {roadmap && (
-                  <div className="mb-6 bg-gradient-soft border border-border rounded-xl p-5">
+                  <div className="mb-6 bg-surface-tertiary border border-border rounded-xl p-5">
                     <h3 className="font-semibold mb-2 text-lg text-text-primary">{roadmap.title}</h3>
-                    <p className="text-sm text-text-muted mb-4">{roadmap.description}</p>
+                    <p className="text-sm text-text-secondary mb-4">{roadmap.description}</p>
                     <div className="flex gap-2 flex-wrap">
                       {roadmap.learningGoals.slice(0, 3).map((goal, idx) => (
                         <span
                           key={idx}
-                          className="badge-primary px-3 py-1.5 text-xs font-medium"
+                          className="badge-brand"
                         >
                           {goal}
                         </span>
@@ -65,24 +66,24 @@ export default function TrainerStudents() {
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gradient-soft border border-border rounded-xl p-5 hover:border-accent/50 transition-all">
-                    <p className="text-sm text-text-muted mb-2 font-semibold">Progress</p>
-                    <p className="text-4xl font-bold mb-1 bg-gradient-primary bg-clip-text text-transparent">{progress?.completionPercentage || 0}%</p>
-                    <p className="text-xs text-text-muted font-medium">
+                  <div className="bg-surface-tertiary border border-border rounded-xl p-5 hover:border-brand-300 transition-all">
+                    <p className="text-sm font-medium text-text-secondary mb-2">Progress</p>
+                    <p className="text-4xl font-semibold mb-1 text-brand-600">{progress?.completionPercentage || 0}%</p>
+                    <p className="text-xs text-text-tertiary">
                       {progress?.completedTasks || 0}/{progress?.totalTasks || 0} tasks
                     </p>
                   </div>
-                  <div className="bg-gradient-soft border border-border rounded-xl p-5 hover:border-accent/50 transition-all">
-                    <p className="text-sm text-text-muted mb-2 font-semibold">Current Phase</p>
-                    <p className="text-4xl font-bold mb-1 bg-gradient-primary bg-clip-text text-transparent">Phase {progress?.currentPhase || 1}</p>
-                    <p className="text-xs text-text-muted font-medium">
+                  <div className="bg-surface-tertiary border border-border rounded-xl p-5 hover:border-brand-300 transition-all">
+                    <p className="text-sm font-medium text-text-secondary mb-2">Current Phase</p>
+                    <p className="text-4xl font-semibold mb-1 text-text-primary">Phase {progress?.currentPhase || 1}</p>
+                    <p className="text-xs text-text-tertiary">
                       {roadmap?.phases.find((p) => p.order === progress?.currentPhase)?.title || 'Foundation'}
                     </p>
                   </div>
-                  <div className="bg-gradient-soft border border-border rounded-xl p-5 hover:border-accent/50 transition-all">
-                    <p className="text-sm text-text-muted mb-2 font-semibold">Upcoming Sessions</p>
-                    <p className="text-4xl font-bold mb-1 bg-gradient-primary bg-clip-text text-transparent">{upcomingSessions}</p>
-                    <p className="text-xs text-text-muted font-medium">Scheduled</p>
+                  <div className="bg-surface-tertiary border border-border rounded-xl p-5 hover:border-brand-300 transition-all">
+                    <p className="text-sm font-medium text-text-secondary mb-2">Upcoming Sessions</p>
+                    <p className="text-4xl font-semibold mb-1 text-text-primary">{upcomingSessions}</p>
+                    <p className="text-xs text-text-tertiary">Scheduled</p>
                   </div>
                 </div>
               </div>
@@ -90,10 +91,10 @@ export default function TrainerStudents() {
           })}
         </div>
       ) : (
-        <div className="bg-bg-secondary border border-border rounded-xl p-12 text-center">
-          <PersonIcon className="w-16 h-16 mx-auto mb-4 text-text-muted" />
-          <h2 className="text-2xl font-semibold mb-2 text-text-primary">No Students Assigned</h2>
-          <p className="text-text-muted">
+        <div className="card text-center py-16">
+          <PersonIcon className="w-20 h-20 mx-auto mb-6 text-text-tertiary" />
+          <h2 className="text-2xl font-semibold mb-3 text-text-primary">No Students Assigned</h2>
+          <p className="text-text-secondary">
             Students will appear here once they are assigned to you
           </p>
         </div>
@@ -101,4 +102,3 @@ export default function TrainerStudents() {
     </div>
   );
 }
-

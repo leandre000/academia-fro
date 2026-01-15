@@ -13,11 +13,11 @@ export default function CompanyPrograms() {
 
   return (
     <div className="p-6 animate-fade-in">
-      <div className="mb-8 slide-up">
-        <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
           Active Programs
         </h1>
-        <p className="text-text-muted text-lg">View learning programs and roadmaps for company students</p>
+        <p className="text-text-secondary">View learning programs and roadmaps for company students</p>
       </div>
 
       {companyRoadmaps.length > 0 ? (
@@ -29,21 +29,21 @@ export default function CompanyPrograms() {
             return (
               <div
                 key={roadmap.id}
-                className="card slide-up"
+                className="card p-6 animate-fade-in-up"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-6">
                   <div>
-                    <h2 className="text-xl font-semibold mb-2">{roadmap.title}</h2>
-                    <p className="text-text-secondary mb-3">{roadmap.description}</p>
+                    <h2 className="text-xl font-semibold mb-2 text-text-primary">{roadmap.title}</h2>
+                    <p className="text-text-secondary mb-4">{roadmap.description}</p>
                     <div className="flex gap-2 flex-wrap">
-                      <span className="badge-primary">
+                      <span className="badge-brand">
                         {roadmap.weeklyHours}h/week
                       </span>
-                      <span className="badge-primary">
+                      <span className="badge-brand">
                         ${roadmap.monthlyPrice}/month
                       </span>
-                      <span className="badge-primary">
+                      <span className="badge-brand">
                         {roadmap.phases.length} phases
                       </span>
                       <span className="badge-success">
@@ -53,41 +53,41 @@ export default function CompanyPrograms() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div>
-                    <p className="text-sm text-text-muted mb-1">Student</p>
-                    <p className="font-medium">{student?.name}</p>
+                    <p className="text-sm font-medium text-text-secondary mb-1">Student</p>
+                    <p className="font-semibold text-text-primary">{student?.name}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-text-muted mb-1">Trainer</p>
-                    <p className="font-medium">{trainer?.name}</p>
+                    <p className="text-sm font-medium text-text-secondary mb-1">Trainer</p>
+                    <p className="font-semibold text-text-primary">{trainer?.name}</p>
                   </div>
                 </div>
 
-                <div>
-                  <p className="text-sm font-medium mb-2">Learning Goals</p>
-                  <ul className="space-y-1">
+                <div className="mb-6">
+                  <p className="text-sm font-semibold mb-3 text-text-primary">Learning Goals</p>
+                  <ul className="space-y-2">
                     {roadmap.learningGoals.map((goal, idx) => (
                       <li key={idx} className="text-sm text-text-secondary flex items-start gap-2">
-                        <span>•</span>
+                        <span className="text-brand-600 mt-1">•</span>
                         <span>{goal}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-border">
-                  <p className="text-sm font-medium mb-2">Phases Overview</p>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <div className="pt-6 border-t border-border">
+                  <p className="text-sm font-semibold mb-4 text-text-primary">Phases Overview</p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     {roadmap.phases.map((phase, idx) => (
-                      <div key={phase.id} className="bg-bg-tertiary border border-border rounded p-3">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="bg-white text-black w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">
+                      <div key={phase.id} className="bg-surface-tertiary border border-border rounded-xl p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="bg-brand-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold">
                             {idx + 1}
                           </span>
-                          <span className="text-sm font-medium">{phase.title}</span>
+                          <span className="text-sm font-medium text-text-primary">{phase.title}</span>
                         </div>
-                        <p className="text-xs text-text-muted">{phase.tasks.length} tasks</p>
+                        <p className="text-xs text-text-tertiary">{phase.tasks.length} tasks</p>
                       </div>
                     ))}
                   </div>
@@ -97,10 +97,10 @@ export default function CompanyPrograms() {
           })}
         </div>
       ) : (
-        <div className="card text-center py-16 slide-up">
-          <FileTextIcon className="w-20 h-20 mx-auto mb-6 text-text-muted" />
+        <div className="card text-center py-16">
+          <FileTextIcon className="w-20 h-20 mx-auto mb-6 text-text-tertiary" />
           <h2 className="text-2xl font-semibold mb-3 text-text-primary">No Active Programs</h2>
-          <p className="text-text-muted">
+          <p className="text-text-secondary">
             Programs and roadmaps for company students will appear here
           </p>
         </div>
@@ -108,4 +108,3 @@ export default function CompanyPrograms() {
     </div>
   );
 }
-
