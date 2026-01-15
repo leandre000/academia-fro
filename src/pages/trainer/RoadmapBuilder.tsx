@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { PlusIcon, TrashIcon, EyeOpenIcon } from '@radix-ui/react-icons';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/Button';
 
 const roadmapSchema = z.object({
   studentId: z.string().min(1, 'Select a student'),
@@ -234,14 +235,14 @@ export default function TrainerRoadmapBuilder() {
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           {/* Basic Info */}
-          <div className="bg-bg-secondary border border-border rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
+        <div className="card mb-8">
+          <h2 className="text-2xl font-semibold mb-6 text-text-primary">Basic Information</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Student</label>
+                <label className="input-label">Student</label>
                 <select
                   {...register('studentId')}
-                  className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+                  className={`input-field ${errors.studentId ? 'input-field-error' : ''}`}
                 >
                   <option value="">Select a student</option>
                   {students.map((student) => (
@@ -251,53 +252,53 @@ export default function TrainerRoadmapBuilder() {
                   ))}
                 </select>
                 {errors.studentId && (
-                  <p className="text-red-400 text-sm mt-1">{errors.studentId.message}</p>
+                  <p className="input-error">{errors.studentId.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Roadmap Title</label>
+                <label className="input-label">Roadmap Title</label>
                 <input
                   {...register('title')}
-                  className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+                  className={`input-field ${errors.title ? 'input-field-error' : ''}`}
                   placeholder="e.g., Full-Stack React Developer Path"
                 />
                 {errors.title && (
-                  <p className="text-red-400 text-sm mt-1">{errors.title.message}</p>
+                  <p className="input-error">{errors.title.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Description</label>
+                <label className="input-label">Description</label>
                 <textarea
                   {...register('description')}
                   rows={3}
-                  className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+                  className={`input-field ${errors.description ? 'input-field-error' : ''}`}
                   placeholder="Describe the learning path..."
                 />
                 {errors.description && (
-                  <p className="text-red-400 text-sm mt-1">{errors.description.message}</p>
+                  <p className="input-error">{errors.description.message}</p>
                 )}
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Weekly Hours</label>
+                  <label className="input-label">Weekly Hours</label>
                   <input
                     type="number"
                     {...register('weeklyHours', { valueAsNumber: true })}
                     min="1"
                     max="40"
-                    className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+                    className="input-field"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Monthly Price ($)</label>
+                  <label className="input-label">Monthly Price ($)</label>
                   <input
                     type="number"
                     {...register('monthlyPrice', { valueAsNumber: true })}
                     min="0"
-                    className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+                    className="input-field"
                   />
                 </div>
               </div>
@@ -305,8 +306,8 @@ export default function TrainerRoadmapBuilder() {
           </div>
 
           {/* Learning Goals */}
-          <div className="bg-bg-secondary border border-border rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Learning Goals</h2>
+          <div className="card mb-8">
+            <h2 className="text-2xl font-semibold mb-6 text-text-primary">Learning Goals</h2>
             <div className="flex gap-2 mb-4">
               <input
                 type="text"
@@ -316,22 +317,24 @@ export default function TrainerRoadmapBuilder() {
                 placeholder="Enter a learning goal"
                 className="flex-1 bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
               />
-              <button
+              <Button
                 type="button"
+                variant="primary"
+                size="sm"
                 onClick={addGoal}
-                className="bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition-colors"
               >
                 <PlusIcon className="w-4 h-4" />
-              </button>
+                Add
+              </Button>
             </div>
             <div className="space-y-2">
               {learningGoals.map((goal, idx) => (
-                <div key={idx} className="flex items-center gap-2 bg-bg-tertiary border border-border rounded p-3">
-                  <span className="flex-1">{goal}</span>
+                <div key={idx} className="flex items-center gap-3 bg-gradient-soft border border-border rounded-xl p-4">
+                  <span className="flex-1 font-medium text-text-primary">{goal}</span>
                   <button
                     type="button"
                     onClick={() => removeGoal(idx)}
-                    className="text-red-400 hover:text-red-300"
+                    className="icon-button hover:bg-error/10 hover:text-error"
                   >
                     <TrashIcon className="w-4 h-4" />
                   </button>
@@ -347,19 +350,20 @@ export default function TrainerRoadmapBuilder() {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold">Phases</h2>
-              <button
+              <Button
                 type="button"
+                variant="outline"
+                size="sm"
                 onClick={() => appendPhase({
                   title: '',
                   description: '',
                   reviewCheckpoint: false,
                   tasks: [{ title: '', description: '', estimatedHours: 0 }],
                 })}
-                className="bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition-colors flex items-center gap-2"
               >
                 <PlusIcon className="w-4 h-4" />
                 Add Phase
-              </button>
+              </Button>
             </div>
 
             {phaseFields.map((phase, phaseIdx) => (
@@ -374,14 +378,22 @@ export default function TrainerRoadmapBuilder() {
             ))}
           </div>
 
-          <div className="flex justify-end">
-            <button
+          <div className="flex justify-end gap-4">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => window.history.back()}
+            >
+              Cancel
+            </Button>
+            <Button
               type="submit"
+              variant="primary"
               disabled={isSubmitting}
-              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              showArrow
             >
               {isSubmitting ? 'Creating...' : 'Create Roadmap'}
-            </button>
+            </Button>
           </div>
         </form>
       )}
@@ -396,95 +408,96 @@ function PhaseBuilder({ phaseIdx, register, control, removePhase }: any) {
   });
 
   return (
-    <div className="bg-bg-secondary border border-border rounded-lg p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Phase {phaseIdx + 1}</h3>
+    <div className="card mb-6">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-xl font-semibold text-text-primary">Phase {phaseIdx + 1}</h3>
         {removePhase && (
           <button
             type="button"
             onClick={removePhase}
-            className="text-red-400 hover:text-red-300"
+            className="icon-button hover:bg-error/10 hover:text-error"
           >
             <TrashIcon className="w-5 h-5" />
           </button>
         )}
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-5">
         <div>
-          <label className="block text-sm font-medium mb-2">Phase Title</label>
+          <label className="input-label">Phase Title</label>
           <input
             {...register(`phases.${phaseIdx}.title`)}
-            className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+            className="input-field"
             placeholder="e.g., Foundation"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Phase Description</label>
+          <label className="input-label">Phase Description</label>
           <textarea
             {...register(`phases.${phaseIdx}.description`)}
-            rows={2}
-            className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+            rows={3}
+            className="input-field"
             placeholder="Describe what students will learn in this phase..."
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3 p-4 bg-gradient-soft rounded-xl border border-border">
           <input
             type="checkbox"
             {...register(`phases.${phaseIdx}.reviewCheckpoint`)}
-            className="w-4 h-4"
+            className="w-5 h-5 rounded border-2 border-border text-accent focus:ring-accent/20"
           />
-          <label className="text-sm">Requires mentor review checkpoint</label>
+          <label className="text-sm font-medium text-text-primary cursor-pointer">Requires mentor review checkpoint</label>
         </div>
 
         <div>
-          <div className="flex items-center justify-between mb-3">
-            <label className="block text-sm font-medium">Tasks</label>
-            <button
+          <div className="flex items-center justify-between mb-4">
+            <label className="input-label mb-0">Tasks</label>
+            <Button
               type="button"
+              variant="outline"
+              size="sm"
               onClick={() => appendTask({ title: '', description: '', estimatedHours: 0 })}
-              className="bg-bg-tertiary border border-border text-white px-3 py-1 rounded text-sm hover:bg-bg-primary transition-colors flex items-center gap-1"
             >
-              <PlusIcon className="w-3 h-3" />
+              <PlusIcon className="w-4 h-4" />
               Add Task
-            </button>
+            </Button>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {taskFields.map((task, taskIdx) => (
-              <div key={task.id} className="bg-bg-tertiary border border-border rounded p-4">
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-sm font-medium">Task {taskIdx + 1}</span>
+              <div key={task.id} className="bg-gradient-soft border border-border rounded-xl p-5">
+                <div className="flex items-start justify-between mb-4">
+                  <span className="text-sm font-semibold text-text-primary">Task {taskIdx + 1}</span>
                   {taskFields.length > 1 && (
                     <button
                       type="button"
                       onClick={() => removeTask(taskIdx)}
-                      className="text-red-400 hover:text-red-300"
+                      className="icon-button hover:bg-error/10 hover:text-error"
                     >
                       <TrashIcon className="w-4 h-4" />
                     </button>
                   )}
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <input
                     {...register(`phases.${phaseIdx}.tasks.${taskIdx}.title`)}
                     placeholder="Task title"
-                    className="w-full bg-bg-primary border border-border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white"
+                    className="input-field text-sm"
                   />
                   <textarea
                     {...register(`phases.${phaseIdx}.tasks.${taskIdx}.description`)}
                     placeholder="Task description"
                     rows={2}
-                    className="w-full bg-bg-primary border border-border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white"
+                    className="input-field text-sm"
                   />
                   <input
                     type="number"
                     {...register(`phases.${phaseIdx}.tasks.${taskIdx}.estimatedHours`, { valueAsNumber: true })}
                     placeholder="Estimated hours (optional)"
                     min="0"
-                    className="w-full bg-bg-primary border border-border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white"
+                    className="input-field text-sm"
                   />
                 </div>
               </div>

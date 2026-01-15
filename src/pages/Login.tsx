@@ -96,26 +96,26 @@ export default function Login() {
 
           <form onSubmit={handleLogin} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Email</label>
+              <label className="input-label">Email</label>
               <div className="relative">
-                <PersonIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <PersonIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-muted" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 pl-10 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                  className="input-field pl-12"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Role</label>
+              <label className="input-label">Role</label>
               <select
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value as UserRole)}
-                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all appearance-none"
+                className="input-field"
                 required
               >
                 <option value="">Select role</option>
@@ -128,17 +128,20 @@ export default function Login() {
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-600 text-sm animate-slide-up">
+              <div className="bg-error-light border-2 border-error rounded-xl p-4 text-error text-sm animate-slide-up flex items-center gap-2">
+                <span className="font-semibold">⚠</span>
                 {error}
               </div>
             )}
 
-            <button
+            <Button
               type="submit"
-              className="w-full btn-primary text-lg py-4"
+              variant="primary"
+              size="lg"
+              className="w-full"
             >
               Login
-            </button>
+            </Button>
           </form>
 
           <div className="mt-6 pt-6 border-t border-gray-200">
@@ -149,7 +152,7 @@ export default function Login() {
                   key={role}
                   onClick={() => quickLogin(role as UserRole)}
                   type="button"
-                  className="text-xs bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 hover:bg-gray-100 hover:border-gray-300 transition-all text-left text-gray-700"
+                  className="text-xs bg-gradient-soft border border-border rounded-xl px-4 py-3 hover:border-accent hover:bg-white transition-all text-left text-text-primary font-medium hover:shadow-md"
                 >
                   {name}
                 </button>

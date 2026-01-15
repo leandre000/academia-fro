@@ -1,7 +1,8 @@
 import { useAuthStore } from '../../store/authStore';
 import { getSessionsByTrainerId, getStudentsByTrainerId, mockTrainerAvailability, mockWallets } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { CalendarIcon, PersonIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, PersonIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import Button from '../../components/Button';
 
 export default function TrainerDashboard() {
   const { user } = useAuthStore();
@@ -28,53 +29,56 @@ export default function TrainerDashboard() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
+        <div className="card-gradient slide-up" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-medium">Assigned Students</span>
-            <div className="bg-blue-500/20 p-2 rounded-lg">
-              <PersonIcon className="w-5 h-5 text-blue-400" />
+            <span className="text-text-muted text-sm font-semibold">Assigned Students</span>
+            <div className="bg-gradient-to-br from-info/20 to-info/10 p-3 rounded-xl">
+              <PersonIcon className="w-5 h-5 text-info" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-3 text-text-primary">{students.length}</p>
-          <Link to="/trainer/students" className="text-sm text-accent hover:text-accent-hover transition-colors inline-block">
-            View All →
+          <p className="text-5xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">{students.length}</p>
+          <Link to="/trainer/students" className="link-primary text-sm">
+            View All
+            <ArrowRightIcon className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
+        <div className="card-gradient slide-up" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-medium">Weekly Capacity</span>
-            <div className="bg-purple-500/20 p-2 rounded-lg">
-              <CalendarIcon className="w-5 h-5 text-purple-400" />
+            <span className="text-text-muted text-sm font-semibold">Weekly Capacity</span>
+            <div className="bg-gradient-to-br from-gradient-purple/20 to-gradient-pink/10 p-3 rounded-xl">
+              <CalendarIcon className="w-5 h-5 text-gradient-purple" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-3 text-text-primary">{availability.weeklyCapacity}h</p>
-          <Link to="/trainer/availability" className="text-sm text-accent hover:text-accent-hover transition-colors inline-block">
-            Manage →
+          <p className="text-5xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">{availability.weeklyCapacity}h</p>
+          <Link to="/trainer/availability" className="link-primary text-sm">
+            Manage
+            <ArrowRightIcon className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
+        <div className="card-gradient slide-up" style={{ animationDelay: '0.3s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-medium">Today's Sessions</span>
-            <div className="bg-green-500/20 p-2 rounded-lg">
-              <CalendarIcon className="w-5 h-5 text-green-400" />
+            <span className="text-text-muted text-sm font-semibold">Today's Sessions</span>
+            <div className="bg-gradient-to-br from-success/20 to-success/10 p-3 rounded-xl">
+              <CalendarIcon className="w-5 h-5 text-success" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2 text-text-primary">{todaySessions.length}</p>
-          <p className="text-sm text-text-muted">Scheduled</p>
+          <p className="text-5xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">{todaySessions.length}</p>
+          <p className="text-sm text-text-muted font-medium">Scheduled</p>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
+        <div className="card-gradient slide-up" style={{ animationDelay: '0.4s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-medium">Wallet Balance</span>
-            <div className="bg-yellow-500/20 p-2 rounded-lg">
-              <PersonIcon className="w-5 h-5 text-yellow-400" />
+            <span className="text-text-muted text-sm font-semibold">Wallet Balance</span>
+            <div className="bg-gradient-to-br from-warning/20 to-warning/10 p-3 rounded-xl">
+              <PersonIcon className="w-5 h-5 text-warning" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-3 text-text-primary">${wallet?.balance.toLocaleString() || 0}</p>
-          <Link to="/trainer/wallet" className="text-sm text-accent hover:text-accent-hover transition-colors inline-block">
-            View Details →
+          <p className="text-5xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">${wallet?.balance.toLocaleString() || 0}</p>
+          <Link to="/trainer/wallet" className="link-primary text-sm">
+            View Details
+            <ArrowRightIcon className="w-4 h-4" />
           </Link>
         </div>
       </div>
@@ -99,9 +103,9 @@ export default function TrainerDashboard() {
                       })} • {session.duration} minutes
                     </p>
                   </div>
-                  <button className="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+                  <Button variant="primary" size="md">
                     Start Session
-                  </button>
+                  </Button>
                 </div>
               </div>
             ))}
@@ -151,21 +155,29 @@ export default function TrainerDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Link
           to="/trainer/roadmap-builder"
-          className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all"
+          className="card-interactive slide-up"
+          style={{ animationDelay: '0.6s' }}
         >
-          <h3 className="text-lg font-semibold mb-3 text-text-primary">Create New Roadmap</h3>
-          <p className="text-text-muted text-sm">
+          <h3 className="text-xl font-semibold mb-3 text-text-primary">Create New Roadmap</h3>
+          <p className="text-text-muted text-sm mb-4">
             Build a custom learning path for your students
           </p>
+          <Button variant="ghost" size="sm" showArrow>
+            Get Started
+          </Button>
         </Link>
         <Link
           to="/trainer/availability"
-          className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all"
+          className="card-interactive slide-up"
+          style={{ animationDelay: '0.7s' }}
         >
-          <h3 className="text-lg font-semibold mb-3 text-text-primary">Update Availability</h3>
-          <p className="text-text-muted text-sm">
+          <h3 className="text-xl font-semibold mb-3 text-text-primary">Update Availability</h3>
+          <p className="text-text-muted text-sm mb-4">
             Manage your weekly schedule and capacity
           </p>
+          <Button variant="ghost" size="sm" showArrow>
+            Manage
+          </Button>
         </Link>
       </div>
     </div>

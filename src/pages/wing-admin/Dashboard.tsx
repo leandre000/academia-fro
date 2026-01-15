@@ -1,7 +1,8 @@
 import { useAuthStore } from '../../store/authStore';
 import { mockWings, mockUsers, mockRoadmaps, mockSessions } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { PersonIcon, CalendarIcon } from '@radix-ui/react-icons';
+import { PersonIcon, CalendarIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import Button from '../../components/Button';
 
 export default function WingAdminDashboard() {
   const { user } = useAuthStore();
@@ -32,8 +33,10 @@ export default function WingAdminDashboard() {
           <p className="text-sm text-text-muted font-medium mb-3">
             {wing?.currentTrainers || 0} / {wing?.trainerCapacity || 0} capacity
           </p>
-          <Link to="/wing-admin/capacity" className="text-sm text-accent hover:text-accent-hover font-semibold transition-colors inline-flex items-center gap-1">
-            Manage →
+          <Link to="/wing-admin/capacity">
+            <Button variant="ghost" size="sm" showArrow>
+              Manage
+            </Button>
           </Link>
         </div>
 
@@ -46,8 +49,10 @@ export default function WingAdminDashboard() {
           </div>
           <p className="text-5xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">{students.length}</p>
           <p className="text-sm text-text-muted font-medium mb-3">Active</p>
-          <Link to="/wing-admin/activity" className="text-sm text-accent hover:text-accent-hover font-semibold transition-colors inline-flex items-center gap-1">
-            View Activity →
+          <Link to="/wing-admin/activity">
+            <Button variant="ghost" size="sm" showArrow>
+              View Activity
+            </Button>
           </Link>
         </div>
 
@@ -105,33 +110,42 @@ export default function WingAdminDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Link
           to="/wing-admin/capacity"
-          className="card-gradient slide-up hover:scale-105 transition-transform"
+          className="card-interactive slide-up"
           style={{ animationDelay: '0.6s' }}
         >
           <h3 className="text-xl font-semibold mb-3 text-text-primary">Trainer Capacity</h3>
-          <p className="text-text-muted text-sm">
+          <p className="text-text-muted text-sm mb-4">
             Manage trainer assignments and capacity
           </p>
+          <Button variant="ghost" size="sm" showArrow>
+            Manage
+          </Button>
         </Link>
         <Link
           to="/wing-admin/activity"
-          className="card-gradient slide-up hover:scale-105 transition-transform"
+          className="card-interactive slide-up"
           style={{ animationDelay: '0.7s' }}
         >
           <h3 className="text-xl font-semibold mb-3 text-text-primary">Student Activity</h3>
-          <p className="text-text-muted text-sm">
+          <p className="text-text-muted text-sm mb-4">
             Monitor student progress and engagement
           </p>
+          <Button variant="ghost" size="sm" showArrow>
+            View Activity
+          </Button>
         </Link>
         <Link
           to="/wing-admin/wallet"
-          className="card-gradient slide-up hover:scale-105 transition-transform"
+          className="card-interactive slide-up"
           style={{ animationDelay: '0.8s' }}
         >
           <h3 className="text-xl font-semibold mb-3 text-text-primary">Wing Wallet</h3>
-          <p className="text-text-muted text-sm">
+          <p className="text-text-muted text-sm mb-4">
             View financial overview and transactions
           </p>
+          <Button variant="ghost" size="sm" showArrow>
+            View Wallet
+          </Button>
         </Link>
       </div>
     </div>

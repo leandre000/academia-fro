@@ -2,8 +2,9 @@ import { useAuthStore } from '../../store/authStore';
 import { useRoadmapStore } from '../../store/roadmapStore';
 import { getSessionsByStudentId, mockStudentProgress } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { CalendarIcon, CheckIcon, LockClosedIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, CheckIcon, LockClosedIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import { useEffect } from 'react';
+import Button from '../../components/Button';
 
 export default function StudentDashboard() {
   const { user } = useAuthStore();
@@ -72,11 +73,9 @@ export default function StudentDashboard() {
         <div className="card mb-8 slide-up" style={{ animationDelay: '0.4s' }}>
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold text-text-primary">Your Roadmap</h2>
-            <Link
-              to="/student/roadmap"
-              className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1 font-semibold"
-            >
-              View Full Roadmap →
+            <Link to="/student/roadmap" className="link-primary text-sm">
+              View Full Roadmap
+              <ArrowRightIcon className="w-4 h-4" />
             </Link>
           </div>
           <h3 className="text-xl font-semibold mb-3 text-text-primary">{roadmap.title}</h3>
@@ -98,11 +97,9 @@ export default function StudentDashboard() {
       <div className="card slide-up" style={{ animationDelay: '0.5s' }}>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-semibold text-text-primary">Upcoming Sessions</h2>
-          <Link
-            to="/student/schedule"
-            className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1 font-semibold"
-          >
-            View All →
+          <Link to="/student/schedule" className="link-primary text-sm">
+            View All
+            <ArrowRightIcon className="w-4 h-4" />
           </Link>
         </div>
         {upcomingSessions.length > 0 ? (
@@ -126,9 +123,9 @@ export default function StudentDashboard() {
                       Duration: {session.duration} minutes
                     </p>
                   </div>
-                  <button className="btn-primary">
+                  <Button variant="primary" size="md" showArrow>
                     Join Session
-                  </button>
+                  </Button>
                 </div>
               </div>
             ))}

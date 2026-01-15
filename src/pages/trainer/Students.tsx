@@ -2,6 +2,7 @@ import { useAuthStore } from '../../store/authStore';
 import { getStudentsByTrainerId, getRoadmapByStudentId, getSessionsByTrainerId, mockStudentProgress } from '../../data/mockData';
 import { Link } from 'react-router-dom';
 import { PersonIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import Button from '../../components/Button';
 
 export default function TrainerStudents() {
   const { user } = useAuthStore();
@@ -27,36 +28,34 @@ export default function TrainerStudents() {
             return (
               <div
                 key={student.id}
-                className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all"
+                className="card slide-up"
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-bg-tertiary border border-border rounded-full flex items-center justify-center">
-                      <PersonIcon className="w-7 h-7 text-text-secondary" />
+                    <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-white font-bold text-xl">{student.name.charAt(0).toUpperCase()}</span>
                     </div>
                     <div>
                       <h2 className="text-xl font-semibold text-text-primary">{student.name}</h2>
                       <p className="text-text-muted">{student.email}</p>
                     </div>
                   </div>
-                  <Link
-                    to="/trainer/roadmap-builder"
-                    className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-2 bg-bg-tertiary border border-border rounded-lg px-4 py-2 hover:border-accent/50"
-                  >
-                    Manage Roadmap
-                    <ArrowRightIcon className="w-4 h-4" />
+                  <Link to="/trainer/roadmap-builder">
+                    <Button variant="outline" size="sm" showArrow>
+                      Manage Roadmap
+                    </Button>
                   </Link>
                 </div>
 
                 {roadmap && (
-                  <div className="mb-6 bg-bg-tertiary border border-border rounded-lg p-4">
+                  <div className="mb-6 bg-gradient-soft border border-border rounded-xl p-5">
                     <h3 className="font-semibold mb-2 text-lg text-text-primary">{roadmap.title}</h3>
-                    <p className="text-sm text-text-muted mb-3">{roadmap.description}</p>
+                    <p className="text-sm text-text-muted mb-4">{roadmap.description}</p>
                     <div className="flex gap-2 flex-wrap">
                       {roadmap.learningGoals.slice(0, 3).map((goal, idx) => (
                         <span
                           key={idx}
-                          className="bg-bg-secondary border border-border rounded-lg px-3 py-1 text-xs text-text-secondary"
+                          className="badge-primary px-3 py-1.5 text-xs font-medium"
                         >
                           {goal}
                         </span>
@@ -66,24 +65,24 @@ export default function TrainerStudents() {
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-bg-tertiary border border-border rounded-lg p-5 hover:border-accent/50 transition-all">
-                    <p className="text-sm text-text-muted mb-2 font-medium">Progress</p>
-                    <p className="text-3xl font-bold mb-1 text-text-primary">{progress?.completionPercentage || 0}%</p>
-                    <p className="text-xs text-text-muted">
+                  <div className="bg-gradient-soft border border-border rounded-xl p-5 hover:border-accent/50 transition-all">
+                    <p className="text-sm text-text-muted mb-2 font-semibold">Progress</p>
+                    <p className="text-4xl font-bold mb-1 bg-gradient-primary bg-clip-text text-transparent">{progress?.completionPercentage || 0}%</p>
+                    <p className="text-xs text-text-muted font-medium">
                       {progress?.completedTasks || 0}/{progress?.totalTasks || 0} tasks
                     </p>
                   </div>
-                  <div className="bg-bg-tertiary border border-border rounded-lg p-5 hover:border-accent/50 transition-all">
-                    <p className="text-sm text-text-muted mb-2 font-medium">Current Phase</p>
-                    <p className="text-3xl font-bold mb-1 text-text-primary">Phase {progress?.currentPhase || 1}</p>
-                    <p className="text-xs text-text-muted">
+                  <div className="bg-gradient-soft border border-border rounded-xl p-5 hover:border-accent/50 transition-all">
+                    <p className="text-sm text-text-muted mb-2 font-semibold">Current Phase</p>
+                    <p className="text-4xl font-bold mb-1 bg-gradient-primary bg-clip-text text-transparent">Phase {progress?.currentPhase || 1}</p>
+                    <p className="text-xs text-text-muted font-medium">
                       {roadmap?.phases.find((p) => p.order === progress?.currentPhase)?.title || 'Foundation'}
                     </p>
                   </div>
-                  <div className="bg-bg-tertiary border border-border rounded-lg p-5 hover:border-accent/50 transition-all">
-                    <p className="text-sm text-text-muted mb-2 font-medium">Upcoming Sessions</p>
-                    <p className="text-3xl font-bold mb-1 text-text-primary">{upcomingSessions}</p>
-                    <p className="text-xs text-text-muted">Scheduled</p>
+                  <div className="bg-gradient-soft border border-border rounded-xl p-5 hover:border-accent/50 transition-all">
+                    <p className="text-sm text-text-muted mb-2 font-semibold">Upcoming Sessions</p>
+                    <p className="text-4xl font-bold mb-1 bg-gradient-primary bg-clip-text text-transparent">{upcomingSessions}</p>
+                    <p className="text-xs text-text-muted font-medium">Scheduled</p>
                   </div>
                 </div>
               </div>

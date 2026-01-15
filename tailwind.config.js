@@ -7,27 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Beautiful modern light theme with coherent colors
-        'bg-primary': '#f8fafc',
+        // Professional HRMS-inspired color scheme
+        'bg-primary': '#f5f7fa',
         'bg-secondary': '#ffffff',
-        'bg-tertiary': '#f1f5f9',
-        'border': '#e2e8f0',
-        'text-primary': '#0f172a',
-        'text-secondary': '#475569',
-        'text-muted': '#94a3b8',
-        'accent': '#6366f1',
-        'accent-hover': '#4f46e5',
-        'accent-light': '#818cf8',
-        // Beautiful gradient colors
-        'gradient-start': '#6366f1',
-        'gradient-end': '#8b5cf6',
-        'gradient-purple': '#a855f7',
+        'bg-tertiary': '#f8fafc',
+        'border': '#e4e7eb',
+        'text-primary': '#1a202c',
+        'text-secondary': '#4a5568',
+        'text-muted': '#718096',
+        'accent': '#4f46e5',
+        'accent-hover': '#4338ca',
+        'accent-light': '#6366f1',
+        'accent-dark': '#3730a3',
+        // Professional gradient colors
+        'gradient-start': '#4f46e5',
+        'gradient-end': '#7c3aed',
+        'gradient-purple': '#8b5cf6',
         'gradient-pink': '#ec4899',
-        // Status colors
+        // Status colors with variants
         'success': '#10b981',
+        'success-light': '#d1fae5',
         'warning': '#f59e0b',
+        'warning-light': '#fef3c7',
         'error': '#ef4444',
+        'error-light': '#fee2e2',
         'info': '#3b82f6',
+        'info-light': '#dbeafe',
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
