@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import type { UserRole } from '../types';
@@ -12,7 +13,13 @@ import {
   GearIcon,
   ArrowUpIcon,
   ArrowDownIcon,
+  WalletIcon,
+  BarChartIcon,
+  RocketIcon,
+  LayersIcon,
+  MagnifyingGlassIcon,
 } from '@radix-ui/react-icons';
+import ConfirmationModal from './ConfirmationModal';
 
 interface NavItem {
   path: string;
@@ -33,27 +40,30 @@ const roleNavItems: Record<UserRole, NavItem[]> = {
     { path: '/trainer/availability', label: 'Availability', icon: CalendarIcon },
     { path: '/trainer/students', label: 'Students', icon: PersonIcon },
     { path: '/trainer/roadmap-builder', label: 'Roadmap Builder', icon: Pencil1Icon },
-    { path: '/trainer/wallet', label: 'Wallet', icon: ArrowUpIcon },
+    { path: '/trainer/wallet', label: 'Wallet', icon: WalletIcon },
     { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   master_mentor: [
     { path: '/master-mentor', label: 'Dashboard', icon: HomeIcon },
     { path: '/master-mentor/reviews', label: 'Roadmap Reviews', icon: FileTextIcon },
-    { path: '/master-mentor/progression', label: 'Progression Control', icon: CheckIcon },
-    { path: '/master-mentor/logs', label: 'Checkup Logs', icon: FileTextIcon },
+    { path: '/master-mentor/progression', label: 'Progression Control', icon: RocketIcon },
+    { path: '/master-mentor/logs', label: 'Checkup Logs', icon: LayersIcon },
+    { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   wing_admin: [
     { path: '/wing-admin', label: 'Dashboard', icon: HomeIcon },
     { path: '/wing-admin/capacity', label: 'Trainer Capacity', icon: PersonIcon },
-    { path: '/wing-admin/activity', label: 'Student Activity', icon: CalendarIcon },
-    { path: '/wing-admin/wallet', label: 'Wing Wallet', icon: ArrowUpIcon },
+    { path: '/wing-admin/activity', label: 'Student Activity', icon: BarChartIcon },
+    { path: '/wing-admin/wallet', label: 'Wing Wallet', icon: WalletIcon },
+    { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   umbrella_admin: [
     { path: '/umbrella-admin', label: 'Dashboard', icon: HomeIcon },
-    { path: '/umbrella-admin/analytics', label: 'Analytics', icon: ArrowUpIcon },
-    { path: '/umbrella-admin/wings', label: 'Wing Performance', icon: PersonIcon },
+    { path: '/umbrella-admin/analytics', label: 'Analytics', icon: BarChartIcon },
+    { path: '/umbrella-admin/wings', label: 'Wing Performance', icon: LayersIcon },
     { path: '/umbrella-admin/rules', label: 'System Rules', icon: GearIcon },
-    { path: '/umbrella-admin/payments', label: 'Payment Flow', icon: ArrowDownIcon },
+    { path: '/umbrella-admin/payments', label: 'Payment Flow', icon: WalletIcon },
+    { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   company: [
     { path: '/company', label: 'Dashboard', icon: HomeIcon },
@@ -65,10 +75,16 @@ const roleNavItems: Record<UserRole, NavItem[]> = {
 export default function Sidebar() {
   const location = useLocation();
   const { user, logout } = useAuthStore();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   if (!user) return null;
 
   const navItems = roleNavItems[user.role] || [];
+
+  const handleLogout = () => {
+    logout();
+    setShowLogoutModal(false);
+  };
 
   return (
     <div className="w-64 bg-white border-r border-border h-screen flex flex-col shadow-lg">
@@ -116,13 +132,25 @@ export default function Sidebar() {
       {/* Logout */}
       <div className="p-4 border-t border-border bg-gradient-soft">
         <button
-          onClick={logout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-text-secondary hover:bg-red-50 hover:text-error hover:border-error/20 border-2 border-transparent transition-all duration-300 font-medium"
+          onClick={() => setShowLogoutModal(true)}
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-text-secondary hover:bg-error-light hover:text-error hover:border-error/20 border-2 border-transparent transition-all duration-300 font-medium"
         >
           <ExitIcon className="w-5 h-5" />
           <span>Logout</span>
         </button>
       </div>
+
+      {/* Logout Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={handleLogout}
+        title="Confirm Logout"
+        message="Are you sure you want to logout? You'll need to sign in again to access your account."
+        confirmText="Logout"
+        cancelText="Cancel"
+        variant="warning"
+      />
     </div>
   );
 }

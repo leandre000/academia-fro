@@ -7,22 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Professional HRMS-inspired color scheme
-        'bg-primary': '#f5f7fa',
+        // Beautiful modern color scheme - Purple/Teal/Amber
+        'bg-primary': '#fafafa',
         'bg-secondary': '#ffffff',
-        'bg-tertiary': '#f8fafc',
-        'border': '#e4e7eb',
-        'text-primary': '#1a202c',
-        'text-secondary': '#4a5568',
-        'text-muted': '#718096',
-        'accent': '#4f46e5',
-        'accent-hover': '#4338ca',
-        'accent-light': '#6366f1',
-        'accent-dark': '#3730a3',
-        // Professional gradient colors
-        'gradient-start': '#4f46e5',
-        'gradient-end': '#7c3aed',
+        'bg-tertiary': '#f5f5f5',
+        'border': '#e5e7eb',
+        'text-primary': '#111827',
+        'text-secondary': '#374151',
+        'text-muted': '#6b7280',
+        // Primary accent - Purple
+        'accent': '#7c3aed',
+        'accent-hover': '#6d28d9',
+        'accent-light': '#a78bfa',
+        'accent-dark': '#5b21b6',
+        // Secondary accent - Teal
+        'secondary-accent': '#14b8a6',
+        'secondary-accent-light': '#5eead4',
+        // Tertiary accent - Amber
+        'tertiary-accent': '#f59e0b',
+        'tertiary-accent-light': '#fbbf24',
+        // Gradient colors
         'gradient-purple': '#8b5cf6',
+        'gradient-teal': '#14b8a6',
+        'gradient-amber': '#f59e0b',
         'gradient-pink': '#ec4899',
         // Status colors with variants
         'success': '#10b981',
@@ -31,14 +38,15 @@ export default {
         'warning-light': '#fef3c7',
         'error': '#ef4444',
         'error-light': '#fee2e2',
-        'info': '#3b82f6',
-        'info-light': '#dbeafe',
+        'info': '#06b6d4',
+        'info-light': '#cffafe',
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
-        'gradient-soft': 'linear-gradient(135deg, #f0f9ff 0%, #faf5ff 100%)',
-        'gradient-card': 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-        'gradient-accent': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #7c3aed 0%, #14b8a6 50%, #f59e0b 100%)',
+        'gradient-soft': 'linear-gradient(135deg, #faf5ff 0%, #f0fdfa 50%, #fffbeb 100%)',
+        'gradient-card': 'linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #7c3aed 0%, #14b8a6 100%)',
+        'gradient-purple-teal': 'linear-gradient(135deg, #8b5cf6 0%, #14b8a6 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

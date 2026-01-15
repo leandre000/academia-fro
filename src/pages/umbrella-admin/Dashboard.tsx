@@ -1,6 +1,7 @@
 import { mockWings, mockUsers, mockRoadmaps, mockSessions } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { PersonIcon, CalendarIcon } from '@radix-ui/react-icons';
+import { PersonIcon, CalendarIcon, WalletIcon, BarChartIcon, LayersIcon, GearIcon, RocketIcon } from '@radix-ui/react-icons';
+import Button from '../../components/Button';
 
 export default function UmbrellaAdminDashboard() {
   const totalWings = mockWings.length;
@@ -11,50 +12,60 @@ export default function UmbrellaAdminDashboard() {
   const activeSessions = mockSessions.filter((s) => s.status === 'scheduled').length;
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Umbrella Administration</h1>
-        <p className="text-text-secondary">Global system overview and management</p>
+    <div className="p-6 animate-fade-in">
+      <div className="mb-8 slide-up">
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+          Umbrella Administration
+        </h1>
+        <p className="text-text-muted text-lg">Global system overview and management</p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-bg-secondary border border-white rounded-lg p-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-text-muted text-sm">Total Wings</span>
-            <PersonIcon className="w-5 h-5 text-white" />
+        <div className="card slide-up" style={{ animationDelay: '0.1s' }}>
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-text-muted text-sm font-semibold">Total Wings</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/10 rounded-xl flex items-center justify-center">
+              <LayersIcon className="w-6 h-6 text-accent" />
+            </div>
           </div>
-          <p className="text-3xl font-bold">{totalWings}</p>
-          <Link to="/umbrella-admin/wings" className="text-sm text-white hover:underline mt-2 inline-block">
+          <p className="text-4xl font-bold mb-2 text-text-primary">{totalWings}</p>
+          <Link to="/umbrella-admin/wings" className="link-primary text-sm">
             View Performance →
           </Link>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-text-muted text-sm">Total Trainers</span>
-            <PersonIcon className="w-5 h-5 text-white" />
+        <div className="card slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-text-muted text-sm font-semibold">Total Trainers</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-success/20 to-success/10 rounded-xl flex items-center justify-center">
+              <PersonIcon className="w-6 h-6 text-success" />
+            </div>
           </div>
-          <p className="text-3xl font-bold">{totalTrainers}</p>
-          <p className="text-sm text-text-muted mt-1">Active</p>
+          <p className="text-4xl font-bold mb-2 text-text-primary">{totalTrainers}</p>
+          <p className="text-sm text-text-muted font-medium">Active</p>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-text-muted text-sm">Total Students</span>
-            <PersonIcon className="w-5 h-5 text-white" />
+        <div className="card slide-up" style={{ animationDelay: '0.3s' }}>
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-text-muted text-sm font-semibold">Total Students</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-secondary-accent/20 to-secondary-accent/10 rounded-xl flex items-center justify-center">
+              <PersonIcon className="w-6 h-6 text-secondary-accent" />
+            </div>
           </div>
-          <p className="text-3xl font-bold">{totalStudents}</p>
-          <p className="text-sm text-text-muted mt-1">Enrolled</p>
+          <p className="text-4xl font-bold mb-2 text-text-primary">{totalStudents}</p>
+          <p className="text-sm text-text-muted font-medium">Enrolled</p>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-text-muted text-sm">Total Revenue</span>
-            <CalendarIcon className="w-5 h-5 text-white" />
+        <div className="card slide-up" style={{ animationDelay: '0.4s' }}>
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-text-muted text-sm font-semibold">Total Revenue</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-tertiary-accent/20 to-tertiary-accent/10 rounded-xl flex items-center justify-center">
+              <WalletIcon className="w-6 h-6 text-tertiary-accent" />
+            </div>
           </div>
-          <p className="text-3xl font-bold">${totalRevenue.toLocaleString()}</p>
-          <Link to="/umbrella-admin/payments" className="text-sm text-white hover:underline mt-2 inline-block">
+          <p className="text-4xl font-bold mb-2 text-text-primary">${totalRevenue.toLocaleString()}</p>
+          <Link to="/umbrella-admin/payments" className="link-primary text-sm">
             View Details →
           </Link>
         </div>
@@ -62,15 +73,25 @@ export default function UmbrellaAdminDashboard() {
 
       {/* Additional Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Active Roadmaps</h2>
-          <p className="text-4xl font-bold mb-2">{activeRoadmaps}</p>
-          <p className="text-sm text-text-muted">Approved and in progress</p>
+        <div className="card slide-up" style={{ animationDelay: '0.5s' }}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/10 rounded-xl flex items-center justify-center">
+              <RocketIcon className="w-6 h-6 text-accent" />
+            </div>
+            <h2 className="text-xl font-semibold text-text-primary">Active Roadmaps</h2>
+          </div>
+          <p className="text-4xl font-bold mb-2 text-text-primary">{activeRoadmaps}</p>
+          <p className="text-sm text-text-muted font-medium">Approved and in progress</p>
         </div>
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Scheduled Sessions</h2>
-          <p className="text-4xl font-bold mb-2">{activeSessions}</p>
-          <p className="text-sm text-text-muted">This week</p>
+        <div className="card slide-up" style={{ animationDelay: '0.6s' }}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-secondary-accent/20 to-secondary-accent/10 rounded-xl flex items-center justify-center">
+              <CalendarIcon className="w-6 h-6 text-secondary-accent" />
+            </div>
+            <h2 className="text-xl font-semibold text-text-primary">Scheduled Sessions</h2>
+          </div>
+          <p className="text-4xl font-bold mb-2 text-text-primary">{activeSessions}</p>
+          <p className="text-sm text-text-muted font-medium">This week</p>
         </div>
       </div>
 
@@ -78,37 +99,53 @@ export default function UmbrellaAdminDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Link
           to="/umbrella-admin/analytics"
-          className="bg-bg-secondary border border-white rounded-lg p-6 hover:bg-bg-tertiary transition-colors"
+          className="card-interactive slide-up"
+          style={{ animationDelay: '0.7s' }}
         >
-          <h3 className="text-lg font-semibold mb-2">Analytics</h3>
-          <p className="text-text-secondary text-sm">
+          <div className="w-12 h-12 bg-gradient-to-br from-accent/20 to-accent/10 rounded-xl flex items-center justify-center mb-4">
+            <BarChartIcon className="w-6 h-6 text-accent" />
+          </div>
+          <h3 className="text-lg font-semibold mb-2 text-text-primary">Analytics</h3>
+          <p className="text-text-muted text-sm">
             View comprehensive system analytics
           </p>
         </Link>
         <Link
           to="/umbrella-admin/wings"
-          className="bg-bg-secondary border border-white rounded-lg p-6 hover:bg-bg-tertiary transition-colors"
+          className="card-interactive slide-up"
+          style={{ animationDelay: '0.8s' }}
         >
-          <h3 className="text-lg font-semibold mb-2">Wing Performance</h3>
-          <p className="text-text-secondary text-sm">
+          <div className="w-12 h-12 bg-gradient-to-br from-secondary-accent/20 to-secondary-accent/10 rounded-xl flex items-center justify-center mb-4">
+            <LayersIcon className="w-6 h-6 text-secondary-accent" />
+          </div>
+          <h3 className="text-lg font-semibold mb-2 text-text-primary">Wing Performance</h3>
+          <p className="text-text-muted text-sm">
             Compare wing performance metrics
           </p>
         </Link>
         <Link
           to="/umbrella-admin/rules"
-          className="bg-bg-secondary border border-white rounded-lg p-6 hover:bg-bg-tertiary transition-colors"
+          className="card-interactive slide-up"
+          style={{ animationDelay: '0.9s' }}
         >
-          <h3 className="text-lg font-semibold mb-2">System Rules</h3>
-          <p className="text-text-secondary text-sm">
+          <div className="w-12 h-12 bg-gradient-to-br from-tertiary-accent/20 to-tertiary-accent/10 rounded-xl flex items-center justify-center mb-4">
+            <GearIcon className="w-6 h-6 text-tertiary-accent" />
+          </div>
+          <h3 className="text-lg font-semibold mb-2 text-text-primary">System Rules</h3>
+          <p className="text-text-muted text-sm">
             Manage system-wide rules and policies
           </p>
         </Link>
         <Link
           to="/umbrella-admin/payments"
-          className="bg-bg-secondary border border-white rounded-lg p-6 hover:bg-bg-tertiary transition-colors"
+          className="card-interactive slide-up"
+          style={{ animationDelay: '1.0s' }}
         >
-          <h3 className="text-lg font-semibold mb-2">Payment Flow</h3>
-          <p className="text-text-secondary text-sm">
+          <div className="w-12 h-12 bg-gradient-to-br from-success/20 to-success/10 rounded-xl flex items-center justify-center mb-4">
+            <WalletIcon className="w-6 h-6 text-success" />
+          </div>
+          <h3 className="text-lg font-semibold mb-2 text-text-primary">Payment Flow</h3>
+          <p className="text-text-muted text-sm">
             Monitor payment processing and flows
           </p>
         </Link>
@@ -116,4 +153,3 @@ export default function UmbrellaAdminDashboard() {
     </div>
   );
 }
-

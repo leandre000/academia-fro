@@ -1,7 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { getSessionsByTrainerId, getStudentsByTrainerId, mockTrainerAvailability, mockWallets } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { CalendarIcon, PersonIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, PersonIcon, ArrowRightIcon, WalletIcon, ClockIcon, RocketIcon } from '@radix-ui/react-icons';
 import Button from '../../components/Button';
 
 export default function TrainerDashboard() {
@@ -46,8 +46,8 @@ export default function TrainerDashboard() {
         <div className="card-gradient slide-up" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-text-muted text-sm font-semibold">Weekly Capacity</span>
-            <div className="bg-gradient-to-br from-gradient-purple/20 to-gradient-pink/10 p-3 rounded-xl">
-              <CalendarIcon className="w-5 h-5 text-gradient-purple" />
+            <div className="bg-gradient-to-br from-accent/20 to-accent/10 p-3 rounded-xl">
+              <ClockIcon className="w-5 h-5 text-accent" />
             </div>
           </div>
           <p className="text-5xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">{availability.weeklyCapacity}h</p>
@@ -71,8 +71,8 @@ export default function TrainerDashboard() {
         <div className="card-gradient slide-up" style={{ animationDelay: '0.4s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-text-muted text-sm font-semibold">Wallet Balance</span>
-            <div className="bg-gradient-to-br from-warning/20 to-warning/10 p-3 rounded-xl">
-              <PersonIcon className="w-5 h-5 text-warning" />
+            <div className="bg-gradient-to-br from-tertiary-accent/20 to-tertiary-accent/10 p-3 rounded-xl">
+              <WalletIcon className="w-5 h-5 text-tertiary-accent" />
             </div>
           </div>
           <p className="text-5xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">${wallet?.balance.toLocaleString() || 0}</p>
