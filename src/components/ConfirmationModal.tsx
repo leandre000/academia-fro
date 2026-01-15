@@ -55,7 +55,7 @@ export default function ConfirmationModal({
             {cancelText}
           </Button>
           <Button
-            variant={variant === 'danger' ? 'primary' : variant === 'warning' ? 'success' : 'primary'}
+            variant={variant === 'danger' ? 'destructive' : 'primary'}
             onClick={handleConfirm}
             disabled={isLoading}
           >

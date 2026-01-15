@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { RocketIcon, CalendarIcon, CheckIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { RocketIcon, CalendarIcon, CheckIcon } from '@radix-ui/react-icons';
 import Button from '../components/Button';
 
 export default function Landing() {

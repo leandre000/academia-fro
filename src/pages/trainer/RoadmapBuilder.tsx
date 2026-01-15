@@ -352,7 +352,7 @@ export default function TrainerRoadmapBuilder() {
               <h2 className="text-xl font-semibold">Phases</h2>
               <Button
                 type="button"
-                variant="outline"
+                variant="secondary"
                 size="sm"
                 onClick={() => appendPhase({
                   title: '',
@@ -456,7 +456,7 @@ function PhaseBuilder({ phaseIdx, register, control, removePhase }: any) {
             <label className="input-label mb-0">Tasks</label>
             <Button
               type="button"
-              variant="outline"
+              variant="secondary"
               size="sm"
               onClick={() => appendTask({ title: '', description: '', estimatedHours: 0 })}
             >

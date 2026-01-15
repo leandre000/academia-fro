@@ -41,7 +41,7 @@ export default function TrainerStudents() {
                     </div>
                   </div>
                   <Link to="/trainer/roadmap-builder">
-                    <Button variant="outline" size="sm" showArrow>
+                    <Button variant="secondary" size="sm" showArrow>
                       Manage Roadmap
                     </Button>
                   </Link>
