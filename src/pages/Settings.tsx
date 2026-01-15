@@ -3,7 +3,7 @@ import { useAuthStore } from '../store/authStore';
 import { useProfileStore } from '../store/profileStore';
 
 export default function Settings() {
-  const { user, logout } = useAuthStore();
+  const { user } = useAuthStore();
   const { updateProfile, updateAvatar } = useProfileStore();
   const [formData, setFormData] = useState({
     name: user?.name || '',
