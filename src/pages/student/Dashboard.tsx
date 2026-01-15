@@ -1,13 +1,20 @@
 import { useAuthStore } from '../../store/authStore';
-import { getRoadmapByStudentId, getSessionsByStudentId, mockStudentProgress } from '../../data/mockData';
+import { useRoadmapStore } from '../../store/roadmapStore';
+import { getSessionsByStudentId, mockStudentProgress } from '../../data/mockData';
 import { Link } from 'react-router-dom';
 import { CalendarIcon, CheckIcon, LockClosedIcon } from '@radix-ui/react-icons';
+import { useEffect } from 'react';
 
 export default function StudentDashboard() {
   const { user } = useAuthStore();
+  const { getRoadmapByStudentId, initializeRoadmaps } = useRoadmapStore();
   const roadmap = user ? getRoadmapByStudentId(user.id) : null;
   const sessions = user ? getSessionsByStudentId(user.id) : null;
   const progress = user ? mockStudentProgress.find((p) => p.studentId === user.id) : null;
+
+  useEffect(() => {
+    initializeRoadmaps();
+  }, [initializeRoadmaps]);
 
   const upcomingSessions = sessions?.filter((s) => s.status === 'scheduled').slice(0, 3) || [];
 
@@ -22,7 +29,7 @@ export default function StudentDashboard() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
+        <div className="card slide-up" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-text-muted text-sm font-medium">Progress</span>
             <div className="bg-green-500/20 p-2 rounded-lg">
@@ -35,7 +42,7 @@ export default function StudentDashboard() {
           </p>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
+        <div className="card slide-up" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-text-muted text-sm font-medium">Current Phase</span>
             <div className="bg-blue-500/20 p-2 rounded-lg">
@@ -48,7 +55,7 @@ export default function StudentDashboard() {
           </p>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
+        <div className="card slide-up" style={{ animationDelay: '0.3s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-text-muted text-sm font-medium">Upcoming Sessions</span>
             <div className="bg-purple-500/20 p-2 rounded-lg">
@@ -62,7 +69,7 @@ export default function StudentDashboard() {
 
       {/* Roadmap Preview */}
       {roadmap && (
-        <div className="bg-bg-secondary border border-border rounded-xl p-6 mb-8">
+        <div className="card mb-8 slide-up" style={{ animationDelay: '0.4s' }}>
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-semibold text-text-primary">Your Roadmap</h2>
             <Link
@@ -88,7 +95,7 @@ export default function StudentDashboard() {
       )}
 
       {/* Upcoming Sessions */}
-      <div className="bg-bg-secondary border border-border rounded-xl p-6">
+      <div className="card slide-up" style={{ animationDelay: '0.5s' }}>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-semibold text-text-primary">Upcoming Sessions</h2>
           <Link
@@ -119,7 +126,7 @@ export default function StudentDashboard() {
                       Duration: {session.duration} minutes
                     </p>
                   </div>
-                  <button className="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+                  <button className="btn-primary">
                     Join Session
                   </button>
                 </div>

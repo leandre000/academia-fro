@@ -41,6 +41,9 @@ import CompanyDashboard from './pages/company/Dashboard';
 import CompanyStudents from './pages/company/Students';
 import CompanyPrograms from './pages/company/Programs';
 
+// Settings (shared)
+import Settings from './pages/Settings';
+
 function App() {
   const { isAuthenticated, user } = useAuthStore();
 
@@ -62,6 +65,18 @@ function App() {
       <Routes>
         <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to={getDefaultRoute()} replace />} />
         
+        {/* Settings - Available to all authenticated users */}
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute allowedRoles={['student', 'trainer', 'master_mentor', 'wing_admin', 'umbrella_admin', 'company']}>
+              <PortalLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Settings />} />
+        </Route>
+
         {/* Student Portal */}
         <Route
           path="/student"

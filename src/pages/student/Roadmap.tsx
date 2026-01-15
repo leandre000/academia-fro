@@ -1,10 +1,16 @@
 import { useAuthStore } from '../../store/authStore';
-import { getRoadmapByStudentId } from '../../data/mockData';
+import { useRoadmapStore } from '../../store/roadmapStore';
 import { CheckIcon, LockClosedIcon } from '@radix-ui/react-icons';
+import { useEffect } from 'react';
 
 export default function StudentRoadmap() {
   const { user } = useAuthStore();
+  const { getRoadmapByStudentId, initializeRoadmaps } = useRoadmapStore();
   const roadmap = user ? getRoadmapByStudentId(user.id) : null;
+
+  useEffect(() => {
+    initializeRoadmaps();
+  }, [initializeRoadmaps]);
 
   if (!roadmap) {
     return (

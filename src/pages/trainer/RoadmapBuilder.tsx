@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthStore } from '../../store/authStore';
+import { useRoadmapStore } from '../../store/roadmapStore';
 import { getStudentsByTrainerId } from '../../data/mockData';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { PlusIcon, TrashIcon, EyeOpenIcon } from '@radix-ui/react-icons';
+import { useNavigate } from 'react-router-dom';
 
 const roadmapSchema = z.object({
   studentId: z.string().min(1, 'Select a student'),
@@ -29,9 +31,16 @@ type RoadmapForm = z.infer<typeof roadmapSchema>;
 
 export default function TrainerRoadmapBuilder() {
   const { user } = useAuthStore();
+  const { createRoadmap, initializeRoadmaps } = useRoadmapStore();
+  const navigate = useNavigate();
   const students = user ? getStudentsByTrainerId(user.id) : [];
   const [showPreview, setShowPreview] = useState(false);
   const [newGoal, setNewGoal] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    initializeRoadmaps();
+  }, [initializeRoadmaps]);
 
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<RoadmapForm>({
     resolver: zodResolver(roadmapSchema),
@@ -76,38 +85,82 @@ export default function TrainerRoadmapBuilder() {
 
   const formData = watch();
 
-  const onSubmit = (data: RoadmapForm) => {
-    console.log('Roadmap created:', data);
-    alert('Roadmap created successfully! (Mock - would submit to backend)');
+  const onSubmit = async (data: RoadmapForm) => {
+    if (!user) return;
+    
+    setIsSubmitting(true);
+    try {
+      // Transform form data to roadmap format
+      const roadmapData = {
+        trainerId: user.id,
+        studentId: data.studentId,
+        title: data.title,
+        description: data.description,
+        learningGoals: data.learningGoals,
+        weeklyHours: data.weeklyHours,
+        monthlyPrice: data.monthlyPrice,
+        status: 'pending_review' as const,
+        phases: data.phases.map((phase, idx) => ({
+          id: `phase_${Date.now()}_${idx}`,
+          title: phase.title,
+          description: phase.description,
+          order: idx + 1,
+          reviewCheckpoint: phase.reviewCheckpoint,
+          isLocked: idx > 0,
+          isApproved: false,
+          tasks: phase.tasks.map((task, taskIdx) => ({
+            id: `task_${Date.now()}_${idx}_${taskIdx}`,
+            title: task.title,
+            description: task.description,
+            order: taskIdx + 1,
+            status: 'pending' as const,
+            estimatedHours: task.estimatedHours,
+          })),
+        })),
+      };
+
+      const newRoadmap = createRoadmap(roadmapData);
+      
+      // Show success message
+      alert('Roadmap created successfully!');
+      
+      // Navigate to students page or roadmap list
+      navigate('/trainer/students');
+    } catch (error) {
+      console.error('Error creating roadmap:', error);
+      alert('Failed to create roadmap. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Roadmap Builder</h1>
-        <p className="text-text-secondary">Create a custom learning path for your students</p>
+    <div className="p-6 animate-fade-in">
+      <div className="mb-8 slide-up">
+        <h1 className="text-3xl font-bold mb-2 text-text-primary">Roadmap Builder</h1>
+        <p className="text-text-muted">Create a custom learning path for your students</p>
       </div>
 
-      <div className="flex gap-4 mb-6">
+      <div className="flex gap-4 mb-6 slide-up">
         <button
           onClick={() => setShowPreview(false)}
-          className={`px-4 py-2 rounded font-medium transition-colors ${
+          className={`px-6 py-3 rounded-lg font-medium smooth-transition ${
             !showPreview
-              ? 'bg-white text-black'
-              : 'bg-bg-secondary border border-border text-white hover:bg-bg-tertiary'
+              ? 'bg-accent text-white shadow-lg'
+              : 'bg-bg-secondary border border-border text-text-secondary hover:bg-bg-tertiary hover:text-text-primary'
           }`}
         >
           Builder
         </button>
         <button
           onClick={() => setShowPreview(true)}
-          className={`px-4 py-2 rounded font-medium transition-colors ${
+          className={`px-6 py-3 rounded-lg font-medium smooth-transition flex items-center gap-2 ${
             showPreview
-              ? 'bg-white text-black'
-              : 'bg-bg-secondary border border-border text-white hover:bg-bg-tertiary'
+              ? 'bg-accent text-white shadow-lg'
+              : 'bg-bg-secondary border border-border text-text-secondary hover:bg-bg-tertiary hover:text-text-primary'
           }`}
         >
-          <EyeOpenIcon className="w-4 h-4 inline mr-2" />
+          <EyeOpenIcon className="w-4 h-4" />
           Preview
         </button>
       </div>
@@ -324,9 +377,10 @@ export default function TrainerRoadmapBuilder() {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="bg-white text-black px-8 py-3 rounded font-semibold hover:bg-gray-200 transition-colors"
+              disabled={isSubmitting}
+              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Create Roadmap
+              {isSubmitting ? 'Creating...' : 'Create Roadmap'}
             </button>
           </div>
         </form>

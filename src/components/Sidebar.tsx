@@ -23,9 +23,10 @@ interface NavItem {
 const roleNavItems: Record<UserRole, NavItem[]> = {
   student: [
     { path: '/student', label: 'Dashboard', icon: HomeIcon },
-    { path: '/student/roadmap', label: 'Roadmap', icon: FileTextIcon },
+    { path: '/student/roadmap', label: 'My Roadmap', icon: FileTextIcon },
     { path: '/student/schedule', label: 'Schedule', icon: CalendarIcon },
     { path: '/student/attendance', label: 'Attendance', icon: CheckIcon },
+    { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   trainer: [
     { path: '/trainer', label: 'Dashboard', icon: HomeIcon },
@@ -33,6 +34,7 @@ const roleNavItems: Record<UserRole, NavItem[]> = {
     { path: '/trainer/students', label: 'Students', icon: PersonIcon },
     { path: '/trainer/roadmap-builder', label: 'Roadmap Builder', icon: Pencil1Icon },
     { path: '/trainer/wallet', label: 'Wallet', icon: ArrowUpIcon },
+    { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   master_mentor: [
     { path: '/master-mentor', label: 'Dashboard', icon: HomeIcon },
