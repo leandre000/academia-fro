@@ -36,7 +36,7 @@ export default function TrainerDashboard() {
               <PersonIcon className="w-5 h-5 text-info-dark" />
             </div>
           </div>
-          <p className="text-4xl font-semibold mb-2 text-text-primary">{students.length}</p>
+          <p className="text-3xl sm:text-4xl font-semibold mb-2 text-text-primary">{students.length}</p>
           <Link to="/trainer/students" className="text-sm font-medium text-brand-600 hover:text-brand-700 flex items-center gap-1 transition-colors">
             View All
             <ArrowRightIcon className="w-4 h-4" />
@@ -50,7 +50,7 @@ export default function TrainerDashboard() {
               <ClockIcon className="w-5 h-5 text-brand-600" />
             </div>
           </div>
-          <p className="text-4xl font-semibold mb-2 text-text-primary">{availability.weeklyCapacity}h</p>
+          <p className="text-3xl sm:text-4xl font-semibold mb-2 text-text-primary">{availability.weeklyCapacity}h</p>
           <Link to="/trainer/availability" className="text-sm font-medium text-brand-600 hover:text-brand-700 flex items-center gap-1 transition-colors">
             Manage
             <ArrowRightIcon className="w-4 h-4" />
@@ -64,7 +64,7 @@ export default function TrainerDashboard() {
               <CalendarIcon className="w-5 h-5 text-success-dark" />
             </div>
           </div>
-          <p className="text-4xl font-semibold mb-2 text-text-primary">{todaySessions.length}</p>
+          <p className="text-3xl sm:text-4xl font-semibold mb-2 text-text-primary">{todaySessions.length}</p>
           <p className="text-sm text-text-secondary">Scheduled</p>
         </div>
 
@@ -75,7 +75,7 @@ export default function TrainerDashboard() {
               <span className="text-xl font-bold text-accent-600">$</span>
             </div>
           </div>
-          <p className="text-4xl font-semibold mb-2 text-text-primary">${wallet?.balance.toLocaleString() || 0}</p>
+          <p className="text-3xl sm:text-4xl font-semibold mb-2 text-text-primary currency-value">${wallet?.balance.toLocaleString() || 0}</p>
           <Link to="/trainer/wallet" className="text-sm font-medium text-brand-600 hover:text-brand-700 flex items-center gap-1 transition-colors">
             View Details
             <ArrowRightIcon className="w-4 h-4" />

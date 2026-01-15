@@ -86,50 +86,98 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="w-64 bg-surface-primary border-r border-border h-screen flex flex-col">
-      {/* Logo Section */}
-      <div className="p-6 border-b border-border">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center shadow-soft">
-            <span className="text-white font-bold text-lg">A</span>
+    <>
+      <div className="hidden lg:flex w-64 bg-surface-primary border-r border-border h-screen flex-col">
+        {/* Logo Section */}
+        <div className="p-4 sm:p-6 border-b border-border">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center shadow-soft">
+              <span className="text-white font-semibold text-lg">A</span>
+            </div>
+            <h1 className="text-base sm:text-lg font-semibold text-text-primary">
+              Academia FRO
+            </h1>
           </div>
-          <h1 className="text-lg font-semibold text-text-primary">
-            Academia FRO
-          </h1>
+          <div className="bg-surface-tertiary rounded-xl p-3 border border-border">
+            <p className="text-sm font-medium text-text-primary">{user.name}</p>
+            <p className="text-xs text-text-tertiary mt-0.5 capitalize">{user.role.replace('_', ' ')}</p>
+          </div>
         </div>
-        <div className="bg-surface-tertiary rounded-xl p-3 border border-border">
-          <p className="text-sm font-medium text-text-primary">{user.name}</p>
-          <p className="text-xs text-text-tertiary mt-0.5 capitalize">{user.role.replace('_', ' ')}</p>
+
+        {/* Navigation */}
+        <nav className="flex-1 p-3 space-y-1 overflow-y-auto scrollbar-hide">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={isActive ? 'nav-link-active' : 'nav-link'}
+              >
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                <span className="truncate">{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Logout */}
+        <div className="p-3 border-t border-border">
+          <button
+            onClick={() => setShowLogoutModal(true)}
+            className="w-full nav-link text-error hover:bg-error-light hover:text-error-dark"
+          >
+            <ExitIcon className="w-5 h-5 flex-shrink-0" />
+            <span>Logout</span>
+          </button>
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 p-3 space-y-1 overflow-y-auto scrollbar-hide">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = location.pathname === item.path;
-          return (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={isActive ? 'nav-link-active' : 'nav-link'}
+      {/* Mobile Sidebar - Hidden by default, can be toggled */}
+      <div className="lg:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm" style={{ display: 'none' }} id="mobile-sidebar-overlay">
+        <div className="w-64 bg-surface-primary h-full border-r border-border flex flex-col">
+          {/* Same content as desktop sidebar */}
+          <div className="p-4 border-b border-border">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center shadow-soft">
+                <span className="text-white font-semibold text-lg">A</span>
+              </div>
+              <h1 className="text-base font-semibold text-text-primary">
+                Academia FRO
+              </h1>
+            </div>
+            <div className="bg-surface-tertiary rounded-xl p-3 border border-border">
+              <p className="text-sm font-medium text-text-primary">{user.name}</p>
+              <p className="text-xs text-text-tertiary mt-0.5 capitalize">{user.role.replace('_', ' ')}</p>
+            </div>
+          </div>
+          <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={isActive ? 'nav-link-active' : 'nav-link'}
+                >
+                  <Icon className="w-5 h-5 flex-shrink-0" />
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="p-3 border-t border-border">
+            <button
+              onClick={() => setShowLogoutModal(true)}
+              className="w-full nav-link text-error hover:bg-error-light hover:text-error-dark"
             >
-              <Icon className="w-5 h-5" />
-              <span>{item.label}</span>
-            </Link>
-          );
-        })}
-      </nav>
-
-      {/* Logout */}
-      <div className="p-3 border-t border-border">
-        <button
-          onClick={() => setShowLogoutModal(true)}
-          className="w-full nav-link text-error hover:bg-error-light hover:text-error-dark"
-        >
-          <ExitIcon className="w-5 h-5" />
-          <span>Logout</span>
-        </button>
+              <ExitIcon className="w-5 h-5 flex-shrink-0" />
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Logout Confirmation Modal */}
@@ -143,6 +191,6 @@ export default function Sidebar() {
         cancelText="Cancel"
         variant="warning"
       />
-    </div>
+    </>
   );
 }

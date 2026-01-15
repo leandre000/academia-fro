@@ -65,7 +65,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={!isAuthenticated ? <Landing /> : <Navigate to={getDefaultRoute()} replace />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to={getDefaultRoute()} replace />} />
         <Route path="/signup" element={!isAuthenticated ? <Signup /> : <Navigate to={getDefaultRoute()} replace />} />
         
@@ -172,8 +172,7 @@ function App() {
           <Route path="programs" element={<CompanyPrograms />} />
         </Route>
 
-        <Route path="/" element={<Navigate to={getDefaultRoute()} replace />} />
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

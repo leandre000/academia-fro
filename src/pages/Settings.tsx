@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { useProfileStore } from '../store/profileStore';
-import { ExitIcon } from '@radix-ui/react-icons';
 
 export default function Settings() {
   const { user, logout } = useAuthStore();
@@ -122,22 +121,6 @@ export default function Settings() {
         </form>
       </div>
 
-      {/* Logout */}
-      <div className="card slide-up">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-lg font-semibold mb-1 text-text-primary">Logout</h3>
-            <p className="text-sm text-text-secondary">Sign out of your account</p>
-          </div>
-          <button
-            onClick={logout}
-            className="btn btn-destructive flex items-center gap-2"
-          >
-            <ExitIcon className="w-5 h-5" />
-            Logout
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

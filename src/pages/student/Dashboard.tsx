@@ -37,7 +37,7 @@ export default function StudentDashboard() {
               <CheckIcon className="w-5 h-5 text-success-dark" />
             </div>
           </div>
-          <p className="text-4xl font-semibold mb-2 text-text-primary">{progress?.completionPercentage || 0}%</p>
+          <p className="text-3xl sm:text-4xl font-semibold mb-2 text-text-primary">{progress?.completionPercentage || 0}%</p>
           <p className="text-sm text-text-secondary">
             {progress?.completedTasks || 0} of {progress?.totalTasks || 0} tasks completed
           </p>
@@ -50,7 +50,7 @@ export default function StudentDashboard() {
               <LockClosedIcon className="w-5 h-5 text-brand-600" />
             </div>
           </div>
-          <p className="text-4xl font-semibold mb-2 text-text-primary">Phase {progress?.currentPhase || 1}</p>
+          <p className="text-3xl sm:text-4xl font-semibold mb-2 text-text-primary">Phase {progress?.currentPhase || 1}</p>
           <p className="text-sm text-text-secondary">
             {roadmap?.phases.find((p) => p.order === progress?.currentPhase)?.title || 'Foundation'}
           </p>
@@ -63,7 +63,7 @@ export default function StudentDashboard() {
               <CalendarIcon className="w-5 h-5 text-accent-600" />
             </div>
           </div>
-          <p className="text-4xl font-semibold mb-2 text-text-primary">{upcomingSessions.length}</p>
+          <p className="text-3xl sm:text-4xl font-semibold mb-2 text-text-primary">{upcomingSessions.length}</p>
           <p className="text-sm text-text-secondary">This week</p>
         </div>
       </div>

@@ -68,7 +68,7 @@ export default function StudentRoadmap() {
               <ClockIcon className="w-5 h-5 text-brand-600" />
             </div>
           </div>
-          <p className="text-4xl font-semibold text-text-primary">{roadmap.weeklyHours}h</p>
+          <p className="text-3xl sm:text-4xl font-semibold text-text-primary">{roadmap.weeklyHours}h</p>
         </div>
         
         <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -78,7 +78,7 @@ export default function StudentRoadmap() {
               <span className="text-xl font-bold text-accent-600">$</span>
             </div>
           </div>
-          <p className="text-4xl font-semibold text-text-primary">${roadmap.monthlyPrice}</p>
+          <p className="text-3xl sm:text-4xl font-semibold text-text-primary currency-value">${roadmap.monthlyPrice.toLocaleString()}</p>
         </div>
         
         <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>

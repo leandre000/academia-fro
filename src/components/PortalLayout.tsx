@@ -4,12 +4,12 @@ import TopHeader from './TopHeader';
 
 export default function PortalLayout() {
   return (
-    <div className="flex h-screen bg-surface-secondary">
+    <div className="flex h-screen bg-surface-secondary overflow-hidden">
       <Sidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         <TopHeader />
         <main className="flex-1 overflow-auto">
-          <div className="min-h-full">
+          <div className="min-h-full p-4 sm:p-6">
             <Outlet />
           </div>
         </main>
