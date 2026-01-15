@@ -12,38 +12,41 @@ export default function CompanyPrograms() {
   );
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Active Programs</h1>
-        <p className="text-text-secondary">View learning programs and roadmaps for company students</p>
+    <div className="p-6 animate-fade-in">
+      <div className="mb-8 slide-up">
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+          Active Programs
+        </h1>
+        <p className="text-text-muted text-lg">View learning programs and roadmaps for company students</p>
       </div>
 
       {companyRoadmaps.length > 0 ? (
         <div className="space-y-6">
-          {companyRoadmaps.map((roadmap) => {
+          {companyRoadmaps.map((roadmap, idx) => {
             const student = companyStudents.find((s) => s.id === roadmap.studentId);
             const trainer = Object.values(mockUsers).find((u) => u.id === roadmap.trainerId);
 
             return (
               <div
                 key={roadmap.id}
-                className="bg-bg-secondary border border-border rounded-lg p-6"
+                className="card slide-up"
+                style={{ animationDelay: `${idx * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h2 className="text-xl font-semibold mb-2">{roadmap.title}</h2>
                     <p className="text-text-secondary mb-3">{roadmap.description}</p>
                     <div className="flex gap-2 flex-wrap">
-                      <span className="bg-bg-tertiary border border-border rounded px-2 py-1 text-xs">
+                      <span className="badge-primary">
                         {roadmap.weeklyHours}h/week
                       </span>
-                      <span className="bg-bg-tertiary border border-border rounded px-2 py-1 text-xs">
+                      <span className="badge-primary">
                         ${roadmap.monthlyPrice}/month
                       </span>
-                      <span className="bg-bg-tertiary border border-border rounded px-2 py-1 text-xs">
+                      <span className="badge-primary">
                         {roadmap.phases.length} phases
                       </span>
-                      <span className="bg-white text-black rounded px-2 py-1 text-xs font-medium">
+                      <span className="badge-success">
                         {roadmap.status.replace('_', ' ')}
                       </span>
                     </div>
@@ -94,10 +97,10 @@ export default function CompanyPrograms() {
           })}
         </div>
       ) : (
-        <div className="bg-bg-secondary border border-border rounded-lg p-12 text-center">
-          <FileTextIcon className="w-16 h-16 mx-auto mb-4 text-text-muted" />
-          <h2 className="text-xl font-semibold mb-2">No Active Programs</h2>
-          <p className="text-text-secondary">
+        <div className="card text-center py-16 slide-up">
+          <FileTextIcon className="w-20 h-20 mx-auto mb-6 text-text-muted" />
+          <h2 className="text-2xl font-semibold mb-3 text-text-primary">No Active Programs</h2>
+          <p className="text-text-muted">
             Programs and roadmaps for company students will appear here
           </p>
         </div>

@@ -2,7 +2,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthStore } from './store/authStore';
 import ProtectedRoute from './components/ProtectedRoute';
 import PortalLayout from './components/PortalLayout';
+import Landing from './pages/Landing';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 // Student Portal
 import StudentDashboard from './pages/student/Dashboard';
@@ -63,7 +65,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={!isAuthenticated ? <Landing /> : <Navigate to={getDefaultRoute()} replace />} />
         <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to={getDefaultRoute()} replace />} />
+        <Route path="/signup" element={!isAuthenticated ? <Signup /> : <Navigate to={getDefaultRoute()} replace />} />
         
         {/* Settings - Available to all authenticated users */}
         <Route

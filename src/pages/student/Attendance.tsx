@@ -18,62 +18,65 @@ export default function StudentAttendance() {
     : 0;
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Attendance</h1>
-        <p className="text-text-secondary">Track your session attendance and participation</p>
+    <div className="p-6 animate-fade-in">
+      <div className="mb-8 slide-up">
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+          Attendance
+        </h1>
+        <p className="text-text-muted text-lg">Track your session attendance and participation</p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <p className="text-sm text-text-muted mb-2">Attendance Rate</p>
-          <p className="text-3xl font-bold">{attendanceRate}%</p>
+        <div className="card slide-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-sm text-text-muted mb-2 font-semibold">Attendance Rate</p>
+          <p className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">{attendanceRate}%</p>
         </div>
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <p className="text-sm text-text-muted mb-2">Total Sessions</p>
-          <p className="text-3xl font-bold">{attendanceStats.total}</p>
+        <div className="card slide-up" style={{ animationDelay: '0.2s' }}>
+          <p className="text-sm text-text-muted mb-2 font-semibold">Total Sessions</p>
+          <p className="text-4xl font-bold text-text-primary">{attendanceStats.total}</p>
         </div>
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <p className="text-sm text-text-muted mb-2">Confirmed</p>
-          <p className="text-3xl font-bold text-white">{attendanceStats.confirmed}</p>
+        <div className="card slide-up" style={{ animationDelay: '0.3s' }}>
+          <p className="text-sm text-text-muted mb-2 font-semibold">Confirmed</p>
+          <p className="text-4xl font-bold text-success">{attendanceStats.confirmed}</p>
         </div>
-        <div className="bg-bg-secondary border border-border rounded-lg p-6">
-          <p className="text-sm text-text-muted mb-2">Pending</p>
-          <p className="text-3xl font-bold">{attendanceStats.pending}</p>
+        <div className="card slide-up" style={{ animationDelay: '0.4s' }}>
+          <p className="text-sm text-text-muted mb-2 font-semibold">Pending</p>
+          <p className="text-4xl font-bold text-warning">{attendanceStats.pending}</p>
         </div>
       </div>
 
       {/* Session List */}
-      <div className="bg-bg-secondary border border-border rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Session History</h2>
+      <div className="card slide-up" style={{ animationDelay: '0.5s' }}>
+        <h2 className="text-2xl font-semibold mb-6 text-text-primary">Session History</h2>
         {sessions.length > 0 ? (
           <div className="space-y-4">
-            {sessions.map((session) => {
+            {sessions.map((session, idx) => {
               const isPast = new Date(session.scheduledAt) < new Date();
               const isConfirmed = session.attendanceConfirmed;
               
               return (
                 <div
                   key={session.id}
-                  className="bg-bg-tertiary border border-border rounded p-4"
+                  className="bg-gradient-soft border border-border rounded-xl p-5 hover:shadow-md transition-all slide-up"
+                  style={{ animationDelay: `${idx * 0.05}s` }}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="font-medium">{session.title}</h3>
                         {isConfirmed ? (
-                          <span className="bg-white text-black rounded px-2 py-1 text-xs font-medium flex items-center gap-1">
+                          <span className="badge-success flex items-center gap-1">
                             <CheckIcon className="w-3 h-3" />
                             Confirmed
                           </span>
                         ) : isPast ? (
-                          <span className="bg-red-900/20 border border-red-500/50 rounded px-2 py-1 text-xs text-red-400 flex items-center gap-1">
+                          <span className="badge-error flex items-center gap-1">
                             <CrossCircledIcon className="w-3 h-3" />
                             Missed
                           </span>
                         ) : (
-                          <span className="bg-bg-primary border border-border rounded px-2 py-1 text-xs">
+                          <span className="badge-warning">
                             Pending
                           </span>
                         )}
@@ -97,7 +100,7 @@ export default function StudentAttendance() {
                       </div>
                     </div>
                     {!isPast && !isConfirmed && (
-                      <button className="bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition-colors">
+                      <button className="btn-primary">
                         Confirm Attendance
                       </button>
                     )}

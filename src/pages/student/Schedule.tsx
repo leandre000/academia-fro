@@ -19,10 +19,12 @@ export default function StudentSchedule() {
   };
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Weekly Schedule</h1>
-        <p className="text-text-secondary">View and manage your learning sessions</p>
+    <div className="p-6 animate-fade-in">
+      <div className="mb-8 slide-up">
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
+          Weekly Schedule
+        </h1>
+        <p className="text-text-muted text-lg">View and manage your learning sessions</p>
       </div>
 
       {/* Upcoming Sessions */}
@@ -33,12 +35,13 @@ export default function StudentSchedule() {
         </h2>
         {scheduledSessions.length > 0 ? (
           <div className="space-y-4">
-            {scheduledSessions.map((session) => {
+            {scheduledSessions.map((session, idx) => {
               const { date, time } = formatDate(session.scheduledAt);
               return (
                 <div
                   key={session.id}
-                  className="bg-bg-secondary border border-white rounded-lg p-6"
+                  className="card slide-up"
+                  style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -60,11 +63,11 @@ export default function StudentSchedule() {
                       )}
                     </div>
                     <div className="flex flex-col gap-2">
-                      <button className="bg-white text-black px-6 py-2 rounded font-medium hover:bg-gray-200 transition-colors">
+                      <button className="btn-primary">
                         Join Session
                       </button>
                       {!session.attendanceConfirmed && (
-                        <button className="bg-bg-tertiary border border-border text-white px-6 py-2 rounded font-medium hover:bg-bg-primary transition-colors">
+                        <button className="btn-secondary">
                           Confirm Attendance
                         </button>
                       )}
@@ -75,8 +78,9 @@ export default function StudentSchedule() {
             })}
           </div>
         ) : (
-          <div className="bg-bg-secondary border border-border rounded-lg p-8 text-center">
-            <p className="text-text-muted">No upcoming sessions scheduled</p>
+          <div className="card text-center py-12 slide-up">
+            <CalendarIcon className="w-16 h-16 mx-auto mb-4 text-text-muted" />
+            <p className="text-text-muted text-lg">No upcoming sessions scheduled</p>
           </div>
         )}
       </div>
@@ -89,12 +93,13 @@ export default function StudentSchedule() {
             Completed Sessions
           </h2>
           <div className="space-y-4">
-            {completedSessions.map((session) => {
+            {completedSessions.map((session, idx) => {
               const { date, time } = formatDate(session.scheduledAt);
               return (
                 <div
                   key={session.id}
-                  className="bg-bg-secondary border border-border rounded-lg p-6 opacity-75"
+                  className="card opacity-75 slide-up"
+                  style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div>
@@ -105,7 +110,7 @@ export default function StudentSchedule() {
                         <p>Duration: {session.duration} minutes</p>
                       </div>
                     </div>
-                    <span className="bg-white text-black rounded px-3 py-1 text-sm font-medium">
+                    <span className="badge-success">
                       Completed
                     </span>
                   </div>
@@ -121,12 +126,13 @@ export default function StudentSchedule() {
         <div>
           <h2 className="text-xl font-semibold mb-4">Cancelled Sessions</h2>
           <div className="space-y-4">
-            {cancelledSessions.map((session) => {
+            {cancelledSessions.map((session, idx) => {
               const { date, time } = formatDate(session.scheduledAt);
               return (
                 <div
                   key={session.id}
-                  className="bg-bg-secondary border border-border rounded-lg p-6 opacity-50"
+                  className="card opacity-50 slide-up"
+                  style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div>
@@ -136,7 +142,7 @@ export default function StudentSchedule() {
                         <p>{time}</p>
                       </div>
                     </div>
-                    <span className="bg-bg-tertiary border border-border rounded px-3 py-1 text-sm">
+                    <span className="badge-error">
                       Cancelled
                     </span>
                   </div>

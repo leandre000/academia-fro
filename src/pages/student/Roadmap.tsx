@@ -14,10 +14,11 @@ export default function StudentRoadmap() {
 
   if (!roadmap) {
     return (
-      <div className="p-8 animate-fade-in">
-        <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-12 text-center shadow-lg">
-          <h2 className="text-3xl font-semibold mb-3">No Roadmap Assigned</h2>
-          <p className="text-gray-400 text-lg">
+      <div className="p-6 animate-fade-in">
+        <div className="card text-center py-16 slide-up">
+          <LockClosedIcon className="w-20 h-20 mx-auto mb-6 text-text-muted" />
+          <h2 className="text-3xl font-semibold mb-3 text-text-primary">No Roadmap Assigned</h2>
+          <p className="text-text-muted text-lg">
             Your trainer will create a roadmap for you soon.
           </p>
         </div>
@@ -39,12 +40,12 @@ export default function StudentRoadmap() {
   };
 
   return (
-    <div className="p-8 animate-fade-in">
-      <div className="mb-10">
-        <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+    <div className="p-6 animate-fade-in">
+      <div className="mb-10 slide-up">
+        <h1 className="text-4xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">
           {roadmap.title}
         </h1>
-        <p className="text-gray-400 text-lg">{roadmap.description}</p>
+        <p className="text-text-muted text-lg">{roadmap.description}</p>
       </div>
 
       {/* Roadmap Info */}
