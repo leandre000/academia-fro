@@ -14,7 +14,7 @@ export default function StudentRoadmap() {
 
   if (!roadmap) {
     return (
-      <div className="p-6 animate-fade-in">
+      <div className="w-full animate-fade-in">
         <div className="card text-center py-16">
           <div className="w-20 h-20 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-6">
             <LockClosedIcon className="w-10 h-10 text-brand-600" />
@@ -51,17 +51,17 @@ export default function StudentRoadmap() {
   };
 
   return (
-    <div className="p-6 animate-fade-in">
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
+    <div className="w-full animate-fade-in">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-text-primary">
           {roadmap.title}
         </h1>
-        <p className="text-text-secondary">{roadmap.description}</p>
+        <p className="text-sm sm:text-base text-text-secondary">{roadmap.description}</p>
       </div>
 
       {/* Roadmap Info Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-text-secondary">Weekly Hours</span>
             <div className="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center">
@@ -71,7 +71,7 @@ export default function StudentRoadmap() {
           <p className="text-3xl sm:text-4xl font-semibold text-text-primary">{roadmap.weeklyHours}h</p>
         </div>
         
-        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-text-secondary">Monthly Price</span>
             <div className="w-10 h-10 bg-accent-50 rounded-xl flex items-center justify-center">
@@ -81,7 +81,7 @@ export default function StudentRoadmap() {
           <p className="text-3xl sm:text-4xl font-semibold text-text-primary currency-value">${roadmap.monthlyPrice.toLocaleString()}</p>
         </div>
         
-        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+        <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-text-secondary">Status</span>
             <div className="w-10 h-10 bg-success-light rounded-xl flex items-center justify-center">
@@ -97,7 +97,7 @@ export default function StudentRoadmap() {
       </div>
 
       {/* Learning Goals */}
-      <div className="card p-6 mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+      <div className="card p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center">
             <FileTextIcon className="w-5 h-5 text-brand-600" />
@@ -121,7 +121,7 @@ export default function StudentRoadmap() {
         {roadmap.phases.map((phase, phaseIdx) => (
           <div
             key={phase.id}
-            className={`card p-6 animate-fade-in-up transition-all ${
+            className={`card p-4 sm:p-6 animate-fade-in-up transition-all ${
               phase.isLocked ? 'opacity-60' : ''
             }`}
             style={{ animationDelay: `${0.5 + phaseIdx * 0.1}s` }}

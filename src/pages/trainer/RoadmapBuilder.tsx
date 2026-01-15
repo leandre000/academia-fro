@@ -136,10 +136,10 @@ export default function TrainerRoadmapBuilder() {
   };
 
   return (
-    <div className="p-6 animate-fade-in">
-      <div className="mb-8 slide-up">
-        <h1 className="text-3xl font-bold mb-2 text-text-primary">Roadmap Builder</h1>
-        <p className="text-text-secondary">Create a custom learning path for your students</p>
+    <div className="w-full animate-fade-in">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-text-primary">Roadmap Builder</h1>
+        <p className="text-sm sm:text-base text-text-secondary">Create a custom learning path for your students</p>
       </div>
 
       <div className="flex gap-4 mb-6">
@@ -235,7 +235,7 @@ export default function TrainerRoadmapBuilder() {
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           {/* Basic Info */}
-        <div className="card mb-8">
+        <div className="card p-4 sm:p-6 mb-6 sm:mb-8">
           <h2 className="text-2xl font-semibold mb-6 text-text-primary">Basic Information</h2>
             <div className="space-y-4">
               <div>
@@ -306,7 +306,7 @@ export default function TrainerRoadmapBuilder() {
           </div>
 
           {/* Learning Goals */}
-          <div className="card mb-8">
+          <div className="card p-4 sm:p-6 mb-6 sm:mb-8">
             <h2 className="text-2xl font-semibold mb-6 text-text-primary">Learning Goals</h2>
             <div className="flex gap-2 mb-4">
               <input

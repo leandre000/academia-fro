@@ -12,12 +12,12 @@ export default function CompanyPrograms() {
   );
 
   return (
-    <div className="p-6 animate-fade-in">
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
+    <div className="w-full animate-fade-in">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-text-primary">
           Active Programs
         </h1>
-        <p className="text-text-secondary">View learning programs and roadmaps for company students</p>
+        <p className="text-sm sm:text-base text-text-secondary">View learning programs and roadmaps for company students</p>
       </div>
 
       {companyRoadmaps.length > 0 ? (
@@ -29,7 +29,7 @@ export default function CompanyPrograms() {
             return (
               <div
                 key={roadmap.id}
-                className="card p-6 animate-fade-in-up"
+                className="card p-4 sm:p-6 animate-fade-in-up"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-6">
@@ -97,7 +97,7 @@ export default function CompanyPrograms() {
           })}
         </div>
       ) : (
-        <div className="card text-center py-16">
+        <div className="card text-center py-12 sm:py-16">
           <FileTextIcon className="w-20 h-20 mx-auto mb-6 text-text-tertiary" />
           <h2 className="text-2xl font-semibold mb-3 text-text-primary">No Active Programs</h2>
           <p className="text-text-secondary">

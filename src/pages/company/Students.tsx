@@ -91,14 +91,14 @@ export default function CompanyStudents() {
   };
 
   return (
-    <div className="p-6 animate-fade-in">
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-4">
+    <div className="w-full animate-fade-in">
+      <div className="mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
           <div>
-            <h1 className="text-3xl font-semibold mb-2 text-text-primary">
+            <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-text-primary">
               Our Students
             </h1>
-            <p className="text-text-secondary">Manage and track company-sponsored students</p>
+            <p className="text-sm sm:text-base text-text-secondary">Manage and track company-sponsored students</p>
           </div>
           <Button
             variant="primary"
@@ -120,7 +120,7 @@ export default function CompanyStudents() {
             return (
               <div
                 key={student.id}
-                className="card p-6 animate-fade-in-up"
+                className="card p-4 sm:p-6 animate-fade-in-up"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-6">
@@ -210,7 +210,7 @@ export default function CompanyStudents() {
           })}
         </div>
       ) : (
-        <div className="card text-center py-16">
+        <div className="card text-center py-12 sm:py-16">
           <PersonIcon className="w-20 h-20 mx-auto mb-6 text-text-tertiary" />
           <h2 className="text-2xl font-semibold mb-3 text-text-primary">No Students Found</h2>
           <p className="text-text-secondary mb-6">

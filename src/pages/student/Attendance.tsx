@@ -19,37 +19,37 @@ export default function StudentAttendance() {
     : 0;
 
   return (
-    <div className="p-6 animate-fade-in">
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
+    <div className="w-full animate-fade-in">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-text-primary">
           Attendance
         </h1>
-        <p className="text-text-secondary">Track your session attendance and participation</p>
+        <p className="text-sm sm:text-base text-text-secondary">Track your session attendance and participation</p>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <p className="text-sm font-medium text-text-secondary mb-2">Attendance Rate</p>
-          <p className="text-4xl font-semibold text-brand-600">{attendanceRate}%</p>
+          <p className="text-3xl sm:text-4xl font-semibold text-brand-600">{attendanceRate}%</p>
         </div>
-        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <p className="text-sm font-medium text-text-secondary mb-2">Total Sessions</p>
-          <p className="text-4xl font-semibold text-text-primary">{attendanceStats.total}</p>
+          <p className="text-3xl sm:text-4xl font-semibold text-text-primary">{attendanceStats.total}</p>
         </div>
-        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+        <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <p className="text-sm font-medium text-text-secondary mb-2">Confirmed</p>
-          <p className="text-4xl font-semibold text-success-dark">{attendanceStats.confirmed}</p>
+          <p className="text-3xl sm:text-4xl font-semibold text-success-dark">{attendanceStats.confirmed}</p>
         </div>
-        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <p className="text-sm font-medium text-text-secondary mb-2">Pending</p>
-          <p className="text-4xl font-semibold text-warning-dark">{attendanceStats.pending}</p>
+          <p className="text-3xl sm:text-4xl font-semibold text-warning-dark">{attendanceStats.pending}</p>
         </div>
       </div>
 
       {/* Session List */}
-      <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-        <h2 className="text-xl font-semibold mb-6 text-text-primary">Session History</h2>
+      <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+        <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-text-primary">Session History</h2>
         {sessions.length > 0 ? (
           <div className="space-y-4">
             {sessions.map((session, idx) => {

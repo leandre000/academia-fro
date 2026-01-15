@@ -20,17 +20,17 @@ export default function StudentSchedule() {
   };
 
   return (
-    <div className="p-6 animate-fade-in">
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
+    <div className="w-full animate-fade-in">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-text-primary">
           Weekly Schedule
         </h1>
-        <p className="text-text-secondary">View and manage your learning sessions</p>
+        <p className="text-sm sm:text-base text-text-secondary">View and manage your learning sessions</p>
       </div>
 
       {/* Upcoming Sessions */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-text-primary">
+      <div className="mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 flex items-center gap-2 text-text-primary">
           <CalendarIcon className="w-5 h-5" />
           Upcoming Sessions
         </h2>
@@ -41,7 +41,7 @@ export default function StudentSchedule() {
               return (
                 <div
                   key={session.id}
-                  className="card p-6 animate-fade-in-up"
+                  className="card p-4 sm:p-6 animate-fade-in-up"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
@@ -88,8 +88,8 @@ export default function StudentSchedule() {
 
       {/* Completed Sessions */}
       {completedSessions.length > 0 && (
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-text-primary">
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 flex items-center gap-2 text-text-primary">
             <CheckIcon className="w-5 h-5" />
             Completed Sessions
           </h2>
@@ -99,7 +99,7 @@ export default function StudentSchedule() {
               return (
                 <div
                   key={session.id}
-                  className="card p-6 opacity-75 animate-fade-in-up"
+                  className="card p-4 sm:p-6 opacity-75 animate-fade-in-up"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
@@ -125,14 +125,14 @@ export default function StudentSchedule() {
       {/* Cancelled Sessions */}
       {cancelledSessions.length > 0 && (
         <div>
-          <h2 className="text-xl font-semibold mb-6 text-text-primary">Cancelled Sessions</h2>
+          <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-text-primary">Cancelled Sessions</h2>
           <div className="space-y-4">
             {cancelledSessions.map((session, idx) => {
               const { date, time } = formatDate(session.scheduledAt);
               return (
                 <div
                   key={session.id}
-                  className="card p-6 opacity-50 animate-fade-in-up"
+                  className="card p-4 sm:p-6 opacity-50 animate-fade-in-up"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
