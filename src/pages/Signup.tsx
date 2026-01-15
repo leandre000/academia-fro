@@ -45,7 +45,6 @@ export default function Signup() {
       return;
     }
 
-    // Create new user (in real app, this would call an API)
     const newUser = {
       id: `user_${Date.now()}`,
       email: formData.email,
@@ -55,7 +54,6 @@ export default function Signup() {
 
     login(newUser);
 
-    // Navigate based on role
     const roleRoutes: Record<UserRole, string> = {
       student: '/student',
       trainer: '/trainer',
@@ -69,83 +67,76 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-soft p-4 relative overflow-hidden">
-      {/* Beautiful Gradient Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary opacity-20 rounded-full blur-3xl animate-float" />
-        <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-br from-gradient-purple to-gradient-pink opacity-20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 -left-20 w-64 h-64 bg-accent-light opacity-15 rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
-      </div>
-
-      <div className="w-full max-w-md relative z-10 animate-fade-in">
-        <div className="glass-effect rounded-3xl p-10 shadow-2xl">
+    <div className="min-h-screen bg-surface-secondary flex items-center justify-center p-4">
+      <div className="w-full max-w-md animate-fade-in-up">
+        <div className="card p-8">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <span className="text-white text-2xl font-bold">A</span>
+            <div className="w-16 h-16 bg-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-soft">
+              <span className="text-white text-2xl font-semibold">A</span>
             </div>
-            <h2 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">Create Account</h2>
-            <p className="text-text-muted">Sign up to get started</p>
+            <h2 className="text-2xl font-semibold mb-2 text-text-primary">Create Account</h2>
+            <p className="text-text-secondary">Sign up to get started</p>
           </div>
 
           <form onSubmit={handleSignup} className="space-y-5">
             <div>
-              <label className="input-label">Full Name</label>
+              <label className="label">Full Name</label>
               <div className="relative">
-                <PersonIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-muted" />
+                <PersonIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-tertiary" />
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Enter your full name"
-                  className="input-field pl-12"
+                  className="input pl-10"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="input-label">Email</label>
+              <label className="label">Email</label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="Enter your email"
-                className="input-field"
+                className="input"
                 required
               />
             </div>
 
             <div>
-              <label className="input-label">Password</label>
+              <label className="label">Password</label>
               <input
                 type="password"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 placeholder="Create a password"
-                className="input-field"
+                className="input"
                 required
                 minLength={6}
               />
             </div>
 
             <div>
-              <label className="input-label">Confirm Password</label>
+              <label className="label">Confirm Password</label>
               <input
                 type="password"
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                 placeholder="Confirm your password"
-                className="input-field"
+                className="input"
                 required
               />
             </div>
 
             <div>
-              <label className="input-label">Role</label>
+              <label className="label">Role</label>
               <select
                 value={formData.role}
                 onChange={(e) => setFormData({ ...formData, role: e.target.value as UserRole })}
-                className="input-field"
+                className="input"
                 required
               >
                 <option value="">Select your role</option>
@@ -158,8 +149,7 @@ export default function Signup() {
             </div>
 
             {error && (
-              <div className="bg-error-light border-2 border-error rounded-xl p-4 text-error text-sm animate-slide-up flex items-center gap-2">
-                <span className="font-semibold">⚠</span>
+              <div className="p-4 bg-error-light border border-error rounded-xl text-error text-sm animate-fade-in">
                 {error}
               </div>
             )}
@@ -167,7 +157,6 @@ export default function Signup() {
             <Button
               type="submit"
               variant="primary"
-              size="lg"
               className="w-full"
               showArrow
             >
@@ -175,9 +164,9 @@ export default function Signup() {
             </Button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-text-muted">
+          <p className="mt-6 text-center text-sm text-text-secondary">
             Already have an account?{' '}
-            <Link to="/login" className="text-accent hover:text-accent-hover font-semibold">
+            <Link to="/login" className="text-brand-600 hover:text-brand-700 font-medium">
               Sign In
             </Link>
           </p>
@@ -186,4 +175,3 @@ export default function Signup() {
     </div>
   );
 }
-

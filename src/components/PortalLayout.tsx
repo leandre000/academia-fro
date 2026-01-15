@@ -4,11 +4,11 @@ import TopHeader from './TopHeader';
 
 export default function PortalLayout() {
   return (
-    <div className="flex h-screen bg-bg-primary overflow-hidden">
+    <div className="flex h-screen bg-surface-secondary">
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopHeader />
-        <main className="flex-1 overflow-auto bg-gradient-soft">
+        <main className="flex-1 overflow-auto">
           <div className="min-h-full">
             <Outlet />
           </div>
@@ -17,4 +17,3 @@ export default function PortalLayout() {
     </div>
   );
 }
-

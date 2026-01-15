@@ -67,6 +67,7 @@ const roleNavItems: Record<UserRole, NavItem[]> = {
     { path: '/company', label: 'Dashboard', icon: HomeIcon },
     { path: '/company/students', label: 'Our Students', icon: PersonIcon },
     { path: '/company/programs', label: 'Programs', icon: FileTextIcon },
+    { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
 };
 
@@ -85,25 +86,25 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="w-64 bg-white border-r border-border h-screen flex flex-col shadow-lg">
+    <div className="w-64 bg-surface-primary border-r border-border h-screen flex flex-col">
       {/* Logo Section */}
-      <div className="p-6 border-b border-border bg-gradient-soft">
+      <div className="p-6 border-b border-border">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-lg">
-            <span className="text-white font-bold text-xl">A</span>
+          <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center shadow-soft">
+            <span className="text-white font-bold text-lg">A</span>
           </div>
-          <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <h1 className="text-lg font-semibold text-text-primary">
             Academia FRO
           </h1>
         </div>
-        <div className="bg-white rounded-lg p-3 border border-border shadow-sm">
-          <p className="text-sm font-semibold text-text-primary">{user.name}</p>
-          <p className="text-xs text-text-muted mt-1 capitalize">{user.role.replace('_', ' ')}</p>
+        <div className="bg-surface-tertiary rounded-xl p-3 border border-border">
+          <p className="text-sm font-medium text-text-primary">{user.name}</p>
+          <p className="text-xs text-text-tertiary mt-0.5 capitalize">{user.role.replace('_', ' ')}</p>
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
+      <nav className="flex-1 p-3 space-y-1 overflow-y-auto scrollbar-hide">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
@@ -111,16 +112,9 @@ export default function Sidebar() {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 relative group ${
-                isActive
-                  ? 'bg-gradient-accent text-white font-semibold shadow-lg shadow-accent/30'
-                  : 'text-text-secondary hover:bg-gradient-soft hover:text-accent'
-              }`}
+              className={isActive ? 'nav-link-active' : 'nav-link'}
             >
-              {isActive && (
-                <div className="absolute right-2 top-1/2 transform -translate-y-1/2 w-1.5 h-8 bg-white rounded-l-full opacity-80" />
-              )}
-              <Icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${isActive ? 'text-white' : 'text-text-muted'}`} />
+              <Icon className="w-5 h-5" />
               <span>{item.label}</span>
             </Link>
           );
@@ -128,10 +122,10 @@ export default function Sidebar() {
       </nav>
 
       {/* Logout */}
-      <div className="p-4 border-t border-border bg-gradient-soft">
+      <div className="p-3 border-t border-border">
         <button
           onClick={() => setShowLogoutModal(true)}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-text-secondary hover:bg-error-light hover:text-error hover:border-error/20 border-2 border-transparent transition-all duration-300 font-medium"
+          className="w-full nav-link text-error hover:bg-error-light hover:text-error-dark"
         >
           <ExitIcon className="w-5 h-5" />
           <span>Logout</span>
@@ -152,4 +146,3 @@ export default function Sidebar() {
     </div>
   );
 }
-

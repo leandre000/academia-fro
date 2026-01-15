@@ -31,7 +31,6 @@ export default function Login() {
       return;
     }
 
-    // Find user by email and role
     const user = Object.values(mockUsers).find(
       (u) => u.email === email && u.role === selectedRole
     );
@@ -43,7 +42,6 @@ export default function Login() {
 
     login(user);
 
-    // Navigate based on role
     const roleRoutes: Record<UserRole, string> = {
       student: '/student',
       trainer: '/trainer',
@@ -75,51 +73,27 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-soft p-4 relative overflow-hidden">
-      {/* Beautiful Gradient Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary opacity-20 rounded-full blur-3xl animate-float" />
-        <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-br from-gradient-purple to-gradient-pink opacity-20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 -left-20 w-64 h-64 bg-accent-light opacity-15 rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
-        <div className="absolute -top-20 right-20 w-72 h-72 bg-gradient-accent opacity-20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
-      </div>
-
-      <div className="w-full max-w-md relative z-10 animate-fade-in">
-        {/* Beautiful Glass Card */}
-        <div className="glass-effect rounded-3xl p-10 shadow-2xl">
+    <div className="min-h-screen bg-surface-secondary flex items-center justify-center p-4">
+      <div className="w-full max-w-md animate-fade-in-up">
+        <div className="card p-8">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <span className="text-white text-2xl font-bold">A</span>
+            <div className="w-16 h-16 bg-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-soft">
+              <span className="text-white text-2xl font-semibold">A</span>
             </div>
-            <h2 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">Welcome back!</h2>
-            <p className="text-text-muted">Sign in to continue</p>
+            <h2 className="text-2xl font-semibold mb-2 text-text-primary">Welcome back</h2>
+            <p className="text-text-secondary">Sign in to continue to your account</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-5">
             <div>
-              <label className="input-label">Email</label>
-              <div className="relative">
-                <PersonIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-muted" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="input-field pl-12"
-                  required
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="input-label">Role</label>
+              <label className="label">Role</label>
               <select
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value as UserRole)}
-                className="input-field"
+                className="input"
                 required
               >
-                <option value="">Select role</option>
+                <option value="">Select a role</option>
                 {Object.entries(roleDisplayNames).map(([role, name]) => (
                   <option key={role} value={role}>
                     {name}
@@ -128,9 +102,23 @@ export default function Login() {
               </select>
             </div>
 
+            <div>
+              <label className="label">Email</label>
+              <div className="relative">
+                <PersonIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-tertiary" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="input pl-10"
+                  required
+                />
+              </div>
+            </div>
+
             {error && (
-              <div className="bg-error-light border-2 border-error rounded-xl p-4 text-error text-sm animate-slide-up flex items-center gap-2">
-                <span className="font-semibold">⚠</span>
+              <div className="p-4 bg-error-light border border-error rounded-xl text-error text-sm animate-fade-in">
                 {error}
               </div>
             )}
@@ -138,22 +126,21 @@ export default function Login() {
             <Button
               type="submit"
               variant="primary"
-              size="lg"
               className="w-full"
             >
-              Login
+              Sign In
             </Button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <p className="text-sm text-gray-600 mb-4 text-center">Quick Login (Demo):</p>
+          <div className="mt-8 pt-6 border-t border-border">
+            <p className="text-sm text-text-secondary mb-4 text-center">Quick Login (Demo):</p>
             <div className="grid grid-cols-2 gap-2">
               {Object.entries(roleDisplayNames).map(([role, name]) => (
                 <button
                   key={role}
                   onClick={() => quickLogin(role as UserRole)}
                   type="button"
-                  className="text-xs bg-gradient-soft border border-border rounded-xl px-4 py-3 hover:border-accent hover:bg-white transition-all text-left text-text-primary font-medium hover:shadow-md"
+                  className="btn-tertiary text-left text-sm"
                 >
                   {name}
                 </button>
@@ -161,10 +148,10 @@ export default function Login() {
             </div>
           </div>
 
-          <p className="mt-6 text-center text-sm text-text-muted">
+          <p className="mt-6 text-center text-sm text-text-secondary">
             Don't have an account?{' '}
-            <Link to="/signup" className="text-accent hover:text-accent-hover font-semibold">
-              Sign Up
+            <Link to="/signup" className="text-brand-600 hover:text-brand-700 font-medium">
+              Sign up
             </Link>
           </p>
         </div>
@@ -172,4 +159,3 @@ export default function Login() {
     </div>
   );
 }
-

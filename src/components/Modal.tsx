@@ -44,20 +44,28 @@ export default function Modal({
       onClick={onClose}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+      <div 
+        className="absolute inset-0 bg-neutral-900/50 backdrop-blur-sm transition-opacity" 
+        onClick={onClose}
+        aria-hidden="true"
+      />
       
       {/* Modal Content */}
       <div
-        className={`relative bg-white rounded-2xl shadow-2xl w-full ${sizeClasses[size]} max-h-[90vh] overflow-hidden animate-scale-in`}
+        className={`relative bg-surface-primary rounded-2xl shadow-large w-full ${sizeClasses[size]} max-h-[90vh] overflow-hidden animate-scale-in`}
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-border bg-gradient-soft">
-          <h2 className="text-2xl font-bold text-text-primary">{title}</h2>
+        <div className="flex items-center justify-between p-6 border-b border-border">
+          <h2 id="modal-title" className="text-xl font-semibold text-text-primary">{title}</h2>
           {showCloseButton && (
             <button
               onClick={onClose}
-              className="icon-button hover:bg-error/10 hover:text-error"
+              className="p-2 rounded-lg hover:bg-surface-tertiary text-text-tertiary hover:text-text-primary transition-colors"
+              aria-label="Close modal"
             >
               <Cross2Icon className="w-5 h-5" />
             </button>
@@ -65,11 +73,10 @@ export default function Modal({
         </div>
         
         {/* Body */}
-        <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+        <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)] scrollbar-hide">
           {children}
         </div>
       </div>
     </div>
   );
 }
-
