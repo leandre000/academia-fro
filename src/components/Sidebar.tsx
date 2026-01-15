@@ -71,23 +71,25 @@ export default function Sidebar() {
   const navItems = roleNavItems[user.role] || [];
 
   return (
-    <div className="w-64 bg-bg-secondary border-r border-border h-screen flex flex-col">
+    <div className="w-64 bg-white border-r border-border h-screen flex flex-col shadow-lg">
       {/* Logo Section */}
-      <div className="p-6 border-b border-border">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-medium to-blue-light rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">A</span>
+      <div className="p-6 border-b border-border bg-gradient-soft">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-lg">
+            <span className="text-white font-bold text-xl">A</span>
           </div>
-          <h1 className="text-2xl font-bold text-text-primary">
+          <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
             Academia FRO
           </h1>
         </div>
-        <p className="text-sm text-text-secondary font-medium">{user.name}</p>
-        <p className="text-xs text-text-muted mt-1 capitalize">{user.role.replace('_', ' ')}</p>
+        <div className="bg-white rounded-lg p-3 border border-border shadow-sm">
+          <p className="text-sm font-semibold text-text-primary">{user.name}</p>
+          <p className="text-xs text-text-muted mt-1 capitalize">{user.role.replace('_', ' ')}</p>
+        </div>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
@@ -95,16 +97,16 @@ export default function Sidebar() {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 relative ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 relative group ${
                 isActive
-                  ? 'bg-accent text-white font-semibold shadow-lg'
-                  : 'text-text-secondary hover:bg-bg-tertiary hover:text-text-primary'
+                  ? 'bg-gradient-accent text-white font-semibold shadow-lg shadow-accent/30'
+                  : 'text-text-secondary hover:bg-gradient-soft hover:text-accent'
               }`}
             >
               {isActive && (
-                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-white rounded-l-full" />
+                <div className="absolute right-2 top-1/2 transform -translate-y-1/2 w-1.5 h-8 bg-white rounded-l-full opacity-80" />
               )}
-              <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-text-muted'}`} />
+              <Icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${isActive ? 'text-white' : 'text-text-muted'}`} />
               <span>{item.label}</span>
             </Link>
           );
@@ -112,10 +114,10 @@ export default function Sidebar() {
       </nav>
 
       {/* Logout */}
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border bg-gradient-soft">
         <button
           onClick={logout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary hover:bg-red-500/10 hover:text-red-400 transition-all duration-200"
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-text-secondary hover:bg-red-50 hover:text-error hover:border-error/20 border-2 border-transparent transition-all duration-300 font-medium"
         >
           <ExitIcon className="w-5 h-5" />
           <span>Logout</span>

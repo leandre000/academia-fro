@@ -29,41 +29,41 @@ export default function StudentDashboard() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="card slide-up" style={{ animationDelay: '0.1s' }}>
+        <div className="card-gradient slide-up" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-medium">Progress</span>
-            <div className="bg-green-500/20 p-2 rounded-lg">
-              <CheckIcon className="w-5 h-5 text-green-400" />
+            <span className="text-text-muted text-sm font-semibold">Progress</span>
+            <div className="bg-gradient-to-br from-success/20 to-success/10 p-3 rounded-xl">
+              <CheckIcon className="w-5 h-5 text-success" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2 text-text-primary">{progress?.completionPercentage || 0}%</p>
-          <p className="text-sm text-text-muted">
+          <p className="text-5xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">{progress?.completionPercentage || 0}%</p>
+          <p className="text-sm text-text-muted font-medium">
             {progress?.completedTasks || 0} of {progress?.totalTasks || 0} tasks completed
           </p>
         </div>
 
-        <div className="card slide-up" style={{ animationDelay: '0.2s' }}>
+        <div className="card-gradient slide-up" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-medium">Current Phase</span>
-            <div className="bg-blue-500/20 p-2 rounded-lg">
-              <LockClosedIcon className="w-5 h-5 text-blue-400" />
+            <span className="text-text-muted text-sm font-semibold">Current Phase</span>
+            <div className="bg-gradient-to-br from-info/20 to-info/10 p-3 rounded-xl">
+              <LockClosedIcon className="w-5 h-5 text-info" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2 text-text-primary">Phase {progress?.currentPhase || 1}</p>
-          <p className="text-sm text-text-muted">
+          <p className="text-5xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">Phase {progress?.currentPhase || 1}</p>
+          <p className="text-sm text-text-muted font-medium">
             {roadmap?.phases.find((p) => p.order === progress?.currentPhase)?.title || 'Foundation'}
           </p>
         </div>
 
-        <div className="card slide-up" style={{ animationDelay: '0.3s' }}>
+        <div className="card-gradient slide-up" style={{ animationDelay: '0.3s' }}>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-text-muted text-sm font-medium">Upcoming Sessions</span>
-            <div className="bg-purple-500/20 p-2 rounded-lg">
-              <CalendarIcon className="w-5 h-5 text-purple-400" />
+            <span className="text-text-muted text-sm font-semibold">Upcoming Sessions</span>
+            <div className="bg-gradient-to-br from-gradient-purple/20 to-gradient-pink/10 p-3 rounded-xl">
+              <CalendarIcon className="w-5 h-5 text-gradient-purple" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2 text-text-primary">{upcomingSessions.length}</p>
-          <p className="text-sm text-text-muted">This week</p>
+          <p className="text-5xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">{upcomingSessions.length}</p>
+          <p className="text-sm text-text-muted font-medium">This week</p>
         </div>
       </div>
 
@@ -71,21 +71,21 @@ export default function StudentDashboard() {
       {roadmap && (
         <div className="card mb-8 slide-up" style={{ animationDelay: '0.4s' }}>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-text-primary">Your Roadmap</h2>
+            <h2 className="text-2xl font-semibold text-text-primary">Your Roadmap</h2>
             <Link
               to="/student/roadmap"
-              className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1"
+              className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1 font-semibold"
             >
               View Full Roadmap →
             </Link>
           </div>
-          <h3 className="text-lg font-medium mb-3 text-text-primary">{roadmap.title}</h3>
+          <h3 className="text-xl font-semibold mb-3 text-text-primary">{roadmap.title}</h3>
           <p className="text-text-muted mb-5">{roadmap.description}</p>
           <div className="flex gap-2 flex-wrap">
             {roadmap.learningGoals.slice(0, 3).map((goal, idx) => (
               <span
                 key={idx}
-                className="bg-bg-tertiary border border-border rounded-lg px-4 py-2 text-sm text-text-secondary hover:border-accent/50 transition-colors"
+                className="bg-gradient-soft border border-border rounded-xl px-4 py-2 text-sm text-text-secondary font-medium hover:border-accent/50 transition-colors"
               >
                 {goal}
               </span>
@@ -97,10 +97,10 @@ export default function StudentDashboard() {
       {/* Upcoming Sessions */}
       <div className="card slide-up" style={{ animationDelay: '0.5s' }}>
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold text-text-primary">Upcoming Sessions</h2>
+          <h2 className="text-2xl font-semibold text-text-primary">Upcoming Sessions</h2>
           <Link
             to="/student/schedule"
-            className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1"
+            className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1 font-semibold"
           >
             View All →
           </Link>
@@ -110,7 +110,7 @@ export default function StudentDashboard() {
             {upcomingSessions.map((session) => (
               <div
                 key={session.id}
-                className="bg-bg-tertiary border border-border rounded-lg p-5 hover:border-accent/50 transition-all"
+                className="bg-gradient-soft border border-border rounded-xl p-5 hover:border-accent/50 hover:shadow-md transition-all"
               >
                 <div className="flex items-center justify-between">
                   <div>

@@ -7,24 +7,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Umurage-inspired dark blue-gray theme
-        'bg-primary': '#0f1419',
-        'bg-secondary': '#1a1f2e',
-        'bg-tertiary': '#252b3a',
-        'border': '#2d3444',
-        'text-primary': '#ffffff',
-        'text-secondary': '#e2e8f0',
+        // Beautiful modern light theme with coherent colors
+        'bg-primary': '#f8fafc',
+        'bg-secondary': '#ffffff',
+        'bg-tertiary': '#f1f5f9',
+        'border': '#e2e8f0',
+        'text-primary': '#0f172a',
+        'text-secondary': '#475569',
         'text-muted': '#94a3b8',
-        'accent': '#3b82f6',
-        'accent-hover': '#2563eb',
-        // Blue gradients for backgrounds
-        'blue-dark': '#1e3a8a',
-        'blue-medium': '#3b82f6',
-        'blue-light': '#60a5fa',
+        'accent': '#6366f1',
+        'accent-hover': '#4f46e5',
+        'accent-light': '#818cf8',
+        // Beautiful gradient colors
+        'gradient-start': '#6366f1',
+        'gradient-end': '#8b5cf6',
+        'gradient-purple': '#a855f7',
+        'gradient-pink': '#ec4899',
+        // Status colors
+        'success': '#10b981',
+        'warning': '#f59e0b',
+        'error': '#ef4444',
+        'info': '#3b82f6',
       },
       backgroundImage: {
-        'gradient-blue': 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%)',
-        'gradient-blue-abstract': 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(30, 58, 138, 0.4) 0%, transparent 50%)',
+        'gradient-primary': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
+        'gradient-soft': 'linear-gradient(135deg, #f0f9ff 0%, #faf5ff 100%)',
+        'gradient-card': 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

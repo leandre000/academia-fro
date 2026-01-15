@@ -74,23 +74,25 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white p-4 relative overflow-hidden">
-      {/* Abstract Gradient Blue Shapes Background */}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-soft p-4 relative overflow-hidden">
+      {/* Beautiful Gradient Background Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large rounded shape - top left */}
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-br from-blue-medium/40 to-blue-light/30 rounded-full blur-3xl animate-float" />
-        {/* Medium rounded shape - bottom right */}
-        <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-br from-blue-dark/50 to-blue-medium/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        {/* Small rounded shape - center left */}
-        <div className="absolute top-1/2 -left-20 w-64 h-64 bg-gradient-to-br from-blue-light/30 to-blue-medium/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
-        {/* Medium rounded shape - top right */}
-        <div className="absolute -top-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-medium/35 to-blue-light/25 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-primary opacity-20 rounded-full blur-3xl animate-float" />
+        <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-br from-gradient-purple to-gradient-pink opacity-20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 -left-20 w-64 h-64 bg-accent-light opacity-15 rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
+        <div className="absolute -top-20 right-20 w-72 h-72 bg-gradient-accent opacity-20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
       </div>
 
       <div className="w-full max-w-md relative z-10 animate-fade-in">
-        {/* White Card */}
-        <div className="bg-white rounded-2xl p-8 shadow-2xl border border-gray-100">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">Welcome back!</h2>
+        {/* Beautiful Glass Card */}
+        <div className="glass-effect rounded-3xl p-10 shadow-2xl">
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <span className="text-white text-2xl font-bold">A</span>
+            </div>
+            <h2 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">Welcome back!</h2>
+            <p className="text-text-muted">Sign in to continue</p>
+          </div>
 
           <form onSubmit={handleLogin} className="space-y-5">
             <div>
@@ -133,7 +135,7 @@ export default function Login() {
 
             <button
               type="submit"
-              className="w-full bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+              className="w-full btn-primary text-lg py-4"
             >
               Login
             </button>
