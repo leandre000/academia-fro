@@ -69,16 +69,23 @@ export default function Sidebar() {
   const navItems = roleNavItems[user.role] || [];
 
   return (
-    <div className="w-64 bg-gradient-to-b from-gray-900 to-black border-r border-gray-800 h-screen flex flex-col shadow-2xl">
-      <div className="p-6 border-b border-gray-800">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-          Academia FRO
-        </h1>
-        <p className="text-sm text-gray-300 mt-2 font-medium">{user.name}</p>
-        <p className="text-xs text-gray-500 mt-1 capitalize">{user.role.replace('_', ' ')}</p>
+    <div className="w-64 bg-bg-secondary border-r border-border h-screen flex flex-col">
+      {/* Logo Section */}
+      <div className="p-6 border-b border-border">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-8 h-8 bg-gradient-to-br from-blue-medium to-blue-light rounded-lg flex items-center justify-center">
+            <span className="text-white font-bold text-lg">A</span>
+          </div>
+          <h1 className="text-2xl font-bold text-text-primary">
+            Academia FRO
+          </h1>
+        </div>
+        <p className="text-sm text-text-secondary font-medium">{user.name}</p>
+        <p className="text-xs text-text-muted mt-1 capitalize">{user.role.replace('_', ' ')}</p>
       </div>
 
-      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
+      {/* Navigation */}
+      <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
@@ -86,23 +93,27 @@ export default function Sidebar() {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 relative ${
                 isActive
-                  ? 'bg-white text-black font-semibold shadow-lg transform scale-[1.02]'
-                  : 'text-gray-300 hover:bg-gray-800 hover:text-white hover:translate-x-1'
+                  ? 'bg-accent text-white font-semibold shadow-lg'
+                  : 'text-text-secondary hover:bg-bg-tertiary hover:text-text-primary'
               }`}
             >
-              <Icon className={`w-5 h-5 ${isActive ? '' : 'text-gray-400'}`} />
+              {isActive && (
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-white rounded-l-full" />
+              )}
+              <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-text-muted'}`} />
               <span>{item.label}</span>
             </Link>
           );
         })}
       </nav>
 
-      <div className="p-4 border-t border-gray-800">
+      {/* Logout */}
+      <div className="p-4 border-t border-border">
         <button
           onClick={logout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-red-900/20 hover:text-red-400 transition-all duration-200 border border-transparent hover:border-red-900/50"
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary hover:bg-red-500/10 hover:text-red-400 transition-all duration-200"
         >
           <ExitIcon className="w-5 h-5" />
           <span>Logout</span>

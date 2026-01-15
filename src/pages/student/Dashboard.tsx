@@ -12,73 +12,73 @@ export default function StudentDashboard() {
   const upcomingSessions = sessions?.filter((s) => s.status === 'scheduled').slice(0, 3) || [];
 
   return (
-    <div className="p-8 animate-fade-in">
-      <div className="mb-10">
-        <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-          Welcome back, {user?.name}
+    <div className="p-6 animate-fade-in">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-2 text-text-primary">
+          Welcome, {user?.name}!
         </h1>
-        <p className="text-gray-400 text-lg">Here's your learning overview</p>
+        <p className="text-text-muted">Academia FRO management - where we assist learners for their education and professional development.</p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-400 text-sm font-medium">Progress</span>
+            <span className="text-text-muted text-sm font-medium">Progress</span>
             <div className="bg-green-500/20 p-2 rounded-lg">
               <CheckIcon className="w-5 h-5 text-green-400" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2">{progress?.completionPercentage || 0}%</p>
-          <p className="text-sm text-gray-500">
+          <p className="text-4xl font-bold mb-2 text-text-primary">{progress?.completionPercentage || 0}%</p>
+          <p className="text-sm text-text-muted">
             {progress?.completedTasks || 0} of {progress?.totalTasks || 0} tasks completed
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-400 text-sm font-medium">Current Phase</span>
+            <span className="text-text-muted text-sm font-medium">Current Phase</span>
             <div className="bg-blue-500/20 p-2 rounded-lg">
               <LockClosedIcon className="w-5 h-5 text-blue-400" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2">Phase {progress?.currentPhase || 1}</p>
-          <p className="text-sm text-gray-500">
+          <p className="text-4xl font-bold mb-2 text-text-primary">Phase {progress?.currentPhase || 1}</p>
+          <p className="text-sm text-text-muted">
             {roadmap?.phases.find((p) => p.order === progress?.currentPhase)?.title || 'Foundation'}
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+        <div className="bg-bg-secondary border border-border rounded-xl p-6 hover:border-accent/50 transition-all">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-400 text-sm font-medium">Upcoming Sessions</span>
+            <span className="text-text-muted text-sm font-medium">Upcoming Sessions</span>
             <div className="bg-purple-500/20 p-2 rounded-lg">
               <CalendarIcon className="w-5 h-5 text-purple-400" />
             </div>
           </div>
-          <p className="text-4xl font-bold mb-2">{upcomingSessions.length}</p>
-          <p className="text-sm text-gray-500">This week</p>
+          <p className="text-4xl font-bold mb-2 text-text-primary">{upcomingSessions.length}</p>
+          <p className="text-sm text-text-muted">This week</p>
         </div>
       </div>
 
       {/* Roadmap Preview */}
       {roadmap && (
-        <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 mb-8 shadow-lg hover:border-gray-700 transition-all">
+        <div className="bg-bg-secondary border border-border rounded-xl p-6 mb-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold">Your Roadmap</h2>
+            <h2 className="text-xl font-semibold text-text-primary">Your Roadmap</h2>
             <Link
               to="/student/roadmap"
-              className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-1"
+              className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1"
             >
               View Full Roadmap →
             </Link>
           </div>
-          <h3 className="text-xl font-medium mb-3">{roadmap.title}</h3>
-          <p className="text-gray-400 mb-5">{roadmap.description}</p>
+          <h3 className="text-lg font-medium mb-3 text-text-primary">{roadmap.title}</h3>
+          <p className="text-text-muted mb-5">{roadmap.description}</p>
           <div className="flex gap-2 flex-wrap">
             {roadmap.learningGoals.slice(0, 3).map((goal, idx) => (
               <span
                 key={idx}
-                className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors"
+                className="bg-bg-tertiary border border-border rounded-lg px-4 py-2 text-sm text-text-secondary hover:border-accent/50 transition-colors"
               >
                 {goal}
               </span>
@@ -88,12 +88,12 @@ export default function StudentDashboard() {
       )}
 
       {/* Upcoming Sessions */}
-      <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 shadow-lg">
+      <div className="bg-bg-secondary border border-border rounded-xl p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-semibold">Upcoming Sessions</h2>
+          <h2 className="text-xl font-semibold text-text-primary">Upcoming Sessions</h2>
           <Link
             to="/student/schedule"
-            className="text-sm text-white hover:text-gray-300 transition-colors flex items-center gap-1"
+            className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1"
           >
             View All →
           </Link>
@@ -103,23 +103,23 @@ export default function StudentDashboard() {
             {upcomingSessions.map((session) => (
               <div
                 key={session.id}
-                className="bg-gray-800 border border-gray-700 rounded-lg p-5 hover:border-gray-600 transition-all hover:bg-gray-800/50"
+                className="bg-bg-tertiary border border-border rounded-lg p-5 hover:border-accent/50 transition-all"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-semibold mb-2 text-lg">{session.title}</h3>
-                    <p className="text-sm text-gray-400 mb-1">
+                    <h3 className="font-semibold mb-2 text-lg text-text-primary">{session.title}</h3>
+                    <p className="text-sm text-text-muted mb-1">
                       {new Date(session.scheduledAt).toLocaleDateString()} at{' '}
                       {new Date(session.scheduledAt).toLocaleTimeString([], {
                         hour: '2-digit',
                         minute: '2-digit',
                       })}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-text-muted">
                       Duration: {session.duration} minutes
                     </p>
                   </div>
-                  <button className="bg-white text-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-all transform hover:scale-105 shadow-lg">
+                  <button className="bg-accent hover:bg-accent-hover text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
                     Join Session
                   </button>
                 </div>
@@ -127,7 +127,7 @@ export default function StudentDashboard() {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center py-8">No upcoming sessions scheduled</p>
+          <p className="text-text-muted text-center py-8">No upcoming sessions scheduled</p>
         )}
       </div>
     </div>
