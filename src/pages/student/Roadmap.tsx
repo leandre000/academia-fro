@@ -1,6 +1,6 @@
 import { useAuthStore } from '../../store/authStore';
 import { useRoadmapStore } from '../../store/roadmapStore';
-import { CheckIcon, LockClosedIcon, RocketIcon, ClockIcon, DollarSignIcon, FileTextIcon } from '@radix-ui/react-icons';
+import { CheckIcon, LockClosedIcon, RocketIcon, ClockIcon, FileTextIcon } from '@radix-ui/react-icons';
 import { useEffect } from 'react';
 
 export default function StudentRoadmap() {
@@ -79,7 +79,7 @@ export default function StudentRoadmap() {
           <div className="flex items-center justify-between mb-4">
             <span className="text-text-muted text-sm font-semibold">Monthly Price</span>
             <div className="w-12 h-12 bg-gradient-to-br from-secondary-accent/20 to-secondary-accent/10 rounded-xl flex items-center justify-center">
-              <DollarSignIcon className="w-6 h-6 text-secondary-accent" />
+              <span className="text-2xl font-bold text-secondary-accent">$</span>
             </div>
           </div>
           <p className="text-4xl font-bold text-text-primary">${roadmap.monthlyPrice}</p>

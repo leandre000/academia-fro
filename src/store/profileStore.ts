@@ -10,7 +10,7 @@ interface ProfileState {
 
 export const useProfileStore = create<ProfileState>()(
   persist(
-    (set) => ({
+    () => ({
       updateProfile: (updates) => {
         const { user, login } = useAuthStore.getState();
         if (user) {

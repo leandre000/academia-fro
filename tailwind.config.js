@@ -20,6 +20,9 @@ export default {
         'accent-hover': '#6d28d9',
         'accent-light': '#a78bfa',
         'accent-dark': '#5b21b6',
+        // Keep for backward compatibility
+        'gradient-purple': '#8b5cf6',
+        'gradient-pink': '#ec4899',
         // Secondary accent - Teal
         'secondary-accent': '#14b8a6',
         'secondary-accent-light': '#5eead4',

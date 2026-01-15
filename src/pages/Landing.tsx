@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRightIcon, RocketIcon, PersonIcon, CalendarIcon, CheckIcon } from '@radix-ui/react-icons';
+import { RocketIcon, CalendarIcon, CheckIcon } from '@radix-ui/react-icons';
 import Button from '../components/Button';
 
 export default function Landing() {
   const navigate = useNavigate();
-  const [isAnimating, setIsAnimating] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-soft relative overflow-hidden">

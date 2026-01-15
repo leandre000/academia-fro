@@ -1,6 +1,6 @@
 import { mockRoadmaps } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { FileTextIcon, PersonIcon, CheckIcon, CrossCircledIcon, RocketIcon } from '@radix-ui/react-icons';
+import { FileTextIcon, CheckIcon, CrossCircledIcon, RocketIcon } from '@radix-ui/react-icons';
 import Button from '../../components/Button';
 
 export default function MasterMentorDashboard() {

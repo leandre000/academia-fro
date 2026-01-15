@@ -120,7 +120,7 @@ export default function TrainerRoadmapBuilder() {
         })),
       };
 
-      const newRoadmap = createRoadmap(roadmapData);
+      createRoadmap(roadmapData);
       
       // Show success message
       alert('Roadmap created successfully!');

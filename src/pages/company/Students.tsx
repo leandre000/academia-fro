@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useStudentStore } from '../../store/studentStore';
 import { useRoadmapStore } from '../../store/roadmapStore';
-import { PersonIcon, CheckIcon, PlusIcon, Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
+import { PersonIcon, PlusIcon, Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
 import Button from '../../components/Button';
 import Modal from '../../components/Modal';
 import ConfirmationModal from '../../components/ConfirmationModal';
@@ -11,7 +11,6 @@ import type { User } from '../../types';
 export default function CompanyStudents() {
   const { user } = useAuthStore();
   const { 
-    students, 
     studentProgress, 
     initializeStudents, 
     createStudent, 

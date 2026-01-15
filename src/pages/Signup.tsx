@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
-import { mockUsers } from '../data/mockData';
 import type { UserRole } from '../types';
 import { PersonIcon } from '@radix-ui/react-icons';
 import Button from '../components/Button';

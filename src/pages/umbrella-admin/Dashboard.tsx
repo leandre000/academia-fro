@@ -1,7 +1,6 @@
 import { mockWings, mockUsers, mockRoadmaps, mockSessions } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { PersonIcon, CalendarIcon, WalletIcon, BarChartIcon, LayersIcon, GearIcon, RocketIcon } from '@radix-ui/react-icons';
-import Button from '../../components/Button';
+import { PersonIcon, CalendarIcon, BarChartIcon, LayersIcon, GearIcon, RocketIcon } from '@radix-ui/react-icons';
 
 export default function UmbrellaAdminDashboard() {
   const totalWings = mockWings.length;
@@ -61,7 +60,7 @@ export default function UmbrellaAdminDashboard() {
           <div className="flex items-center justify-between mb-4">
             <span className="text-text-muted text-sm font-semibold">Total Revenue</span>
             <div className="w-12 h-12 bg-gradient-to-br from-tertiary-accent/20 to-tertiary-accent/10 rounded-xl flex items-center justify-center">
-              <WalletIcon className="w-6 h-6 text-tertiary-accent" />
+              <span className="text-2xl font-bold text-tertiary-accent">$</span>
             </div>
           </div>
           <p className="text-4xl font-bold mb-2 text-text-primary">${totalRevenue.toLocaleString()}</p>
@@ -142,7 +141,7 @@ export default function UmbrellaAdminDashboard() {
           style={{ animationDelay: '1.0s' }}
         >
           <div className="w-12 h-12 bg-gradient-to-br from-success/20 to-success/10 rounded-xl flex items-center justify-center mb-4">
-            <WalletIcon className="w-6 h-6 text-success" />
+            <span className="text-2xl font-bold text-success">$</span>
           </div>
           <h3 className="text-lg font-semibold mb-2 text-text-primary">Payment Flow</h3>
           <p className="text-text-muted text-sm">

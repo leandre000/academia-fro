@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { useProfileStore } from '../store/profileStore';
-import { PersonIcon, ExitIcon } from '@radix-ui/react-icons';
+import { ExitIcon } from '@radix-ui/react-icons';
 
 export default function Settings() {
   const { user, logout } = useAuthStore();
@@ -12,7 +12,7 @@ export default function Settings() {
     oldPassword: '',
     newPassword: '',
   });
-  const [avatarUrl, setAvatarUrl] = useState(user?.avatar || '');
+  const [avatarUrl] = useState(user?.avatar || '');
   const [isSaving, setIsSaving] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {

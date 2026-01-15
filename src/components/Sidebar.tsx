@@ -13,11 +13,9 @@ import {
   GearIcon,
   ArrowUpIcon,
   ArrowDownIcon,
-  WalletIcon,
   BarChartIcon,
   RocketIcon,
   LayersIcon,
-  MagnifyingGlassIcon,
 } from '@radix-ui/react-icons';
 import ConfirmationModal from './ConfirmationModal';
 
@@ -40,7 +38,7 @@ const roleNavItems: Record<UserRole, NavItem[]> = {
     { path: '/trainer/availability', label: 'Availability', icon: CalendarIcon },
     { path: '/trainer/students', label: 'Students', icon: PersonIcon },
     { path: '/trainer/roadmap-builder', label: 'Roadmap Builder', icon: Pencil1Icon },
-    { path: '/trainer/wallet', label: 'Wallet', icon: WalletIcon },
+    { path: '/trainer/wallet', label: 'Wallet', icon: ArrowUpIcon },
     { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   master_mentor: [
@@ -54,7 +52,7 @@ const roleNavItems: Record<UserRole, NavItem[]> = {
     { path: '/wing-admin', label: 'Dashboard', icon: HomeIcon },
     { path: '/wing-admin/capacity', label: 'Trainer Capacity', icon: PersonIcon },
     { path: '/wing-admin/activity', label: 'Student Activity', icon: BarChartIcon },
-    { path: '/wing-admin/wallet', label: 'Wing Wallet', icon: WalletIcon },
+    { path: '/wing-admin/wallet', label: 'Wing Wallet', icon: ArrowUpIcon },
     { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   umbrella_admin: [
@@ -62,7 +60,7 @@ const roleNavItems: Record<UserRole, NavItem[]> = {
     { path: '/umbrella-admin/analytics', label: 'Analytics', icon: BarChartIcon },
     { path: '/umbrella-admin/wings', label: 'Wing Performance', icon: LayersIcon },
     { path: '/umbrella-admin/rules', label: 'System Rules', icon: GearIcon },
-    { path: '/umbrella-admin/payments', label: 'Payment Flow', icon: WalletIcon },
+    { path: '/umbrella-admin/payments', label: 'Payment Flow', icon: ArrowDownIcon },
     { path: '/settings', label: 'Settings', icon: GearIcon },
   ],
   company: [

@@ -1,7 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { getSessionsByTrainerId, getStudentsByTrainerId, mockTrainerAvailability, mockWallets } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { CalendarIcon, PersonIcon, ArrowRightIcon, WalletIcon, ClockIcon, RocketIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, PersonIcon, ArrowRightIcon, ClockIcon } from '@radix-ui/react-icons';
 import Button from '../../components/Button';
 
 export default function TrainerDashboard() {
@@ -72,7 +72,7 @@ export default function TrainerDashboard() {
           <div className="flex items-center justify-between mb-4">
             <span className="text-text-muted text-sm font-semibold">Wallet Balance</span>
             <div className="bg-gradient-to-br from-tertiary-accent/20 to-tertiary-accent/10 p-3 rounded-xl">
-              <WalletIcon className="w-5 h-5 text-tertiary-accent" />
+              <span className="text-xl font-bold text-tertiary-accent">$</span>
             </div>
           </div>
           <p className="text-5xl font-bold mb-3 bg-gradient-primary bg-clip-text text-transparent">${wallet?.balance.toLocaleString() || 0}</p>

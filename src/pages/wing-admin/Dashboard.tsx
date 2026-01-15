@@ -1,7 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { mockWings, mockUsers, mockRoadmaps, mockSessions } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { PersonIcon, CalendarIcon, ArrowRightIcon, WalletIcon, BarChartIcon, RocketIcon } from '@radix-ui/react-icons';
+import { PersonIcon, CalendarIcon, BarChartIcon, RocketIcon } from '@radix-ui/react-icons';
 import Button from '../../components/Button';
 
 export default function WingAdminDashboard() {
@@ -148,7 +148,7 @@ export default function WingAdminDashboard() {
           style={{ animationDelay: '0.8s' }}
         >
           <div className="w-12 h-12 bg-gradient-to-br from-tertiary-accent/20 to-tertiary-accent/10 rounded-xl flex items-center justify-center mb-4">
-            <WalletIcon className="w-6 h-6 text-tertiary-accent" />
+            <span className="text-2xl font-bold text-tertiary-accent">$</span>
           </div>
           <h3 className="text-xl font-semibold mb-3 text-text-primary">Wing Wallet</h3>
           <p className="text-text-muted text-sm mb-4">

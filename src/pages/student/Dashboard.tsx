@@ -2,7 +2,7 @@ import { useAuthStore } from '../../store/authStore';
 import { useRoadmapStore } from '../../store/roadmapStore';
 import { getSessionsByStudentId, mockStudentProgress } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { CalendarIcon, CheckIcon, LockClosedIcon, ArrowRightIcon, RocketIcon, TargetIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, CheckIcon, LockClosedIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import { useEffect } from 'react';
 import Button from '../../components/Button';
 

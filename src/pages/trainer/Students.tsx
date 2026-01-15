@@ -1,7 +1,7 @@
 import { useAuthStore } from '../../store/authStore';
 import { getStudentsByTrainerId, getRoadmapByStudentId, getSessionsByTrainerId, mockStudentProgress } from '../../data/mockData';
 import { Link } from 'react-router-dom';
-import { PersonIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { PersonIcon } from '@radix-ui/react-icons';
 import Button from '../../components/Button';
 
 export default function TrainerStudents() {
