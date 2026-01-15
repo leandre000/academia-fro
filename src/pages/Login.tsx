@@ -74,23 +74,25 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-bg-primary p-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-2">Academia FRO</h1>
-          <p className="text-text-secondary">Enterprise Learning Management System</p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-900 p-4">
+      <div className="w-full max-w-md animate-fade-in">
+        <div className="text-center mb-10">
+          <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
+            Academia FRO
+          </h1>
+          <p className="text-gray-400 text-lg">Enterprise Learning Management System</p>
         </div>
 
-        <div className="bg-bg-secondary border border-border rounded-lg p-8">
-          <h2 className="text-2xl font-semibold mb-6">Sign In</h2>
+        <div className="bg-gradient-to-b from-gray-900 to-black border border-gray-800 rounded-2xl p-8 shadow-2xl backdrop-blur-sm">
+          <h2 className="text-3xl font-semibold mb-8 text-center">Sign In</h2>
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium mb-2">Role</label>
+              <label className="block text-sm font-medium mb-2 text-gray-300">Role</label>
               <select
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value as UserRole)}
-                className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all"
                 required
               >
                 <option value="">Select a role</option>
@@ -103,42 +105,42 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Email</label>
+              <label className="block text-sm font-medium mb-2 text-gray-300">Email</label>
               <div className="relative">
-                <PersonIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-muted" />
+                <PersonIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="w-full bg-bg-tertiary border border-border rounded px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-white"
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 pl-10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all"
                   required
                 />
               </div>
             </div>
 
             {error && (
-              <div className="bg-red-900/20 border border-red-500/50 rounded p-3 text-red-400 text-sm">
+              <div className="bg-red-900/30 border border-red-700/50 rounded-lg p-4 text-red-300 text-sm animate-slide-up">
                 {error}
               </div>
             )}
 
             <button
               type="submit"
-              className="w-full bg-white text-black font-semibold py-2 px-4 rounded hover:bg-gray-200 transition-colors"
+              className="w-full bg-white text-black font-semibold py-3 px-4 rounded-lg hover:bg-gray-200 transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg"
             >
               Sign In
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-border">
-            <p className="text-sm text-text-muted mb-3">Quick Login (Demo):</p>
-            <div className="grid grid-cols-2 gap-2">
+          <div className="mt-8 pt-6 border-t border-gray-800">
+            <p className="text-sm text-gray-400 mb-4 text-center">Quick Login (Demo):</p>
+            <div className="grid grid-cols-2 gap-3">
               {Object.entries(roleDisplayNames).map(([role, name]) => (
                 <button
                   key={role}
                   onClick={() => quickLogin(role as UserRole)}
-                  className="text-xs bg-bg-tertiary border border-border rounded px-3 py-2 hover:bg-bg-primary transition-colors text-left"
+                  className="text-xs bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 hover:bg-gray-700 hover:border-gray-600 transition-all text-left text-gray-300 hover:text-white"
                 >
                   {name}
                 </button>
@@ -147,7 +149,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className="mt-6 text-center text-sm text-text-muted">
+        <div className="mt-8 text-center text-sm text-gray-500">
           <p>Mock authentication - Select any role to explore</p>
         </div>
       </div>

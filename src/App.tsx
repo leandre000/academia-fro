@@ -42,12 +42,25 @@ import CompanyStudents from './pages/company/Students';
 import CompanyPrograms from './pages/company/Programs';
 
 function App() {
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, user } = useAuthStore();
+
+  const getDefaultRoute = () => {
+    if (!isAuthenticated || !user) return '/login';
+    const roleRoutes: Record<string, string> = {
+      student: '/student',
+      trainer: '/trainer',
+      master_mentor: '/master-mentor',
+      wing_admin: '/wing-admin',
+      umbrella_admin: '/umbrella-admin',
+      company: '/company',
+    };
+    return roleRoutes[user.role] || '/login';
+  };
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/" replace />} />
+        <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to={getDefaultRoute()} replace />} />
         
         {/* Student Portal */}
         <Route
@@ -140,7 +153,7 @@ function App() {
           <Route path="programs" element={<CompanyPrograms />} />
         </Route>
 
-        <Route path="/" element={<Navigate to={isAuthenticated ? "/student" : "/login"} replace />} />
+        <Route path="/" element={<Navigate to={getDefaultRoute()} replace />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>

@@ -7,15 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Black and white theme
-        'bg-primary': '#000000',
-        'bg-secondary': '#0a0a0a',
-        'bg-tertiary': '#1a1a1a',
-        'border': '#333333',
+        // Modern dark theme with better contrast
+        'bg-primary': '#0a0a0f',
+        'bg-secondary': '#111118',
+        'bg-tertiary': '#1a1a24',
+        'border': '#2a2a3a',
         'text-primary': '#ffffff',
-        'text-secondary': '#cccccc',
-        'text-muted': '#999999',
+        'text-secondary': '#d1d5db',
+        'text-muted': '#9ca3af',
         'accent': '#ffffff',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.3s ease-in-out',
+        'slide-up': 'slideUp 0.3s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
       },
     },
   },
