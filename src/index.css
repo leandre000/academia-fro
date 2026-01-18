@@ -20,10 +20,11 @@
   body {
     @apply bg-dark-800 text-text-primary;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
     font-weight: 400;
-    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
@@ -74,24 +75,24 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-surface-tertiary;
+    @apply bg-dark-700;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-brand-400 to-brand-600;
+    @apply bg-gradient-to-b from-primary-400 to-primary-600;
     border-radius: 10px;
     border: 2px solid transparent;
     background-clip: content-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply from-brand-500 to-brand-700;
+    @apply from-primary-500 to-primary-700;
   }
 
   /* Focus Styles */
   *:focus-visible {
-    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-surface-primary;
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-dark-800;
   }
 }
 
@@ -126,7 +127,7 @@
   .btn {
     @apply inline-flex items-center justify-center gap-2 font-medium rounded-xl;
     @apply transition-all duration-300 ease-out;
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
     @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
     @apply transform active:scale-95;
     font-size: 15px;
@@ -141,8 +142,8 @@
   }
 
   .btn-gradient {
-    @apply btn bg-gradient-to-r from-brand-500 via-purple-500 to-pink-500 text-white px-6 py-3;
-    @apply hover:from-brand-600 hover:via-purple-600 hover:to-pink-600;
+    @apply btn bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 text-white px-6 py-3;
+    @apply hover:from-primary-600 hover:via-purple-600 hover:to-pink-600;
     @apply shadow-medium hover:shadow-xl;
     font-weight: 600;
     background-size: 200% auto;
@@ -154,8 +155,8 @@
   }
 
   .btn-secondary {
-    @apply btn bg-surface-primary text-text-primary px-6 py-3 border border-border;
-    @apply hover:bg-surface-tertiary hover:border-brand-300;
+    @apply btn bg-dark-800 text-text-primary px-6 py-3 border border-dark-600;
+    @apply hover:bg-dark-700 hover:border-primary-500;
     @apply shadow-soft hover:shadow-medium;
     font-weight: 500;
   }
@@ -169,7 +170,7 @@
 
   .btn-tertiary {
     @apply btn bg-transparent text-text-secondary px-6 py-3;
-    @apply hover:bg-surface-tertiary hover:text-text-primary;
+    @apply hover:bg-dark-800 hover:text-text-primary;
     font-weight: 500;
   }
 
@@ -182,7 +183,7 @@
 
   .btn-ghost {
     @apply btn bg-transparent text-text-secondary px-4 py-2;
-    @apply hover:bg-surface-tertiary hover:text-text-primary;
+    @apply hover:bg-dark-800 hover:text-text-primary;
     font-weight: 500;
   }
 
@@ -203,36 +204,36 @@
 
   .card-hover {
     @apply card hover:shadow-large hover:-translate-y-1;
-    @apply hover:border-brand-200;
+    @apply hover:border-primary-500/50;
   }
 
   .card-interactive {
     @apply card-hover cursor-pointer;
-    @apply hover:border-brand-300 hover:shadow-brand;
+    @apply hover:border-primary-500 hover:shadow-primary;
   }
 
   .card-gradient {
     @apply rounded-2xl border-0;
     @apply transition-all duration-300 ease-out;
     @apply shadow-medium hover:shadow-xl;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
   }
 
   .card-gradient:hover {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-    border-color: rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-color: rgba(59, 130, 246, 0.3);
     transform: translateY(-4px);
   }
 
   /* ✨ Premium Input System */
   .input {
-    @apply w-full px-4 py-3 bg-surface-primary border border-border rounded-xl;
+    @apply w-full px-4 py-3 bg-dark-800 border border-dark-600 rounded-xl;
     @apply text-text-primary placeholder:text-text-tertiary;
     @apply transition-all duration-300 ease-out;
-    @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500;
-    @apply hover:border-border-dark focus:shadow-brand;
-    @apply disabled:bg-surface-tertiary disabled:cursor-not-allowed;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+    @apply hover:border-dark-500 focus:shadow-primary;
+    @apply disabled:bg-dark-900 disabled:cursor-not-allowed;
     font-size: 15px;
     line-height: 1.5;
   }
@@ -285,7 +286,7 @@
 
   .nav-link::before {
     content: '';
-    @apply absolute left-0 top-0 h-full w-1 bg-brand-600;
+    @apply absolute left-0 top-0 h-full w-1 bg-primary-600;
     @apply transform -translate-x-full transition-transform duration-300;
   }
 
@@ -294,11 +295,11 @@
   }
 
   .nav-link-active {
-    @apply nav-link bg-gradient-to-r from-brand-50 to-brand-100/50 text-brand-700;
-    @apply hover:from-brand-100 hover:to-brand-200/50;
+    @apply nav-link bg-primary-600/10 text-primary-400;
+    @apply hover:bg-primary-600/20;
     font-weight: 600;
     border-left: 3px solid;
-    @apply border-brand-600;
+    @apply border-primary-600;
   }
 
   .nav-link-active::before {
@@ -334,8 +335,8 @@
   }
 
   .badge-brand {
-    @apply badge bg-brand-50 text-brand-700;
-    @apply hover:bg-brand-600 hover:text-white;
+    @apply badge bg-primary-600/10 text-primary-400;
+    @apply hover:bg-primary-600 hover:text-white;
   }
 
   /* ⏳ Skeleton Loader */
@@ -362,11 +363,11 @@
   /* 🎭 Premium Stat Card */
   .stat-card {
     @apply card-hover p-6;
-    @apply bg-gradient-to-br from-surface-primary to-surface-secondary;
+    @apply bg-gradient-to-br from-dark-800 to-dark-700;
   }
 
   .stat-card-value {
-    @apply text-3xl font-bold bg-gradient-to-r from-brand-600 to-purple-600 bg-clip-text text-transparent;
+    @apply text-3xl font-bold bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-transparent;
   }
 
   /* 🌊 Animated Background */
@@ -433,11 +434,11 @@
 
   /* Gradient Text */
   .text-gradient {
-    @apply bg-gradient-to-r from-brand-600 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-transparent;
   }
 
   .text-gradient-accent {
-    @apply bg-gradient-to-r from-accent-600 to-emerald-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent-emerald to-success bg-clip-text text-transparent;
   }
 
   /* Glow Effects */
