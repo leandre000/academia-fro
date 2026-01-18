@@ -10,17 +10,17 @@ export default function MasterMentorDashboard() {
   const rejected = mockRoadmaps.filter((r) => r.status === 'rejected').length;
 
   return (
-    <div className="w-full animate-fade-in">
-      <div className="mb-6 sm:mb-8">
-        <h1 className="text-2xl sm:text-3xl font-semibold mb-2 text-text-primary">
+    <div className="p-6 animate-fade-in">
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold mb-2 text-text-primary">
           Master Mentor Dashboard
         </h1>
-        <p className="text-sm sm:text-base text-text-secondary">Review and manage student roadmaps</p>
+        <p className="text-text-secondary">Review and manage student roadmaps</p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-        <div className="card p-4 sm:p-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="card p-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium text-text-secondary">Pending Reviews</span>
             <div className="w-10 h-10 bg-warning-light rounded-xl flex items-center justify-center">

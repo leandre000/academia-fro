@@ -8,7 +8,7 @@ export default function PortalLayout() {
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         <TopHeader />
-        <main className="flex-1 overflow-auto bg-surface-secondary">
+        <main className="flex-1 overflow-auto">
           <div className="min-h-full p-4 sm:p-6">
             <Outlet />
           </div>

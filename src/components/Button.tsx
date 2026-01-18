@@ -3,7 +3,7 @@ import { ArrowRightIcon } from '@radix-ui/react-icons';
 
 interface ButtonProps {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'destructive' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'destructive' | 'ghost' | 'gradient' | 'glass';
   size?: 'sm' | 'md' | 'lg';
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
@@ -30,6 +30,8 @@ export default function Button({
     tertiary: 'btn-tertiary',
     destructive: 'btn-destructive',
     ghost: 'btn-ghost',
+    gradient: 'btn-gradient',
+    glass: 'btn-glass',
   };
 
   const sizeClasses = {
