@@ -1,16 +1,9 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckIcon, ArrowRightIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons';
 import Button from '../components/Button';
 
 export default function Landing() {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 800);
-    return () => clearTimeout(timer);
-  }, []);
 
   const stats = [
     { value: '10,000+', label: 'Active Learners' },

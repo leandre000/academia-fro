@@ -1,14 +1,10 @@
-import { useState } from 'react';
 import { mockRoadmaps } from '../../data/mockData';
 import { Link } from 'react-router-dom';
 import { FileTextIcon, CheckIcon, CrossCircledIcon, RocketIcon } from '@radix-ui/react-icons';
 import Button from '../../components/Button';
 import RoadmapApprovalCard from '../../components/RoadmapApprovalCard';
-import type { Roadmap } from '../../types';
 
 export default function MasterMentorDashboard() {
-  const [selectedRoadmap, setSelectedRoadmap] = useState<Roadmap | null>(null);
-
   const pendingReviews = mockRoadmaps.filter((r) => r.status === 'pending_review');
   const changesRequested = mockRoadmaps.filter((r) => r.status === 'changes_requested');
   const approved = mockRoadmaps.filter((r) => r.status === 'approved').length;
@@ -17,19 +13,16 @@ export default function MasterMentorDashboard() {
   const handleApprove = (roadmapId: string) => {
     console.log('Approving roadmap:', roadmapId);
     // In real app: API call to approve
-    setSelectedRoadmap(null);
   };
 
   const handleRequestChanges = (roadmapId: string, notes: string) => {
     console.log('Requesting changes for roadmap:', roadmapId, notes);
     // In real app: API call to request changes
-    setSelectedRoadmap(null);
   };
 
   const handleReject = (roadmapId: string, reason: string) => {
     console.log('Rejecting roadmap:', roadmapId, reason);
     // In real app: API call to reject
-    setSelectedRoadmap(null);
   };
 
   return (
