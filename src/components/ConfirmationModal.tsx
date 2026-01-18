@@ -1,6 +1,5 @@
 import Modal from './Modal';
 import Button from './Button';
-import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 
 interface ConfirmationModalProps {
   isOpen: boolean;
@@ -11,7 +10,7 @@ interface ConfirmationModalProps {
   confirmText?: string;
   cancelText?: string;
   variant?: 'danger' | 'warning' | 'info';
-  isLoading?: boolean;
+  loading?: boolean;
 }
 
 export default function ConfirmationModal({
@@ -22,57 +21,58 @@ export default function ConfirmationModal({
   message,
   confirmText = 'Confirm',
   cancelText = 'Cancel',
-  variant = 'danger',
-  isLoading = false,
+  variant = 'info',
+  loading = false,
 }: ConfirmationModalProps) {
-  const handleConfirm = () => {
-    onConfirm();
-  };
-
   const variantStyles = {
     danger: {
-      icon: 'text-error',
-      bg: 'bg-error-light',
-      button: 'destructive' as const,
+      icon: '⚠️',
+      iconBg: 'bg-error/10',
+      iconColor: 'text-error',
+      confirmVariant: 'destructive' as const,
     },
     warning: {
-      icon: 'text-warning',
-      bg: 'bg-warning-light',
-      button: 'primary' as const,
+      icon: '⚡',
+      iconBg: 'bg-warning/10',
+      iconColor: 'text-warning',
+      confirmVariant: 'primary' as const,
     },
     info: {
-      icon: 'text-info',
-      bg: 'bg-info-light',
-      button: 'primary' as const,
+      icon: 'ℹ️',
+      iconBg: 'bg-primary-600/10',
+      iconColor: 'text-primary-500',
+      confirmVariant: 'primary' as const,
     },
   };
 
   const style = variantStyles[variant];
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={title} size="md">
-      <div className="text-center py-2 sm:py-4">
-        <div className={`w-16 h-16 mx-auto mb-4 sm:mb-6 rounded-full flex items-center justify-center ${style.bg} animate-scale-in`}>
-          <ExclamationTriangleIcon className={`w-8 h-8 ${style.icon}`} />
+    <Modal isOpen={isOpen} onClose={onClose} title={title} size="sm">
+      <div className="text-center">
+        <div className={`w-16 h-16 ${style.iconBg} rounded-full flex items-center justify-center mx-auto mb-6`}>
+          <span className="text-3xl">{style.icon}</span>
         </div>
-        <p className="text-sm sm:text-base text-text-secondary mb-6 sm:mb-8 leading-relaxed">{message}</p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+
+        <p className="text-base text-text-secondary mb-8 leading-relaxed">
+          {message}
+        </p>
+
+        <div className="flex gap-3 justify-center">
           <Button
             variant="secondary"
             onClick={onClose}
-            disabled={isLoading}
-            className="w-full sm:w-auto"
+            disabled={loading}
           >
             {cancelText}
           </Button>
           <Button
-            variant={style.button}
-            onClick={handleConfirm}
-            disabled={isLoading}
-            loading={isLoading}
-            className="w-full sm:w-auto"
+            variant={style.confirmVariant}
+            onClick={onConfirm}
+            loading={loading}
+            disabled={loading}
           >
-            {isLoading ? 'Processing...' : confirmText}
+            {confirmText}
           </Button>
         </div>
       </div>
