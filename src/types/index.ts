@@ -78,9 +78,12 @@ export interface Session {
   title: string;
   scheduledAt: string;
   duration: number; // minutes
-  status: 'scheduled' | 'completed' | 'cancelled';
+  status: 'scheduled' | 'completed' | 'cancelled' | 'disputed';
   attendanceConfirmed: boolean;
+  trainerConfirmed: boolean;
+  studentConfirmed: boolean;
   meetingLink?: string;
+  notes?: string;
 }
 
 export interface TrainerAvailability {
