@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { mockWallets } from '../../data/mockData';
 import { ArrowUpIcon, ArrowDownIcon, DownloadIcon } from '@radix-ui/react-icons';
@@ -7,7 +6,6 @@ import Button from '../../components/Button';
 export default function TrainerWallet() {
   const { user } = useAuthStore();
   const wallet = user ? mockWallets[user.id] : null;
-  const [showWithdrawal, setShowWithdrawal] = useState(false);
 
   if (!wallet) {
     return (
@@ -37,7 +35,6 @@ export default function TrainerWallet() {
           <Button
             variant="secondary"
             size="lg"
-            onClick={() => setShowWithdrawal(true)}
           >
             <DownloadIcon className="w-4 h-4" />
             Request Withdrawal
@@ -93,10 +90,10 @@ export default function TrainerWallet() {
                     </p>
                     <span
                       className={`inline-block text-xs font-medium capitalize px-2.5 py-1 rounded-full mt-1 ${transaction.status === 'completed'
-                          ? 'bg-success/10 text-success'
-                          : transaction.status === 'pending'
-                            ? 'bg-warning/10 text-warning'
-                            : 'bg-error/10 text-error'
+                        ? 'bg-success/10 text-success'
+                        : transaction.status === 'pending'
+                          ? 'bg-warning/10 text-warning'
+                          : 'bg-error/10 text-error'
                         }`}
                     >
                       {transaction.status}
